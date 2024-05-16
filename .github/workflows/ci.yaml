@@ -23,7 +23,7 @@ jobs:
           cache: yarn
 
       - name: Authenticate with private NPM package
-        run: echo "@truvami://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+        run: echo "@truvami:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website

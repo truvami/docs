@@ -21,9 +21,13 @@ jobs:
         with:
           node-version: 18
           cache: yarn
-
-      - name: Authenticate with private NPM package
-        run: echo "@truvami:registry=https://npm.pkg.github.com\n//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
+      - name: Setup .yarnrc.yml
+        run: |
+          yarn config set npmScopes.@truvami.npmRegistryServer "https://npm.pkg.github.com"
+          yarn config set npmScopes.@truvami.npmAlwaysAuth true
+          yarn config set npmScopes.@truvami.npmAuthToken $NPM_AUTH_TOKEN
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website

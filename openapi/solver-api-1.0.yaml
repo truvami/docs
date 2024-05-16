@@ -1,0 +1,514 @@
+openapi: 3.0.1
+info:
+  title: Solver
+  description: Solver API documentation
+  termsOfService: Terms of service
+  version: "1.0"
+servers:
+  - url: http://localhost:8081
+    description: Generated server url
+security:
+  - Bearer Auth: []
+tags:
+  - name: Gateway
+    description: Gateway is a whitelisted MAC address located within an assigned operations area.
+  - name: Operations Area
+    description: Operations Area is an area where valuables can operate.
+paths:
+  /api/v1/operationsArea/{id}:
+    get:
+      tags:
+        - Operations Area
+      summary: Find operations area by ID.
+      description: This endpoint allows us to retrieve a operations area based on its ID.
+      operationId: get_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationsAreaJson'
+      security:
+        - Bearer Auth: []
+    put:
+      tags:
+        - Operations Area
+      summary: Edit operations area.
+      description: This endpoint allows us to edit an existing operations area.
+      operationId: edit
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateOperationsAreaJson'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationsAreaJson'
+      security:
+        - Bearer Auth: []
+    delete:
+      tags:
+        - Operations Area
+      summary: Delete operations area.
+      description: |-
+        This endpoint allows us to delete operations area.
+        To delete a operations area a operations area's id needs to be provided. Please see Get operation areas request to get a list of operation areas and their IDs.
+      operationId: delete
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Success
+      security:
+        - Bearer Auth: []
+  /api/v1/solver:
+    post:
+      tags:
+        - Solver
+      summary: Validate location.
+      description: This endpoint allows us validate provided location with solver algorithm.
+      operationId: solve
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SolverRequestJson'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayJson'
+      security:
+        - Bearer Auth: []
+  /api/v1/operationsArea:
+    get:
+      tags:
+        - Operations Area
+      summary: Find operations areas by predicate.
+      description: |-
+        This endpoint retrieves all operation areas that match the specified predicate.
+        By default, it returns the first 20 records. Additional records can be obtained using the 'page' and 'size' parameters.
+      operationId: get
+      parameters:
+        - name: predicate
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Predicate'
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OperationsAreaJson'
+      security:
+        - Bearer Auth: []
+    post:
+      tags:
+        - Operations Area
+      summary: Create new operations area.
+      description: This endpoint allows us to create a new operations area.
+      operationId: create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOperationsAreaJson'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OperationsAreaJson'
+      security:
+        - Bearer Auth: []
+  /api/v1/gateway:
+    post:
+      tags:
+        - Gateway
+      summary: Create new gateway.
+      description: This endpoint allows us to add a gateway's mac address to whitelist.
+      operationId: create_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGatewayJson'
+        required: true
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayJson'
+      security:
+        - Bearer Auth: []
+  /api/v1/admin/access-plan/reset/:
+    post:
+      tags:
+        - Admin Access Plan
+      operationId: resetCache
+      parameters:
+        - name: key
+          in: query
+          description: customerId
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /v3/api-docs:
+    get:
+      tags:
+        - documentation-rest
+      operationId: getOpenApiDocumentation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/yaml:
+              schema:
+                type: string
+                format: binary
+  /api/version:
+    get:
+      tags:
+        - version-rest
+      operationId: version
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /api/v1/operationsArea/{id}/gateway:
+    get:
+      tags:
+        - Operations Area
+      summary: Find gateways by predicate and given Operations Area.
+      description: |-
+        This endpoint retrieves all gateways that match the specified predicate and Operations Area.
+        By default, it returns the first 20 records. Additional records can be obtained using the 'page' and 'size' parameters.
+      operationId: get_2
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: pageable
+          in: query
+          required: true
+          schema:
+            $ref: '#/components/schemas/Pageable'
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GatewayJson'
+      security:
+        - Bearer Auth: []
+  /api/v1/gateway/{id}:
+    get:
+      tags:
+        - Gateway
+      summary: Find gateway by ID.
+      description: This endpoint allows us to retrieve a gateway based on its ID.
+      operationId: get_3
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GatewayJson'
+      security:
+        - Bearer Auth: []
+    delete:
+      tags:
+        - Gateway
+      summary: Delete whitelisted gateway.
+      description: |-
+        This endpoint allows us to remove a gateway from whitelist.
+        To delete a gateway a gateway's id needs to be provided. Please see Get gateways request to get a list of gateways and their IDs.
+      operationId: delete_1
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        "200":
+          description: Success
+      security:
+        - Bearer Auth: []
+components:
+  schemas:
+    OperationsAreaJson:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+    UpdateOperationsAreaJson:
+      type: object
+      properties:
+        name:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+    GatewayJson:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        macAddress:
+          type: string
+        operationsArea:
+          $ref: '#/components/schemas/OperationsAreaJson'
+    LocationJson:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - GPS
+            - WIFI
+            - MOVE
+            - LORA
+        position:
+          $ref: '#/components/schemas/PositionJson'
+        accuracy:
+          type: integer
+          format: int64
+        trusted:
+          type: boolean
+        timestamp:
+          type: string
+          format: date-time
+    MetadataJson:
+      type: object
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    PositionJson:
+      type: object
+      properties:
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+    SolverRequestJson:
+      type: object
+      properties:
+        metadata:
+          type: array
+          items:
+            $ref: '#/components/schemas/MetadataJson'
+        trusted:
+          $ref: '#/components/schemas/LocationJson'
+        uplinks:
+          type: array
+          items:
+            $ref: '#/components/schemas/UplinkJson'
+        requestId:
+          type: string
+        operationsAreaId:
+          type: integer
+          format: int64
+    UplinkJson:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - GPS
+            - WIFI
+            - MOVE
+            - LORA
+        timestamp:
+          type: string
+          format: date-time
+        gps:
+          $ref: '#/components/schemas/PositionJson'
+        lora:
+          $ref: '#/components/schemas/PositionJson'
+        wifi:
+          type: object
+          description: WiFi or position data. Can contain either a list of WiFi data or a position data.
+          oneOf:
+            - $ref: '#/components/schemas/PositionJson'
+            - type: array
+              items:
+                $ref: '#/components/schemas/WiFiUplinkJson'
+        moving:
+          type: integer
+          format: int32
+        snr:
+          type: number
+          format: double
+    WiFiUplinkJson:
+      type: object
+      properties:
+        mac:
+          type: string
+        rssi:
+          type: integer
+          format: int64
+    CreateOperationsAreaJson:
+      required:
+        - altitude
+        - latitude
+        - longitude
+        - name
+        - radius
+      type: object
+      properties:
+        name:
+          type: string
+        latitude:
+          type: number
+          format: double
+        longitude:
+          type: number
+          format: double
+        altitude:
+          type: number
+          format: double
+        radius:
+          type: number
+          format: double
+    CreateGatewayJson:
+      required:
+        - macAddress
+        - operationsArea
+      type: object
+      properties:
+        macAddress:
+          type: string
+        operationsArea:
+          $ref: '#/components/schemas/ReferenceOperationsAreaJson'
+    ReferenceOperationsAreaJson:
+      required:
+        - id
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+    Predicate:
+      type: object
+    Pageable:
+      type: object
+      properties:
+        page:
+          minimum: 0
+          type: integer
+          format: int32
+        size:
+          minimum: 1
+          type: integer
+          format: int32
+        sort:
+          type: array
+          items:
+            type: string
+  securitySchemes:
+    Bearer Auth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

@@ -39,6 +39,7 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             "https://github.com/truvami/docs/tree/main/packages/create-docusaurus/templates/shared/",
+          docItemComponent: "@theme/ApiItem",
         },
         blog: {
           showReadingTime: true,
@@ -53,6 +54,37 @@ const config: Config = {
       } satisfies Preset.Options,
     ],
   ],
+
+  plugins: [
+    [
+      "docusaurus-plugin-openapi-docs",
+      {
+        id: "api", // plugin id
+        docsPluginId: "classic", // id of plugin-content-docs or preset for rendering docs
+        config: {
+          solver: {
+            // the <id> referenced when running CLI commands
+            specPath: "openapi/solver-api-1.0.yaml", // path to OpenAPI spec, URLs supported
+            outputDir: "docs/solver-api", // output directory for generated files
+            sidebarOptions: {
+              // optional, instructs plugin to generate sidebar.js
+              // groupPathsBy: "tag", // group sidebar items by operation "tag"
+            },
+          },
+          truvami: {
+            // the <id> referenced when running CLI commands
+            specPath: "openapi/truvami-api-1.0.0.yaml", // path to OpenAPI spec, URLs supported
+            outputDir: "docs/truvami-api", // output directory for generated files
+            sidebarOptions: {
+              // optional, instructs plugin to generate sidebar.js
+              groupPathsBy: "tag", // group sidebar items by operation "tag"
+            },
+          },
+        },
+      },
+    ],
+  ],
+  themes: ["docusaurus-theme-openapi-docs"],
 
   themeConfig: {
     // Replace with your project's social card

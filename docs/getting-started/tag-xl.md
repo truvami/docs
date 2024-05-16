@@ -44,17 +44,17 @@ This section describes all the steps required to get your tracker configured and
 
 Insert the seal into the bottom of the enclosure and ensure that everything is closed. Place the device inside and insert the batteries. Close the entire housing.
 
-[Bild 1](/Bilder_GSG_XL/AWS_TagXL_Box_shopped_V2.png)
+
 
 
 #### 2. Scan device keys
 Retrieve and copy the LoRaWAN® device EUI, LoRaWAN Join EUI and AppKey code attributes from your tracker by scanning the QR code on the bottom of your truvami Tag XL.
 
-[Bild 2](/Bilder_GSG_XL/tagXL_rückseite.png)
+
 
 The QR code contains the following information:
 
-[Bild 3](/Bilder_GSG_XL/Unbenannt3.jpg)
+
 
 
 ## 3 Claiming your tracker:
@@ -63,38 +63,38 @@ This section describes the steps required to claim your tracker on Semtech ́s J
 
 #### 1. Navigate to Semtech LoRa Cloud and sign up (or login if you already have an account)
 
-[Bild 4](/Bilder_GSG_XL/Unbenannt4.png)
+
 
 #### 2. On the upper menu, navigate to SERVICES -> Join Server
 
-[Bild 5](/Bilder_GSG_XL/Unbenannt5.jpg)
+
 
 #### 3. If it is your first time configuring a LoRa Edge device, on the left-side menu, navigate to APPLICATION OWNERS
 
-[Bild 6](/Bilder_GSG_XL/Unbenannt6.jpg)
+
 
 #### 4. Enter your name and click on CREATE NEW OWNER >>
 
-[Bild 7](/Bilder_GSG_XL/Unbenannt7.jpg)
+
 
 #### 5. On the left-side menu, navigate to DEVICES
 
-[Bild 8](/Bilder_GSG_XL/Unbenannt8.jpg)
+
 
 #### 6. Click on CLAIM INDIVIDUAL DEVICE >>
 
-[Bild 9](/Bilder_GSG_XL/Unbenannt9.jpg)
+
 
 #### 7. Enter the CHIP EUI and PIN for your tracker and click on CLAIM DEVICE >>
 
-[Bild 10](/Bilder_GSG_XL/Unbenannt10.jpg)
+
 
 #### 8. You should get a page confirming your device was successfully claimed, click on BACK TO DEVICES
 
 
 #### 9. Select your just claimed device and click on EXPORT DEVICE KEYS
 
-[Bild 11](/Bilder_GSG_XL/Unbenannt11.jpg)
+
 
 #### 10. You should get a file downloaded, locate it in your Downloads folder, open it and copy your AppKey (you will need it to provision your device on the LNS later). Please keep in mind that the AppKey is sensitive information, so you want to keep it secure.
 
@@ -113,19 +113,19 @@ On the region selector, make sure to select the right region
 ```
 #### 1. On the AWS Console, go to the Search box and enter IoT Core, then select it in the search results
 
-[Bild 12](/Bilder_GSG_XL/Unbenannt12.jpg)
+
 
 #### 2. On the region selector, make sure to select the right region [Ireland (eu-west-1) in our example]
 
-[Bild 13](/Bilder_GSG_XL/Unbenannt13.jpg)
+
 
 #### 3. Now, you are ready to create the profiles. On the left-side menu, select LPWAN devices and then Profiles
 
-[Bild 14](/Bilder_GSG_XL/Unbenannt14.jpg)
+
 
 #### 4. Click on Add device profile and then enter your device profile attributes and click on Add device profile
 
-[Bild 15](/Bilder_GSG_XL/Unbenannt15.jpg)
+
 
 #### 5. Next, click on Add service profile and then enter a friendly name for your profile and (optionally) check the Add gateway metadata setting. Finally, click on Add service profile
 
@@ -133,52 +133,52 @@ On the region selector, make sure to select the right region
 
 #### 6. Next, lets create a couple of Destinations for the tracker to route data to. On the left-side menu, select LPWAN devices and then Destinations
 
-[Bild 17](/Bilder_GSG_XL/Unbenannt17.jpg)
+
 
 #### 7. Click on Add destination and then enter a friendly name for your destination (demo_raw in the example). Make sure the Enter a rule name option is selected and enter a friendly name for your rule name (demo_raw in the example). Make sure the Create a new service role is selected. Finally, click on Add destination.
 
-[Bild 18](/Bilder_GSG_XL/Unbenannt18.jpg)
+
 
 #### 8. Now, let’s repeat previous step for the location destination. Click on Add destination and then enter a friendly name for your destination (demo_location in the example). Make sure the Enter a rule name option is selected and enter a friendly name for your rule name (demo_location in the example). Make sure the Create a new service role is selected. Finally, click on Add destination.
 
-[Bild 19](/Bilder_GSG_XL/Unbenannt19.jpg)
+
 
 
 #### 9. Finally, we are ready to provision our tracker device. Let’s start by selecting LPWAN devices and then Devices on the left-side menu
 
 
-[Bild 20](/Bilder_GSG_XL/Unbenannt20.jpg)
+
 
 #### 10. Click on Add wireless device and enter the required parameters for your tracker. Specifically, you need to ensure you are using the right DevEUI, the AppKey you exported from LoRa Cloud before and the profiles you created above. Finally, make sure to select the “raw” destination (demo_raw in our example) that was created above. Once you are done, click Next
 
 
-[Bild 21](/Bilder_GSG_XL/Unbenannt21.jpg)
+
 
 
 #### 11. On the next page, configure your device as “location-aware” by turning on the Activate positioning toggle and selecting the “location” destination (demo_location in our example) that was created above.Finally, click Add device
 
-[Bild 22](/Bilder_GSG_XL/Unbenannt22.jpg)
+
 
 #### 12. After few minutes, on the list of devices, click on your device ID.
 
-[Bild 23](/Bilder_GSG_XL/Unbenannt23.jpg)
+
 
 #### 13. You should be able to see that the device has properly joined and is sending data by inspecting the Last uplink received at field
 
-[Bild 24](/Bilder_GSG_XL/Unbenannt24.jpg)
+
 
 #### 14. To see the position of the tracker, select the Position tab
 
-[Bild 25](/Bilder_GSG_XL/Unbenannt25.jpg)
+
 
 #### 15. Assuming your tracker has managed to successfully scan (either GNSS or Wi-Fi), you should see its position.
 
-[Bild 26](/Bilder_GSG_XL/Unbenannt26.jpg)
+
 
 
 #### 16. Additionally, you can click on Activate Location Map to have that position rendered on a map
 
-[Bild 27](/Bilder_GSG_XL/Unbenannt27.jpg)
+
 
 You are now done with your tracker onboarding in AWS IoT Core Device Location. For any further questions, please contact us at hey@truvami.com.
 

@@ -11,6 +11,8 @@ jobs:
   build:
     name: Build Docusaurus
     runs-on: ubuntu-latest
+    permissions:
+      packages: read
     steps:
       - uses: actions/checkout@v4
         with:
@@ -20,6 +22,8 @@ jobs:
           node-version: 18
           cache: yarn
 
+      - name: Authenticate with private NPM package
+        run: echo "@truvami://npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: Build website

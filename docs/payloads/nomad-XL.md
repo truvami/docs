@@ -92,7 +92,6 @@ Contains the Git revision of the firmware build. The Git message is sent only on
 ### Configuration commands and responses
 
 Configuration downlink commands and responses are sent as plain text. Note that commands need to be zero-terminated. 
-Refer to [settings](settings.md) documentation for more information.
 
 | Byte    | Size | Description             | Format |
 |---------|------|-------------------------|--------|

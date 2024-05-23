@@ -5,7 +5,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "truvami docs",
   tagline: "docs for truvami",
-  favicon: "img/favicon.ico",
+  favicon: "https://truvami.com/wp-content/uploads/2023/08/T_Farbig-150x150.png",
 
   // Set the production url of your site here
   url: "https://docs.truvami.com",

@@ -1,0 +1,150 @@
+---
+id: reset-cache
+title: "resetCache"
+description: "resetCache"
+sidebar_label: "resetCache"
+hide_title: true
+hide_table_of_contents: true
+api: eJx1U8Fu2zAM/RWDp63w6mSnwrdsQIduhwRLhx2CHBSbqYXZkivJxgIj/z4+OXHrdfNFFkU+ke89DRTUk6d8R6uy0SZZFQV7n2xqZWifkm3ZqaCteSgpJ8eew2dVVEwptcqphgM7VA9kZCMpv/gkZ9rI73PHDpuSfeF0CxSJFp0PtmEngKkAPnfasWAH13FKXqAbRflA4dQCzgenzROdz3sk+9Yazx7nHxcLLHPs9TfBLKwJbAJOb7IbLP9Hle/v/mYzynyVxeSt9SHOHCrZZarVWb/MFCjLVKTsQyuUZbE6k0zPrr9S07laiqoQ2jzLaluouhK4/G5xt3xDzxc2YJzLZERIUIzpPRed0+EUET+xcnK26tDObv/6fIthR45mWdPw6IMuVGN/iFkSGX/urWuUsEdffz4S6NHmaGO5DjXyt7buY/688TGcrDYPSWmLrhEJonEkUTzS+PVxKwPpAhCPCCT2GGdEKCWQNQItbxck14LxRkyYT9aK3CZXaWa3T8MF/h0yUUIMKBiR+OGi2o5ENdwE0qNyWF+0i3aUG2SF8yERiobhoDz/cPX5jPBoamhQaq8ONbx7VLXnNx1NPqR33y82f5/M3P/PnvGArs+oV3WHjGiAXjmNC6Pg0h+rUmRAJ2MJXm4bXlXB/SicTLxZbyHpH9FzVDk=
+sidebar_class_name: "post api-method"
+info_path: docs/solver-api/solver
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"resetCache"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/v1/admin/access-plan/reset/"}
+>
+  
+</MethodEndpoint>
+
+
+
+resetCache
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"key","in":"query","description":"customerId","required":true,"schema":{"type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"*/*"}
+              value={"*/*"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <div
+                        style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                      >
+                        
+                        
+                        string
+                        
+                        
+                      </div>
+                    </ul>
+                  </details>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

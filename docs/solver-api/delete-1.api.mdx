@@ -1,0 +1,102 @@
+---
+id: delete-1
+title: "Delete whitelisted gateway."
+description: "This endpoint allows us to remove a gateway from whitelist."
+sidebar_label: "Delete whitelisted gateway."
+hide_title: true
+hide_table_of_contents: true
+api: eJzdU2Fv0zAQ/SsnfwGkqukQQihCSEMb0xASEy3iw6iQG18ba44d7EtGFeW/c5ek3ToBP4BPOV/e3b17fu4U6V1S+a260oT3eq/WM2UwFdHWZINXuVqVNgF6UwfrCbRz4T5Bk4ACRKxCi6BhNxbDNoYK7ktL6Gyi+Xe/CmDQIT0GHaNnCawBj2iGbhuEOobWGjRzuHGoE0JChCukQ0XikT8bTCT4Hec1yCAI2weE9gaoRBvh+iLN1UyFGqOWZa4NrzPS+XHGP2oddcWHKAJ0yvOBAdbwLyub15pKjmWkjcjFFBucqVSUWGmVd4r29VDhCXcYGboNsdI0pl6/Un2/lvJUB58wScXLxUI+pwovm6LAlBjOzbFooqX9wOg96ogRzhvmkd+upRvzLcPDHsMW8ldlurZZe5ZNOmSdNb2SfrE9LNhEx8CSqM6zzIVCuzIkyt8s3ogap5yu0ItqaGDsAFIsBA4El6LCuNQJzaMqMkdNasl5M6A4MwYfDlJ9/LYaNrd+G4ZyS07wy+DaAf9ErCEN5zfXYELRVOhpuFwG8k1W6fN2yYRtIS1WkhBzpCk1UyLG2OhsvlA8tmYJKu1l8mSAi9GwRxuzBpOo86dsOlUEvnxP/8M7me6N8BdltdP8BFiewTPdZLJbxSYTEcUvUyOOcn4y7Awxk2C6bsOUvkbX95JmHlHszGGro9UbuV12o7FJYvbyVruE/1D2+ZfpBb6Av9GcktoLn1a7Rk4c3uF+fNL9un/0eC4uP12uLvm/PvXsE48OPP/Y+u3k+VW4Q//uOIjkKLP6/jdDg9Q/
+sidebar_class_name: "delete api-method"
+info_path: docs/solver-api/solver
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete whitelisted gateway."}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/api/v1/gateway/{id}"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint allows us to remove a gateway from whitelist.
+To delete a gateway a gateway's id needs to be provided. Please see Get gateways request to get a list of gateways and their IDs.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

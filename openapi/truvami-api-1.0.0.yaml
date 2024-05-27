@@ -1,5 +1,106 @@
 components:
   schemas:
+    Asset:
+      additionalProperties: false
+      properties:
+        created_at:
+          description: Date and time the asset was created.
+          format: date-time
+          type: string
+        customer:
+          contentEncoding: base64
+          description: Unique identifier for the customer
+          format: uuid
+          type: string
+        device:
+          description: Device type of the asset.
+          examples:
+            - 10CE45FFFE00CDxx
+          maxLength: 16
+          minLength: 1
+          type: string
+        integration:
+          contentEncoding: base64
+          description: Unique identifier for the integration
+          format: uuid
+          type: string
+        name:
+          description: Name of asset.
+          examples:
+            - tracker1
+          maxLength: 80
+          minLength: 1
+          type: string
+        updated_at:
+          description: Date and time the asset was updated.
+          format: date-time
+          type: string
+        uuid:
+          contentEncoding: base64
+          description: Unique identifier for the person
+          format: uuid
+          type: string
+      required:
+        - uuid
+        - name
+        - customer
+        - device
+        - integration
+        - created_at
+        - updated_at
+      type: object
+    AssetPostRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/AssetPostRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        customer:
+          contentEncoding: base64
+          description: Unique identifier for the customer
+          format: uuid
+          type: string
+        name:
+          description: Name of asset.
+          examples:
+            - tracker1
+          maxLength: 80
+          minLength: 1
+          type: string
+        uuid:
+          contentEncoding: base64
+          description: Unique identifier for the person
+          format: uuid
+          type: string
+      required:
+        - uuid
+        - name
+        - customer
+      type: object
+    AssetPutRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/AssetPutRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: Name of asset.
+          examples:
+            - tracker1
+          maxLength: 80
+          minLength: 1
+          type: string
+      required:
+        - name
+      type: object
     Customer:
       additionalProperties: false
       properties:
@@ -132,6 +233,36 @@ components:
           format: uri
           type: string
       type: object
+    Generic2xxPaginatedResponseListAssetBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxPaginatedResponseListAssetBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          items:
+            $ref: "#/components/schemas/Asset"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/PaginationResponse"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+        - metadata
+      type: object
     Generic2xxPaginatedResponseListCustomerBody:
       additionalProperties: false
       properties:
@@ -161,6 +292,31 @@ components:
         - status
         - timestamp
         - metadata
+      type: object
+    Generic2xxResponseAssetBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxResponseAssetBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          $ref: "#/components/schemas/Asset"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
       type: object
     Generic2xxResponseCustomerBody:
       additionalProperties: false
@@ -211,6 +367,31 @@ components:
         - status
         - timestamp
       type: object
+    Generic2xxResponsePositionBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxResponsePositionBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          $ref: "#/components/schemas/Position"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+      type: object
     PaginationResponse:
       additionalProperties: false
       properties:
@@ -240,6 +421,75 @@ components:
         - total
         - total_pages
       type: object
+    Position:
+      additionalProperties: false
+      properties:
+        accuracy:
+          description: Accuracy of the asset.
+          examples:
+            - 0
+          format: double
+          maximum: 10000
+          minimum: 0
+          type: number
+        altitude:
+          description: Altitude of the asset.
+          examples:
+            - 0
+          format: double
+          maximum: 10000
+          minimum: -100
+          type: number
+        asset:
+          contentEncoding: base64
+          description: Unique identifier for the asset
+          format: uuid
+          type: string
+        created_at:
+          description: Date and time the asset was created.
+          format: date-time
+          type: string
+        latitude:
+          description: Latitude of the asset.
+          examples:
+            - 37.7749
+          format: double
+          maximum: 90
+          minimum: -90
+          type: number
+        longitude:
+          description: Longitude of the asset.
+          examples:
+            - -122.4194
+          format: double
+          maximum: 180
+          minimum: -180
+          type: number
+        source:
+          description: Position source.
+          enum:
+            - gps
+            - cell
+            - wifi
+            - ble
+            - lora
+          examples:
+            - gps
+          type: string
+        updated_at:
+          description: Date and time the asset was updated.
+          format: date-time
+          type: string
+      required:
+        - asset
+        - latitude
+        - longitude
+        - altitude
+        - accuracy
+        - source
+        - created_at
+        - updated_at
+      type: object
   securitySchemes:
     API Key:
       in: header
@@ -259,6 +509,399 @@ info:
   version: 1.0.0
 openapi: 3.1.0
 paths:
+  /v1/assets:
+    get:
+      description: "\n\t\t\tReturns a paginated list of all assets. If no limit is provided, the default is value is used.\n\t\t\tBy default the list gets ordered by the created_at field in descending order.\n\t\t"
+      operationId: ListAssets
+      parameters:
+        - description: Number of items to return per page.
+          explode: false
+          in: query
+          name: limit
+          schema:
+            default: 10
+            description: Number of items to return per page.
+            format: int64
+            maximum: 100
+            minimum: 1
+            type: integer
+        - description: Page number to return.
+          explode: false
+          in: query
+          name: page
+          schema:
+            default: 1
+            description: Page number to return.
+            format: int64
+            minimum: 1
+            type: integer
+        - description: Name of the asset to search for.
+          example: tracker1
+          explode: false
+          in: query
+          name: name
+          schema:
+            description: Name of the asset to search for.
+            examples:
+              - tracker1
+            maxLength: 80
+            minLength: 3
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxPaginatedResponseListAssetBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:read
+            - assets:write
+      summary: Get all assets.
+      tags:
+        - assets
+    post:
+      operationId: CreateAsset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AssetPostRequestBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseAssetBody"
+          description: Created
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "409":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Conflict
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:write
+      summary: Create a new asset.
+      tags:
+        - assets
+  /v1/assets/{uuid}:
+    delete:
+      description: Deletes a single asset by UUID.
+      operationId: DeleteAsset
+      parameters:
+        - description: The UUID of the asset to delete.
+          example: 2506f816-ed2e-4652-9b32-4b32baebb969
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseInterface {}Body"
+          description: No Content
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:write
+      summary: Delete asset by UUID.
+      tags:
+        - assets
+    get:
+      description: Returns a single asset by UUID. This operation can be accessed by the asset or an admin.
+      operationId: GetAsset
+      parameters:
+        - description: The UUID of the asset to retrieve.
+          example: 8ea43308-d217-4545-b0d0-f93da568fe11
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseAssetBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:read
+            - assets:write
+      summary: Get asset by UUID.
+      tags:
+        - assets
+    put:
+      description: Updates and returns a single asset by UUID.
+      operationId: UpdateAsset
+      parameters:
+        - description: The UUID of the asset to update and retrieve.
+          example: 7335069c-2510-4934-b526-8a313c70d99d
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AssetPutRequestBody"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseAssetBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:write
+      summary: Update asset by UUID.
+      tags:
+        - assets
+  /v1/assets/{uuid}/positions:
+    get:
+      description: Returns a list of positions for a single asset by UUID.
+      operationId: GetAssetPositions
+      parameters:
+        - description: The UUID of the asset to retrieve.
+          example: 19b2abc0-3243-495c-a34b-ac0fd2da2ed6
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponsePositionBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:read
+            - assets:write
+      summary: Get positions asset by UUID.
+      tags:
+        - assets
   /v1/customers:
     get:
       description: "\n\t\t\tReturns a paginated list of all customers. If no limit is provided, the default is value is used.\n\t\t\tBy default the list gets ordered by the created_at field in descending order.\n\t\t"
@@ -404,7 +1047,7 @@ paths:
       operationId: DeleteCustomer
       parameters:
         - description: The UUID of the customer to delete.
-          example: 8df9e079-8c0e-49cb-9e7e-0ae858618f56
+          example: c8d24467-14dc-4b3e-bed3-ac18c1d33cf1
           in: path
           name: uuid
           required: true
@@ -465,7 +1108,7 @@ paths:
       operationId: GetCustomer
       parameters:
         - description: The UUID of the customer to retrieve.
-          example: e11feeb6-1be2-4b0c-8882-02bf6232b28d
+          example: 0393a3dc-2bb5-4f53-bbe3-e7104e008424
           in: path
           name: uuid
           required: true
@@ -527,7 +1170,7 @@ paths:
       operationId: UpdateCustomer
       parameters:
         - description: The UUID of the customer to update and retrieve.
-          example: a792f028-c875-45c3-a56f-8813e2d0caae
+          example: 91815480-cea7-40fa-95f3-3f6a5076c0a7
           in: path
           name: uuid
           required: true

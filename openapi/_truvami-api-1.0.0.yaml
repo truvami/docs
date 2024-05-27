@@ -1,0 +1,591 @@
+components:
+  schemas:
+    Customer:
+      additionalProperties: false
+      properties:
+        created_at:
+          description: Date and time the customer was created.
+          format: date-time
+          type: string
+        name:
+          description: Name of customer.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+        updated_at:
+          description: Date and time the customer was updated.
+          format: date-time
+          type: string
+        uuid:
+          contentEncoding: base64
+          description: Unique identifier for the person
+          format: uuid
+          type: string
+      required:
+        - uuid
+        - name
+        - created_at
+        - updated_at
+      type: object
+    CustomerPostRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/CustomerPostRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: Name of customer.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+        uuid:
+          contentEncoding: base64
+          description: Unique identifier for the person
+          format: uuid
+          type: string
+      required:
+        - uuid
+        - name
+      type: object
+    CustomerPutRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/CustomerPutRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: Name of customer.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+      required:
+        - name
+      type: object
+    ErrorDetail:
+      additionalProperties: false
+      properties:
+        location:
+          description: Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'
+          type: string
+        message:
+          description: Error message text
+          type: string
+        value:
+          description: The value at the given location
+      type: object
+    ErrorModel:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/ErrorModel.json
+          format: uri
+          readOnly: true
+          type: string
+        detail:
+          description: A human-readable explanation specific to this occurrence of the problem.
+          examples:
+            - Property foo is required but is missing.
+          type: string
+        errors:
+          description: Optional list of individual error details
+          items:
+            $ref: "#/components/schemas/ErrorDetail"
+          type: array
+        instance:
+          description: A URI reference that identifies the specific occurrence of the problem.
+          examples:
+            - https://example.com/error-log/abc123
+          format: uri
+          type: string
+        status:
+          description: HTTP status code
+          examples:
+            - 400
+          format: int64
+          type: integer
+        title:
+          description: A short, human-readable summary of the problem type. This value should not change between occurrences of the error.
+          examples:
+            - Bad Request
+          type: string
+        type:
+          default: about:blank
+          description: A URI reference to human-readable documentation for the error.
+          examples:
+            - https://example.com/errors/example
+          format: uri
+          type: string
+      type: object
+    Generic2xxPaginatedResponseListCustomerBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxPaginatedResponseListCustomerBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          items:
+            $ref: "#/components/schemas/Customer"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/PaginationResponse"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+        - metadata
+      type: object
+    Generic2xxResponseCustomerBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxResponseCustomerBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          $ref: "#/components/schemas/Customer"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+      type: object
+    Generic2xxResponseInterface {}Body:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxResponseInterface {}Body.json
+          format: uri
+          readOnly: true
+          type: string
+        data: {}
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+      type: object
+    PaginationResponse:
+      additionalProperties: false
+      properties:
+        limit:
+          examples:
+            - 10
+          format: int64
+          type: integer
+        page:
+          examples:
+            - 1
+          format: int64
+          type: integer
+        total:
+          examples:
+            - 100
+          format: int64
+          type: integer
+        total_pages:
+          examples:
+            - 10
+          format: int64
+          type: integer
+      required:
+        - limit
+        - page
+        - total
+        - total_pages
+      type: object
+  securitySchemes:
+    API Key:
+      in: header
+      name: X-API-KEY
+      type: apiKey
+    OAuth2:
+      flows:
+        authorizationCode:
+          authorizationUrl: https://example.com/oauth/authorize
+          scopes:
+            scope1: Scope 1 description...
+          tokenUrl: https://example.com/oauth/token
+      type: oauth2
+info:
+  description: It is a simple REST API for managing truvami devices and allow for seamless integration with the truvami platform.
+  title: truvami-api
+  version: 1.0.0
+openapi: 3.1.0
+paths:
+  /v1/customers:
+    get:
+      description: "\n\t\t\tReturns a paginated list of all customers. If no limit is provided, the default is value is used.\n\t\t\tBy default the list gets ordered by the created_at field in descending order.\n\t\t"
+      operationId: ListCustomers
+      parameters:
+        - description: Number of items to return per page.
+          explode: false
+          in: query
+          name: limit
+          schema:
+            default: 10
+            description: Number of items to return per page.
+            format: int64
+            maximum: 100
+            minimum: 1
+            type: integer
+        - description: Page number to return.
+          explode: false
+          in: query
+          name: page
+          schema:
+            default: 1
+            description: Page number to return.
+            format: int64
+            minimum: 1
+            type: integer
+        - description: Name of the customer to search for.
+          example: truvami ltd.
+          explode: false
+          in: query
+          name: name
+          schema:
+            description: Name of the customer to search for.
+            examples:
+              - truvami ltd.
+            maxLength: 80
+            minLength: 3
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxPaginatedResponseListCustomerBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - customers:read
+            - customers:write
+      summary: Get all customers.
+      tags:
+        - customers
+    post:
+      operationId: CreateCustomer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerPostRequestBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseCustomerBody"
+          description: Created
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "409":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Conflict
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - customers:write
+      summary: Create a new customer.
+      tags:
+        - customers
+  /v1/customers/{uuid}:
+    delete:
+      description: Deletes a single customer by UUID.
+      operationId: DeleteCustomer
+      parameters:
+        - description: The UUID of the customer to delete.
+          example: 8df9e079-8c0e-49cb-9e7e-0ae858618f56
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseInterface {}Body"
+          description: No Content
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - customers:write
+      summary: Delete customer by UUID.
+      tags:
+        - customers
+    get:
+      description: Returns a single customer by UUID. This operation can be accessed by the customer or an admin.
+      operationId: GetCustomer
+      parameters:
+        - description: The UUID of the customer to retrieve.
+          example: e11feeb6-1be2-4b0c-8882-02bf6232b28d
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseCustomerBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - customers:read
+            - customers:write
+      summary: Get customer by UUID.
+      tags:
+        - customers
+    put:
+      description: Updates and returns a single customer by UUID.
+      operationId: UpdateCustomer
+      parameters:
+        - description: The UUID of the customer to update and retrieve.
+          example: a792f028-c875-45c3-a56f-8813e2d0caae
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerPutRequestBody"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseCustomerBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - customers:write
+      summary: Update customer by UUID.
+      tags:
+        - customers

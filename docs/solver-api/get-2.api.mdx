@@ -1,0 +1,291 @@
+---
+id: get-2
+title: "Find gateways by predicate and given Operations Area."
+description: "This endpoint retrieves all gateways that match the specified predicate and Operations Area."
+sidebar_label: "Find gateways by predicate and given Operations Area."
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVd9v2zgM/lcEvfQOMOqkG4bBGAZkwK3YXjpcM9xDVwyMxdjabMmT5Nwyw//7kbLdxcladECf7skyxR8fqY9kJwMUXmY38qpBB0Fb48XKIcjbRCr0udMNC2Um16X2Ao1qrDZBOAxO4w69gKoSBQT8F/ZehBKCqCHkJR1R+AZzvdWoRONQ6ZzUBBgljoKdfzJv9kLhFtoqJEJH960zPjrZaueDuFiQMLdO+XOxUkqzNVSTTORgxAaF3QTQhuK1Xpsimp81UOBZDHvm9Q86NuCgxoDOn8tE2gnLO0VZFhg+X5D0pw4Vp5OGfuhWK7rSXI0GQklnh99aTanJLLgWE+nzEmuQWSfDvokWJmCBjlS31lFhBtGL57Lvkzu3jBA2FU7Ov7Xo9o/xbjdfMA8M13EaQaPnW/bH31obXbe1zBbJw3ieXcie3FN1ZmbLx5lZFw4wgXPA4HXA2h/IPRHGFJQ3mQQdKpZ9mBLv+1tO1zdEiSGHi8WCP3MOXrd5jt6T99wSIhPjQtNUTC1SSb941utOK3UfqnsqSA/9mDdMZA05sdExqNNUD8jlY1M9XdyBOb+IWFG40KrDS9PWm7kbZdtYdVK3pvgdfah+y70DpVv/KOUDWlzNqvae3/Tw+nKYNqO8j4zymLdOh33s1jcIDp1YtdSj2c0tc4t6ubRjg8f25iuZQqPT3TKdP1PaadWn40yT7NvtpkHQuorsyhCaLE0rm0NVWh+yl4uXS3k8MS/RsFuaRoMHwcYMZgJ7zSwdHn4G+a5aHEeOfc//m6hFkuHwdqrh+3/WsULabG00Hyt1batd1D9qoygWqw/vhLJ5W1MjxexJkSZe7a+21wRY5+xizQJhtzEHFiWSizE4Wp4v+JUbKkENsfHGifZW07i92wqb/dH8L/QOzckWOMbZ/ezy/+32GR864PeQNhVZcz0jybqRpDc04DRXfSlP5kkis7iSJq4St5iObNR1G/D40VV9z+JhpTCDlfY8cqkXtlB5fKDmf/w97p8/xX1Iv+J+vr92ULWsFnm+A6ej/MnjTlPd7A9jTnioJv0taZUIiujP0YeLFa2PJhyYnOyO2ay4/GtNujDvyaMejN5/CefV2NNr+xXN6ztwgX8ZX9//Bx/PPqo=
+sidebar_class_name: "get api-method"
+info_path: docs/solver-api/solver
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Find gateways by predicate and given Operations Area."}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/api/v1/operationsArea/{id}/gateway"}
+>
+  
+</MethodEndpoint>
+
+
+
+This endpoint retrieves all gateways that match the specified predicate and Operations Area.
+By default, it returns the first 20 records. Additional records can be obtained using the 'page' and 'size' parameters.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"id","in":"path","required":true,"schema":{"type":"integer","format":"int64"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Query Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"pageable","in":"query","required":true,"schema":{"type":"object","properties":{"page":{"minimum":0,"type":"integer","format":"int32"},"size":{"minimum":1,"type":"integer","format":"int32"},"sort":{"type":"array","items":{"type":"string"}}},"title":"Pageable"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Success
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                        >
+                          Array [
+                        </div>
+                      </li><SchemaItem
+                        collapsible={false}
+                        name={"id"}
+                        required={false}
+                        schemaName={"int64"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"integer","format":"int64"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"macAddress"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                operationsArea
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"id"}
+                              required={false}
+                              schemaName={"int64"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"integer","format":"int64"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"latitude"}
+                              required={false}
+                              schemaName={"double"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"number","format":"double"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"longitude"}
+                              required={false}
+                              schemaName={"double"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"number","format":"double"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"altitude"}
+                              required={false}
+                              schemaName={"double"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"number","format":"double"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"radius"}
+                              required={false}
+                              schemaName={"double"}
+                              qualifierMessage={undefined}
+                              schema={{"type":"number","format":"double"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><li>
+                        <div
+                          style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                        >
+                          ]
+                        </div>
+                      </li>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"[\n  {\n    \"id\": 0,\n    \"macAddress\": \"string\",\n    \"operationsArea\": {\n      \"id\": 0,\n      \"name\": \"string\",\n      \"latitude\": 0,\n      \"longitude\": 0,\n      \"altitude\": 0,\n      \"radius\": 0\n    }\n  }\n]"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

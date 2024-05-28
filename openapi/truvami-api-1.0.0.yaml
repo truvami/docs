@@ -3,7 +3,7 @@ components:
     Asset:
       additionalProperties: false
       properties:
-        created_at:
+        createdAt:
           description: Date and time the asset was created.
           format: date-time
           type: string
@@ -31,7 +31,7 @@ components:
           maxLength: 80
           minLength: 1
           type: string
-        updated_at:
+        updatedAt:
           description: Date and time the asset was updated.
           format: date-time
           type: string
@@ -46,8 +46,8 @@ components:
         - customer
         - device
         - integration
-        - created_at
-        - updated_at
+        - createdAt
+        - updatedAt
       type: object
     AssetPostRequestBody:
       additionalProperties: false
@@ -104,7 +104,7 @@ components:
     Customer:
       additionalProperties: false
       properties:
-        created_at:
+        createdAt:
           description: Date and time the customer was created.
           format: date-time
           type: string
@@ -115,7 +115,7 @@ components:
           maxLength: 80
           minLength: 1
           type: string
-        updated_at:
+        updatedAt:
           description: Date and time the customer was updated.
           format: date-time
           type: string
@@ -127,8 +127,8 @@ components:
       required:
         - uuid
         - name
-        - created_at
-        - updated_at
+        - createdAt
+        - updatedAt
       type: object
     CustomerPostRequestBody:
       additionalProperties: false
@@ -168,6 +168,77 @@ components:
           type: string
         name:
           description: Name of customer.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+      required:
+        - name
+      type: object
+    Device:
+      additionalProperties: false
+      properties:
+        createdAt:
+          description: Date and time the device was created.
+          format: date-time
+          type: string
+        devEui:
+          description: Unique identifier for the person
+          type: string
+        name:
+          description: Name of device.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+        updatedAt:
+          description: Date and time the device was updated.
+          format: date-time
+          type: string
+      required:
+        - devEui
+        - name
+        - createdAt
+        - updatedAt
+      type: object
+    DevicePostRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/DevicePostRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        devEui:
+          description: Unique identifier for the person
+          type: string
+        name:
+          description: Name of device.
+          examples:
+            - truvami ltd.
+          maxLength: 80
+          minLength: 1
+          type: string
+      required:
+        - devEui
+        - name
+      type: object
+    DevicePutRequestBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/DevicePutRequestBody.json
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          description: Name of device.
           examples:
             - truvami ltd.
           maxLength: 80
@@ -233,6 +304,30 @@ components:
           format: uri
           type: string
       type: object
+    Feature:
+      additionalProperties: false
+      properties:
+        bbox:
+          items:
+            format: double
+            type: number
+          type: array
+        crs:
+          additionalProperties: {}
+          type: object
+        geometry:
+          $ref: "#/components/schemas/Geometry"
+        id: {}
+        properties:
+          additionalProperties: {}
+          type: object
+        type:
+          type: string
+      required:
+        - type
+        - geometry
+        - properties
+      type: object
     Generic2xxPaginatedResponseListAssetBody:
       additionalProperties: false
       properties:
@@ -276,6 +371,36 @@ components:
         data:
           items:
             $ref: "#/components/schemas/Customer"
+          type: array
+        metadata:
+          $ref: "#/components/schemas/PaginationResponse"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+        - metadata
+      type: object
+    Generic2xxPaginatedResponseListDeviceBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxPaginatedResponseListDeviceBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          items:
+            $ref: "#/components/schemas/Device"
           type: array
         metadata:
           $ref: "#/components/schemas/PaginationResponse"
@@ -343,6 +468,31 @@ components:
         - status
         - timestamp
       type: object
+    Generic2xxResponseDeviceBody:
+      additionalProperties: false
+      properties:
+        $schema:
+          description: A URL to the JSON Schema for this object.
+          examples:
+            - https://example.com/schemas/Generic2xxResponseDeviceBody.json
+          format: uri
+          readOnly: true
+          type: string
+        data:
+          $ref: "#/components/schemas/Device"
+        status:
+          examples:
+            - 200
+          format: int64
+          type: integer
+        timestamp:
+          format: date-time
+          type: string
+      required:
+        - data
+        - status
+        - timestamp
+      type: object
     Generic2xxResponseInterface {}Body:
       additionalProperties: false
       properties:
@@ -367,18 +517,20 @@ components:
         - status
         - timestamp
       type: object
-    Generic2xxResponsePositionBody:
+    Generic2xxResponseListPositionBody:
       additionalProperties: false
       properties:
         $schema:
           description: A URL to the JSON Schema for this object.
           examples:
-            - https://example.com/schemas/Generic2xxResponsePositionBody.json
+            - https://example.com/schemas/Generic2xxResponseListPositionBody.json
           format: uri
           readOnly: true
           type: string
         data:
-          $ref: "#/components/schemas/Position"
+          items:
+            $ref: "#/components/schemas/Position"
+          type: array
         status:
           examples:
             - 200
@@ -391,6 +543,81 @@ components:
         - data
         - status
         - timestamp
+      type: object
+    Geometry:
+      additionalProperties: false
+      properties:
+        Geometries:
+          items:
+            $ref: "#/components/schemas/Geometry"
+          type: array
+        LineString:
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        MultiLineString:
+          items:
+            items:
+              items:
+                format: double
+                type: number
+              type: array
+            type: array
+          type: array
+        MultiPoint:
+          items:
+            items:
+              format: double
+              type: number
+            type: array
+          type: array
+        MultiPolygon:
+          items:
+            items:
+              items:
+                items:
+                  format: double
+                  type: number
+                type: array
+              type: array
+            type: array
+          type: array
+        Point:
+          items:
+            format: double
+            type: number
+          type: array
+        Polygon:
+          items:
+            items:
+              items:
+                format: double
+                type: number
+              type: array
+            type: array
+          type: array
+        bbox:
+          items:
+            format: double
+            type: number
+          type: array
+        crs:
+          additionalProperties: {}
+          type: object
+        type:
+          type: string
+      required:
+        - type
+        - Point
+        - MultiPoint
+        - LineString
+        - MultiLineString
+        - Polygon
+        - MultiPolygon
+        - Geometries
       type: object
     PaginationResponse:
       additionalProperties: false
@@ -410,7 +637,7 @@ components:
             - 100
           format: int64
           type: integer
-        total_pages:
+        totalPages:
           examples:
             - 10
           format: int64
@@ -419,7 +646,7 @@ components:
         - limit
         - page
         - total
-        - total_pages
+        - totalPages
       type: object
     Position:
       additionalProperties: false
@@ -442,12 +669,18 @@ components:
           type: number
         asset:
           contentEncoding: base64
-          description: Unique identifier for the asset
+          description: Unique identifier for the asset.
           format: uuid
           type: string
-        created_at:
+        createdAt:
           description: Date and time the asset was created.
           format: date-time
+          type: string
+        device:
+          description: Unique identifier for the device this position originated from.
+          examples:
+            - 10CE45FFFE00CDxx
+          format: uuid
           type: string
         latitude:
           description: Latitude of the asset.
@@ -476,19 +709,20 @@ components:
           examples:
             - gps
           type: string
-        updated_at:
+        updatedAt:
           description: Date and time the asset was updated.
           format: date-time
           type: string
       required:
         - asset
+        - device
         - latitude
         - longitude
         - altitude
         - accuracy
         - source
-        - created_at
-        - updated_at
+        - createdAt
+        - updatedAt
       type: object
   securitySchemes:
     API Key:
@@ -654,7 +888,7 @@ paths:
       operationId: DeleteAsset
       parameters:
         - description: The UUID of the asset to delete.
-          example: 2506f816-ed2e-4652-9b32-4b32baebb969
+          example: 27225de0-e425-4e61-a5b2-242d4b830a74
           in: path
           name: uuid
           required: true
@@ -715,7 +949,7 @@ paths:
       operationId: GetAsset
       parameters:
         - description: The UUID of the asset to retrieve.
-          example: 8ea43308-d217-4545-b0d0-f93da568fe11
+          example: 031c57bb-87d5-441b-8098-556fa74a7ffa
           in: path
           name: uuid
           required: true
@@ -777,7 +1011,7 @@ paths:
       operationId: UpdateAsset
       parameters:
         - description: The UUID of the asset to update and retrieve.
-          example: 7335069c-2510-4934-b526-8a313c70d99d
+          example: 5acd7801-44bf-43a5-af92-53354457bbf6
           in: path
           name: uuid
           required: true
@@ -845,7 +1079,7 @@ paths:
       operationId: GetAssetPositions
       parameters:
         - description: The UUID of the asset to retrieve.
-          example: 19b2abc0-3243-495c-a34b-ac0fd2da2ed6
+          example: 5a536bd9-e29a-4afe-9951-36ec157edb56
           in: path
           name: uuid
           required: true
@@ -863,7 +1097,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Generic2xxResponsePositionBody"
+                $ref: "#/components/schemas/Generic2xxResponseListPositionBody"
           description: OK
         "400":
           content:
@@ -899,7 +1133,90 @@ paths:
         - OAuth2:
             - assets:read
             - assets:write
-      summary: Get positions asset by UUID.
+      summary: Get positions by asset UUID.
+      tags:
+        - assets
+  /v1/assets/{uuid}/positions/geojson:
+    get:
+      description: Returns a list of positions for a single asset by UUID.
+      operationId: GetAssetPositionsGeoJSON
+      parameters:
+        - description: The UUID of the asset to retrieve.
+          example: 52e4ba65-cf1b-4af9-9f55-76a1429440c7
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the resource.
+          in: path
+          name: uuid
+          required: true
+          schema:
+            contentEncoding: base64
+            description: Unique identifier for the resource.
+            format: uuid
+            type: string
+      responses:
+        "200":
+          description: OK
+          headers:
+            BoundingBox:
+              schema:
+                format: double
+                type: number
+            CRS:
+              schema:
+                additionalProperties: {}
+                type: object
+            Features:
+              schema:
+                $ref: "#/components/schemas/Feature"
+            Geometry:
+              schema:
+                $ref: "#/components/schemas/Geometry"
+            ID:
+              schema: {}
+            Properties:
+              schema:
+                additionalProperties: {}
+                type: object
+            Type:
+              schema:
+                type: string
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - assets:read
+            - assets:write
+      summary: Get positions by  asset UUID.
       tags:
         - assets
   /v1/customers:
@@ -1047,7 +1364,7 @@ paths:
       operationId: DeleteCustomer
       parameters:
         - description: The UUID of the customer to delete.
-          example: c8d24467-14dc-4b3e-bed3-ac18c1d33cf1
+          example: 714a3d28-cea5-4dc0-84de-f497a6c1785d
           in: path
           name: uuid
           required: true
@@ -1108,7 +1425,7 @@ paths:
       operationId: GetCustomer
       parameters:
         - description: The UUID of the customer to retrieve.
-          example: 0393a3dc-2bb5-4f53-bbe3-e7104e008424
+          example: d284da95-3bb6-4f17-8e46-ad1599beec7e
           in: path
           name: uuid
           required: true
@@ -1170,7 +1487,7 @@ paths:
       operationId: UpdateCustomer
       parameters:
         - description: The UUID of the customer to update and retrieve.
-          example: 91815480-cea7-40fa-95f3-3f6a5076c0a7
+          example: a8d794b8-ce54-44c4-ba61-8444a96d773f
           in: path
           name: uuid
           required: true
@@ -1232,3 +1549,327 @@ paths:
       summary: Update customer by UUID.
       tags:
         - customers
+  /v1/devices:
+    get:
+      description: "\n\t\t\tReturns a paginated list of all devices. If no limit is provided, the default is value is used.\n\t\t\tBy default the list gets ordered by the created_at field in descending order.\n\t\t"
+      operationId: ListDevices
+      parameters:
+        - description: Number of items to return per page.
+          explode: false
+          in: query
+          name: limit
+          schema:
+            default: 10
+            description: Number of items to return per page.
+            format: int64
+            maximum: 100
+            minimum: 1
+            type: integer
+        - description: Page number to return.
+          explode: false
+          in: query
+          name: page
+          schema:
+            default: 1
+            description: Page number to return.
+            format: int64
+            minimum: 1
+            type: integer
+        - description: Name of the device to search for.
+          example: truvami ltd.
+          explode: false
+          in: query
+          name: name
+          schema:
+            description: Name of the device to search for.
+            examples:
+              - truvami ltd.
+            maxLength: 80
+            minLength: 3
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxPaginatedResponseListDeviceBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - devices:read
+            - devices:write
+      summary: Get all devices.
+      tags:
+        - devices
+    post:
+      operationId: CreateDevice
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DevicePostRequestBody"
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseDeviceBody"
+          description: Created
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "409":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Conflict
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - devices:write
+      summary: Create a new device.
+      tags:
+        - devices
+  /v1/devices/{uuid}:
+    delete:
+      description: Deletes a single device by DevEui.
+      operationId: DeleteDevice
+      parameters:
+        - description: The DevEui of the device to delete.
+          example: 35c00387-e105-4717-8634-d8ac1f467d3e
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the device.
+          in: path
+          name: devEui
+          required: true
+          schema:
+            description: Unique identifier for the device.
+            type: string
+      responses:
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseInterface {}Body"
+          description: No Content
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - devices:write
+      summary: Delete device by DevEui.
+      tags:
+        - devices
+    get:
+      description: Returns a single device by DevEui. This operation can be accessed by the device or an admin.
+      operationId: GetDevice
+      parameters:
+        - description: The DevEui of the device to retrieve.
+          example: c0de61cc-98a8-4692-8070-dafd3ded4adb
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the device.
+          in: path
+          name: devEui
+          required: true
+          schema:
+            description: Unique identifier for the device.
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseDeviceBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - devices:read
+            - devices:write
+      summary: Get device by DevEui.
+      tags:
+        - devices
+    put:
+      description: Updates and returns a single device by DevEui.
+      operationId: UpdateDevice
+      parameters:
+        - description: The DevEui of the device to update and retrieve.
+          example: 024cdf10-cd15-4c35-b90a-aabc951b167d
+          in: path
+          name: uuid
+          required: true
+        - description: Unique identifier for the device.
+          in: path
+          name: devEui
+          required: true
+          schema:
+            description: Unique identifier for the device.
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DevicePutRequestBody"
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Generic2xxResponseDeviceBody"
+          description: OK
+        "400":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Bad Request
+        "401":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unauthorized
+        "403":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Forbidden
+        "422":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Unprocessable Entity
+        "500":
+          content:
+            application/problem+json:
+              schema:
+                $ref: "#/components/schemas/ErrorModel"
+          description: Internal Server Error
+      security:
+        - OAuth2:
+            - devices:write
+      summary: Update device by DevEui.
+      tags:
+        - devices

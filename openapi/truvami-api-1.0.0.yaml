@@ -18,12 +18,16 @@ components:
             - 10CE45FFFE00CDxx
           maxLength: 16
           minLength: 1
-          type: string
+          type:
+            - string
+            - "null"
         integration:
           contentEncoding: base64
           description: Unique identifier for the integration
           format: uuid
-          type: string
+          type:
+            - string
+            - "null"
         name:
           description: Name of asset.
           examples:
@@ -37,7 +41,7 @@ components:
           type: string
         uuid:
           contentEncoding: base64
-          description: Unique identifier for the person
+          description: Unique identifier for the asset
           format: uuid
           type: string
       required:
@@ -45,7 +49,6 @@ components:
         - name
         - customer
         - device
-        - integration
         - createdAt
         - updatedAt
       type: object
@@ -64,6 +67,22 @@ components:
           description: Unique identifier for the customer
           format: uuid
           type: string
+        device:
+          description: Unique identifier for the device
+          examples:
+            - 10CE45FFFE00AB12
+          maxLength: 16
+          minLength: 16
+          type:
+            - string
+            - "null"
+        integration:
+          contentEncoding: base64
+          description: Unique identifier for the customer
+          format: uuid
+          type:
+            - string
+            - "null"
         name:
           description: Name of asset.
           examples:
@@ -73,7 +92,7 @@ components:
           type: string
         uuid:
           contentEncoding: base64
-          description: Unique identifier for the person
+          description: Unique identifier for the asset
           format: uuid
           type: string
       required:
@@ -121,7 +140,7 @@ components:
           type: string
         uuid:
           contentEncoding: base64
-          description: Unique identifier for the person
+          description: Unique identifier for the customer
           format: uuid
           type: string
       required:
@@ -149,7 +168,7 @@ components:
           type: string
         uuid:
           contentEncoding: base64
-          description: Unique identifier for the person
+          description: Unique identifier for the customer
           format: uuid
           type: string
       required:
@@ -179,19 +198,38 @@ components:
     Device:
       additionalProperties: false
       properties:
+        appEui:
+          description: Application EUI.
+          examples:
+            - 10CE45FFFE00CDAC
+          type: string
+        appKey:
+          description: Application key (will be deducted).
+          examples:
+            - "***********"
+          type: string
+        config:
+          additionalProperties: {}
+          description: Configuration for device (can vary by type and firmware version).
+          type: object
         createdAt:
           description: Date and time the device was created.
           format: date-time
           type: string
         devEui:
-          description: Unique identifier for the person
-          type: string
-        name:
-          description: Name of device.
+          description: Unique identifier for the device.
           examples:
-            - truvami ltd.
-          maxLength: 80
-          minLength: 1
+            - 10CE45FFFE00AB12
+          type: string
+        fwVersion:
+          description: Firmware version.
+          examples:
+            - 1.0.0
+          type: string
+        hwVersion:
+          description: Hardware version.
+          examples:
+            - 1.0.0
           type: string
         updatedAt:
           description: Date and time the device was updated.
@@ -199,7 +237,11 @@ components:
           type: string
       required:
         - devEui
-        - name
+        - appEui
+        - appKey
+        - hwVersion
+        - fwVersion
+        - config
         - createdAt
         - updatedAt
       type: object
@@ -213,39 +255,31 @@ components:
           format: uri
           readOnly: true
           type: string
-        devEui:
-          description: Unique identifier for the person
-          type: string
-        name:
-          description: Name of device.
+        appEui:
+          description: Application EUI.
           examples:
-            - truvami ltd.
-          maxLength: 80
-          minLength: 1
+            - 10CE45FFFE00CDAC
+          maxLength: 16
+          minLength: 16
+          type: string
+        appKey:
+          description: Application key (will be deducted).
+          examples:
+            - "***********"
+          maxLength: 32
+          minLength: 32
+          type: string
+        devEui:
+          description: Unique identifier for the device
+          examples:
+            - 10CE45FFFE00AB12
+          maxLength: 16
+          minLength: 16
           type: string
       required:
         - devEui
-        - name
-      type: object
-    DevicePutRequestBody:
-      additionalProperties: false
-      properties:
-        $schema:
-          description: A URL to the JSON Schema for this object.
-          examples:
-            - https://example.com/schemas/DevicePutRequestBody.json
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          description: Name of device.
-          examples:
-            - truvami ltd.
-          maxLength: 80
-          minLength: 1
-          type: string
-      required:
-        - name
+        - appEui
+        - appKey
       type: object
     ErrorDetail:
       additionalProperties: false
@@ -884,14 +918,9 @@ paths:
         - assets
   /v1/assets/{uuid}:
     delete:
-      description: Deletes a single asset by UUID.
+      description: Deletes a single asset by pgtype.
       operationId: DeleteAsset
       parameters:
-        - description: The UUID of the asset to delete.
-          example: 27225de0-e425-4e61-a5b2-242d4b830a74
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -941,18 +970,13 @@ paths:
       security:
         - OAuth2:
             - assets:write
-      summary: Delete asset by UUID.
+      summary: Delete asset by pgtype.
       tags:
         - assets
     get:
-      description: Returns a single asset by UUID. This operation can be accessed by the asset or an admin.
+      description: Returns a single asset by pgtype. This operation can be accessed by the asset or an admin.
       operationId: GetAsset
       parameters:
-        - description: The UUID of the asset to retrieve.
-          example: 031c57bb-87d5-441b-8098-556fa74a7ffa
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1003,18 +1027,13 @@ paths:
         - OAuth2:
             - assets:read
             - assets:write
-      summary: Get asset by UUID.
+      summary: Get asset by pgtype.
       tags:
         - assets
     put:
-      description: Updates and returns a single asset by UUID.
+      description: Updates and returns a single asset by pgtype.
       operationId: UpdateAsset
       parameters:
-        - description: The UUID of the asset to update and retrieve.
-          example: 5acd7801-44bf-43a5-af92-53354457bbf6
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1070,19 +1089,14 @@ paths:
       security:
         - OAuth2:
             - assets:write
-      summary: Update asset by UUID.
+      summary: Update asset by pgtype.
       tags:
         - assets
   /v1/assets/{uuid}/positions:
     get:
-      description: Returns a list of positions for a single asset by UUID.
+      description: Returns a list of positions for a single asset by pgtype.
       operationId: GetAssetPositions
       parameters:
-        - description: The UUID of the asset to retrieve.
-          example: 5a536bd9-e29a-4afe-9951-36ec157edb56
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1133,19 +1147,14 @@ paths:
         - OAuth2:
             - assets:read
             - assets:write
-      summary: Get positions by asset UUID.
+      summary: Get positions by asset pgtype.
       tags:
         - assets
   /v1/assets/{uuid}/positions/geojson:
     get:
-      description: Returns a list of positions for a single asset by UUID.
+      description: Returns a list of positions for a single asset by pgtype.
       operationId: GetAssetPositionsGeoJSON
       parameters:
-        - description: The UUID of the asset to retrieve.
-          example: 52e4ba65-cf1b-4af9-9f55-76a1429440c7
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1216,7 +1225,7 @@ paths:
         - OAuth2:
             - assets:read
             - assets:write
-      summary: Get positions by  asset UUID.
+      summary: Get positions by  asset pgtype.
       tags:
         - assets
   /v1/customers:
@@ -1360,14 +1369,9 @@ paths:
         - customers
   /v1/customers/{uuid}:
     delete:
-      description: Deletes a single customer by UUID.
+      description: Deletes a single customer by pgtype.
       operationId: DeleteCustomer
       parameters:
-        - description: The UUID of the customer to delete.
-          example: 714a3d28-cea5-4dc0-84de-f497a6c1785d
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1417,18 +1421,13 @@ paths:
       security:
         - OAuth2:
             - customers:write
-      summary: Delete customer by UUID.
+      summary: Delete customer by pgtype.
       tags:
         - customers
     get:
-      description: Returns a single customer by UUID. This operation can be accessed by the customer or an admin.
+      description: Returns a single customer by pgtype. This operation can be accessed by the customer or an admin.
       operationId: GetCustomer
       parameters:
-        - description: The UUID of the customer to retrieve.
-          example: d284da95-3bb6-4f17-8e46-ad1599beec7e
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1479,18 +1478,13 @@ paths:
         - OAuth2:
             - customers:read
             - customers:write
-      summary: Get customer by UUID.
+      summary: Get customer by pgtype.
       tags:
         - customers
     put:
-      description: Updates and returns a single customer by UUID.
+      description: Updates and returns a single customer by pgtype.
       operationId: UpdateCustomer
       parameters:
-        - description: The UUID of the customer to update and retrieve.
-          example: a8d794b8-ce54-44c4-ba61-8444a96d773f
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the resource.
           in: path
           name: uuid
@@ -1546,7 +1540,7 @@ paths:
       security:
         - OAuth2:
             - customers:write
-      summary: Update customer by UUID.
+      summary: Update customer by pgtype.
       tags:
         - customers
   /v1/devices:
@@ -1575,16 +1569,16 @@ paths:
             format: int64
             minimum: 1
             type: integer
-        - description: Name of the device to search for.
-          example: truvami ltd.
+        - description: Unique identifier for the device.
+          example: AB12
           explode: false
           in: query
-          name: name
+          name: dev_eui
           schema:
-            description: Name of the device to search for.
+            description: Unique identifier for the device.
             examples:
-              - truvami ltd.
-            maxLength: 80
+              - AB12
+            maxLength: 16
             minLength: 3
             type: string
       responses:
@@ -1688,22 +1682,20 @@ paths:
       summary: Create a new device.
       tags:
         - devices
-  /v1/devices/{uuid}:
+  /v1/devices/{devEui}:
     delete:
       description: Deletes a single device by DevEui.
       operationId: DeleteDevice
       parameters:
-        - description: The DevEui of the device to delete.
-          example: 35c00387-e105-4717-8634-d8ac1f467d3e
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the device.
+          example: 10CE45FFFE00AB12
           in: path
           name: devEui
           required: true
           schema:
             description: Unique identifier for the device.
+            examples:
+              - 10CE45FFFE00AB12
             type: string
       responses:
         "204":
@@ -1752,17 +1744,15 @@ paths:
       description: Returns a single device by DevEui. This operation can be accessed by the device or an admin.
       operationId: GetDevice
       parameters:
-        - description: The DevEui of the device to retrieve.
-          example: c0de61cc-98a8-4692-8070-dafd3ded4adb
-          in: path
-          name: uuid
-          required: true
         - description: Unique identifier for the device.
+          example: 10CE45FFFE00AB12
           in: path
           name: devEui
           required: true
           schema:
             description: Unique identifier for the device.
+            examples:
+              - 10CE45FFFE00AB12
             type: string
       responses:
         "200":
@@ -1806,70 +1796,5 @@ paths:
             - devices:read
             - devices:write
       summary: Get device by DevEui.
-      tags:
-        - devices
-    put:
-      description: Updates and returns a single device by DevEui.
-      operationId: UpdateDevice
-      parameters:
-        - description: The DevEui of the device to update and retrieve.
-          example: 024cdf10-cd15-4c35-b90a-aabc951b167d
-          in: path
-          name: uuid
-          required: true
-        - description: Unique identifier for the device.
-          in: path
-          name: devEui
-          required: true
-          schema:
-            description: Unique identifier for the device.
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/DevicePutRequestBody"
-        required: true
-      responses:
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Generic2xxResponseDeviceBody"
-          description: OK
-        "400":
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/ErrorModel"
-          description: Bad Request
-        "401":
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/ErrorModel"
-          description: Unauthorized
-        "403":
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/ErrorModel"
-          description: Forbidden
-        "422":
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/ErrorModel"
-          description: Unprocessable Entity
-        "500":
-          content:
-            application/problem+json:
-              schema:
-                $ref: "#/components/schemas/ErrorModel"
-          description: Internal Server Error
-      security:
-        - OAuth2:
-            - devices:write
-      summary: Update device by DevEui.
       tags:
         - devices

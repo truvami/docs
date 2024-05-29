@@ -34,7 +34,7 @@ Contains information about the device and firmware. The welcome message is sent 
 | Byte | Size | Description                                                    | Format   |
 |------|------|----------------------------------------------------------------|----------|
 | 0    | 1    | Device type (Tracker=1)                                        | enum     |
-| 1    | 1    | Device sub-type (miro Nomad=1, miro Cargo=3)                   | enum     |
+| 1    | 1    | Device sub-type (nomad XS=1, nomad XL=3)                   | enum     |
 | 2-5  | 4    | Firmware version hash                                          | uint32   |
 | 6    | 1    | Reset source (1=WU, 2=PIN, 3=LPW, 4=SW, 5=POR, 6=IWDG, 7=WWDG) | enum     |
 | 7-14 | 8    | Hardware ID                                                    | uint64_t |
@@ -71,7 +71,7 @@ Contains general status information and environmental sensor data.
 
 ### Location Message
 
-Contains GPS time and location information. If the payload is all zeros, the miro Cargo could not acquire a GPS fix.
+Contains GPS time and location information. If the payload is all zeros, the nomad XL could not acquire a GPS fix.
 
 | Byte  | Size | Description | Format               |
 |-------|------|-------------|----------------------|
@@ -105,7 +105,7 @@ Configuration downlink commands and responses are sent as plain text. Note that 
 
 ## JavaScript Decoder
 
-For an easy start using miro Cargo on TTN or TTI you can make use of the following JavaScript decoder template.
+For an easy start using nomad XL on TTN or TTI you can make use of the following JavaScript decoder template.
 
 ``` js
 function decodeUplink(input) {
@@ -122,10 +122,10 @@ function decodeUplink(input) {
 
     switch (bytes[1]) {
       case 1:
-          decoded.deviceType = 'miro Nomad';
+          decoded.deviceType = 'nomad XS';
           break;
       case 3:
-          decoded.deviceType = 'miro Cargo';
+          decoded.deviceType = 'nomad XL';
           break;
       default:
           decoded.deviceType = 'unknown';

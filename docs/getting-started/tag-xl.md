@@ -45,8 +45,11 @@ In case join attempt was unsuccessful, reset the device using the provided magne
 
 In the event that the device fails to join, consider the following list of workarounds:
 
-#### 1. Reset the device using the magnet: Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to step 2.
+#### 1. Reset the device using the magnet: 
+Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to step 2.
 
-#### 2. Replace the batteries. The truvami startup melody should commence after a few seconds. If the startup melody does not play, proceed to step number 3.
+#### 2. Replace the batteries. 
+The truvami startup melody should commence after a few seconds. If the startup melody does not play, proceed to step number 3.
 
-#### 3. Submit a ticket to the truvami team, and we will provide support as promptly as possible. In order to do so, write an email to our technical support team: hey@truvami.com
+#### 3. Submit a ticket to the truvami team, and we will provide support as promptly as possible. 
+In order to do so, write an email to our technical support team: hey@truvami.com

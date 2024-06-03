@@ -38,7 +38,7 @@ Activation should be done at location of deployment for accurate geolocation mea
 
 In case join attempt was unsuccessful, reset the device using the provided magnet and hold it for 8 seconds.
 
-
+![Bild 4](/img/getting-started-imgs/tag_XL_magnet_placement.png)
 
 
 ## Troubleshooting

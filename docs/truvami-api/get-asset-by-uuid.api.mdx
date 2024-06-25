@@ -1,0 +1,612 @@
+---
+id: get-asset-by-uuid
+title: "Get a asset by UUID."
+description: "Get a asset by UUID."
+sidebar_label: "Get a asset by UUID."
+hide_title: true
+hide_table_of_contents: true
+api: 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
+sidebar_class_name: "get api-method"
+info_path: docs/truvami-api/truvami-api
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get a asset by UUID."}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/v1/assets/{uuid}"}
+>
+  
+</MethodEndpoint>
+
+
+
+Get a asset by UUID.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"description":"Unique identifier for the asset","in":"path","name":"uuid","required":true,"schema":{"contentEncoding":"base64","description":"Unique identifier for the asset","format":"uuid","type":"string"}}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          OK
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/json"}
+              value={"application/json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"$schema"}
+                        required={false}
+                        schemaName={"uri"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"A URL to the JSON Schema for this object.","examples":["https://api.truvami.com/schemas/Generic2xxResponseAssetBody.json"],"format":"uri","readOnly":true,"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                data
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object
+                              </span><span
+                                className={"openapi-schema__divider"}
+                              >
+                                
+                              </span><span
+                                className={"openapi-schema__required"}
+                              >
+                                required
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <SchemaItem
+                              collapsible={false}
+                              name={"$schema"}
+                              required={false}
+                              schemaName={"uri"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"A URL to the JSON Schema for this object.","examples":["https://api.truvami.com/schemas/Asset.json"],"format":"uri","readOnly":true,"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"createdAt"}
+                              required={true}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Date and time the asset was created.","format":"date-time","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"customer"}
+                              required={true}
+                              schemaName={"uuid"}
+                              qualifierMessage={undefined}
+                              schema={{"contentEncoding":"base64","description":"Unique identifier for the owner (customer)","format":"uuid","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"deletedAt"}
+                              required={true}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Date and time the asset was deleted.","format":"date-time","type":["string","null"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"device"}
+                              required={false}
+                              schemaName={["string","null"]}
+                              qualifierMessage={"**Possible values:** `>= 16 characters` and `<= 16 characters`"}
+                              schema={{"description":"Unique identifier for the device associated with asset","examples":["10CE45FFFE00AB12"],"maxLength":16,"minLength":16,"type":["string","null"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"integration"}
+                              required={false}
+                              schemaName={"uuid"}
+                              qualifierMessage={undefined}
+                              schema={{"contentEncoding":"base64","description":"Unique identifier for the integration associated with asset","format":"uuid","type":["string","null"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={true}
+                              className={"schemaItem"}
+                            >
+                              <details
+                                style={{}}
+                                className={"openapi-markdown__details"}
+                              >
+                                <summary
+                                  style={{}}
+                                >
+                                  <span
+                                    className={"openapi-schema__container"}
+                                  >
+                                    <strong
+                                      className={"openapi-schema__property"}
+                                    >
+                                      lastPosition
+                                    </strong><span
+                                      className={"openapi-schema__name"}
+                                    >
+                                       LastPosition (object,null)
+                                    </span>
+                                  </span>
+                                </summary><div
+                                  style={{"marginLeft":"1rem"}}
+                                >
+                                  <div
+                                    style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                                  >
+                                    
+                                    
+                                    Last known position of the asset.
+                                    
+                                    
+                                  </div><SchemaItem
+                                    collapsible={false}
+                                    name={"accuracy"}
+                                    required={false}
+                                    schemaName={"double"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Accuracy of the position","examples":[12.123456],"format":"double","type":["number","null"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"altitude"}
+                                    required={false}
+                                    schemaName={"double"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Altitude of the position","examples":[12.123456],"format":"double","type":"number"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"capturedAt"}
+                                    required={true}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Date and time the asset was captured.","format":"date-time","type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"latitude"}
+                                    required={true}
+                                    schemaName={"double"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Latitude of the position","examples":[12.123456],"format":"double","type":"number"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"longitude"}
+                                    required={true}
+                                    schemaName={"double"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Longitude of the position","examples":[12.123456],"format":"double","type":"number"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"moving"}
+                                    required={true}
+                                    schemaName={["boolean","null"]}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Is the asset moving","examples":[true],"type":["boolean","null"]}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"receivedAt"}
+                                    required={true}
+                                    schemaName={"date-time"}
+                                    qualifierMessage={undefined}
+                                    schema={{"description":"Date and time the asset was captured.","format":"date-time","type":"string"}}
+                                  >
+                                    
+                                  </SchemaItem><SchemaItem
+                                    collapsible={false}
+                                    name={"source"}
+                                    required={true}
+                                    schemaName={["string","null"]}
+                                    qualifierMessage={"**Possible values:** [`gnss`, `wifi`, `ble`, `lora`]"}
+                                    schema={{"description":"Source of the position","enum":["gnss","wifi","ble","lora"],"examples":["gnss"],"type":["string","null"]}}
+                                  >
+                                    
+                                  </SchemaItem>
+                                </div>
+                              </details>
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"name"}
+                              required={true}
+                              schemaName={"string"}
+                              qualifierMessage={"**Possible values:** `non-empty` and `<= 80 characters`"}
+                              schema={{"description":"Name of asset.","examples":["truvami ltd."],"maxLength":80,"minLength":1,"type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"positions"}
+                              required={false}
+                              schemaName={"int64"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Number of positions for the asset.","format":"int64","type":"integer"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"updatedAt"}
+                              required={true}
+                              schemaName={"date-time"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Date and time the asset was updated.","format":"date-time","type":["string","null"]}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"uuid"}
+                              required={true}
+                              schemaName={"uuid"}
+                              qualifierMessage={undefined}
+                              schema={{"contentEncoding":"base64","description":"Unique identifier for the asset","format":"uuid","type":"string"}}
+                            >
+                              
+                            </SchemaItem>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={true}
+                        schemaName={"int64"}
+                        qualifierMessage={undefined}
+                        schema={{"examples":[200],"format":"int64","type":"integer"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"timestamp"}
+                        required={true}
+                        schemaName={"date-time"}
+                        qualifierMessage={undefined}
+                        schema={{"format":"date-time","type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"$schema\": \"string\",\n  \"data\": {\n    \"$schema\": \"string\",\n    \"createdAt\": \"2024-06-25T14:10:22.435Z\",\n    \"customer\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n    \"name\": \"string\",\n    \"positions\": 0,\n    \"uuid\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\n  },\n  \"status\": 0,\n  \"timestamp\": \"2024-06-25T14:10:22.436Z\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem><TabItem
+        label={"default"}
+        value={"default"}
+      >
+        <div>
+          
+          
+          Error
+          
+          
+        </div><div>
+          <MimeTabs
+            className={"openapi-tabs__mime"}
+            schemaType={"response"}
+          >
+            <TabItem
+              label={"application/problem+json"}
+              value={"application/problem+json"}
+            >
+              <SchemaTabs
+                className={"openapi-tabs__schema"}
+              >
+                <TabItem
+                  label={"Schema"}
+                  value={"Schema"}
+                >
+                  <details
+                    style={{}}
+                    className={"openapi-markdown__details response"}
+                    data-collapsed={false}
+                    open={true}
+                  >
+                    <summary
+                      style={{}}
+                      className={"openapi-markdown__details-summary-response"}
+                    >
+                      <strong>
+                        Schema
+                      </strong>
+                    </summary><div
+                      style={{"textAlign":"left","marginLeft":"1rem"}}
+                    >
+                      
+                    </div><ul
+                      style={{"marginLeft":"1rem"}}
+                    >
+                      <SchemaItem
+                        collapsible={false}
+                        name={"$schema"}
+                        required={false}
+                        schemaName={"uri"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"A URL to the JSON Schema for this object.","examples":["https://api.truvami.com/schemas/ErrorModel.json"],"format":"uri","readOnly":true,"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"detail"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"A human-readable explanation specific to this occurrence of the problem.","examples":["Property foo is required but is missing."],"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={true}
+                        className={"schemaItem"}
+                      >
+                        <details
+                          style={{}}
+                          className={"openapi-markdown__details"}
+                        >
+                          <summary
+                            style={{}}
+                          >
+                            <span
+                              className={"openapi-schema__container"}
+                            >
+                              <strong
+                                className={"openapi-schema__property"}
+                              >
+                                errors
+                              </strong><span
+                                className={"openapi-schema__name"}
+                              >
+                                 object[]
+                              </span>
+                            </span>
+                          </summary><div
+                            style={{"marginLeft":"1rem"}}
+                          >
+                            <div
+                              style={{"marginTop":".5rem","marginBottom":".5rem"}}
+                            >
+                              
+                              
+                              Optional list of individual error details
+                              
+                              
+                            </div><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem","paddingBottom":".5rem"}}
+                              >
+                                Array [
+                              </div>
+                            </li><SchemaItem
+                              collapsible={false}
+                              name={"location"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"message"}
+                              required={false}
+                              schemaName={"string"}
+                              qualifierMessage={undefined}
+                              schema={{"description":"Error message text","type":"string"}}
+                            >
+                              
+                            </SchemaItem><SchemaItem
+                              collapsible={false}
+                              name={"value"}
+                              required={false}
+                              schemaName={""}
+                              qualifierMessage={undefined}
+                              schema={{"description":"The value at the given location"}}
+                            >
+                              
+                            </SchemaItem><li>
+                              <div
+                                style={{"fontSize":"var(--ifm-code-font-size)","opacity":"0.6","marginLeft":"-.5rem"}}
+                              >
+                                ]
+                              </div>
+                            </li>
+                          </div>
+                        </details>
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"instance"}
+                        required={false}
+                        schemaName={"uri"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"A URI reference that identifies the specific occurrence of the problem.","examples":["https://example.com/error-log/abc123"],"format":"uri","type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"status"}
+                        required={false}
+                        schemaName={"int64"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"HTTP status code","examples":[400],"format":"int64","type":"integer"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"title"}
+                        required={false}
+                        schemaName={"string"}
+                        qualifierMessage={undefined}
+                        schema={{"description":"A short, human-readable summary of the problem type. This value should not change between occurrences of the error.","examples":["Bad Request"],"type":"string"}}
+                      >
+                        
+                      </SchemaItem><SchemaItem
+                        collapsible={false}
+                        name={"type"}
+                        required={false}
+                        schemaName={"uri"}
+                        qualifierMessage={undefined}
+                        schema={{"default":"about:blank","description":"A URI reference to human-readable documentation for the error.","examples":["https://example.com/errors/example"],"format":"uri","type":"string"}}
+                      >
+                        
+                      </SchemaItem>
+                    </ul>
+                  </details>
+                </TabItem><TabItem
+                  label={"Example (from schema)"}
+                  value={"Example (from schema)"}
+                >
+                  <ResponseSamples
+                    responseExample={"{\n  \"$schema\": \"string\",\n  \"detail\": \"string\",\n  \"errors\": [\n    {\n      \"location\": \"string\",\n      \"message\": \"string\"\n    }\n  ],\n  \"instance\": \"string\",\n  \"status\": 0,\n  \"title\": \"string\",\n  \"type\": \"about:blank\"\n}"}
+                    language={"json"}
+                  >
+                    
+                  </ResponseSamples>
+                </TabItem>
+              </SchemaTabs>
+            </TabItem>
+          </MimeTabs>
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

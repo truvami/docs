@@ -19,7 +19,7 @@ The tag L can be charged with a standard USB-C cable.
 
 #### 2. Click on the activation link that you have received by email
 
-it will take you to the [dashboard.truvami.com](dashboard.truvami.com) page where you can set your
+it will take you to the https://dashboard.truvami.com page where you can set your
 password
 
 ![Bild 2](/img/getting-started-imgs/NowYourTrackingJourneyBegins.png)

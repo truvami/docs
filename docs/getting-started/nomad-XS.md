@@ -22,7 +22,7 @@ Once the LED blinks red, the tracker has been successfully activated
 
 #### 3. Click on the activation link that you have received by email
 
-it will take you to the [dashboard.truvami.com](dashboard.truvami.com) page where you can set your
+it will take you to the https://dashboard.truvami.com page where you can set your
 password
 
 

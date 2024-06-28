@@ -6,7 +6,8 @@ sidebar_label: tag XL
 
 ### This document details the step-by-step instructions about how to set up the truvami tag XL.
 
-## truvami® tag XL
+<!-- ![Bild 1](/img/getting-started-imgs/tag_XL_side.png) -->
+<img src="/img/getting-started-imgs/tag_XL_side.webp" height="500vh"/>
 
 ```
 Versions: 1.0.0
@@ -17,12 +18,13 @@ Date: 2024-04-15
 #### 1. Scan device keys
 Retrieve and copy the LoRaWAN® device EUI, LoRaWAN Join EUI and AppKey code attributes from your tracker by scanning the QR code on the bottom of your truvami Tag XL.
 
-![Bild 2](/img/getting-started-imgs/tagXL_rueckseite.png)
+<!-- ![Bild 2](/img/getting-started-imgs/tagXL_rueckseite.png) -->
+<img src="/img/getting-started-imgs/tagXL_rueckseite.webp" height="500vh"/>
 
 The QR code contains the following information:
 
-![Bild 3](/img/getting-started-imgs/gsg_device_qr_code.jpg)
-
+<!-- ![Bild 3](/img/getting-started-imgs/gsg_device_qr_code.jpg) -->
+<img src="/img/getting-started-imgs/gsg_device_qr_code.webp" height="150vh"/>
 
 #### 2. Activate your device
 Activation should be done at location of deployment for accurate geolocation measurements:
@@ -38,7 +40,8 @@ Activation should be done at location of deployment for accurate geolocation mea
 
 In case join attempt was unsuccessful, reset the device using the provided magnet and hold it for 8 seconds.
 
-![Bild 4](/img/getting-started-imgs/tag_XL_magnet_placement.png)
+<!-- ![Bild 4](/img/getting-started-imgs/tag_XL_magnet_placement.png) -->
+<img src="/img/getting-started-imgs/tag_XL_magnet_placement.webp" height="500vh"/>
 
 
 ## Troubleshooting

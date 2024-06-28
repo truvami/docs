@@ -5,12 +5,15 @@ sidebar_label: tag L
 # Getting Started Guide of tag L
 
 ### This document details the step-by-step instructions about how to set up the truvami tag L.
+
+
+<!-- ![Bild 1](/img/getting-started-imgs/tag_L_side.png) -->
+<img src="/img/getting-started-imgs/tag_L_side.webp" height="350vh"/>
+
 ```
 Versions: 1.0.0
 Date: 2024-06-20
 ```
-
-![Bild 1](/img/getting-started-imgs/tag_L_side.png)
 
 ## Getting Started
 
@@ -22,7 +25,7 @@ The tag L can be charged with a standard USB-C cable.
 it will take you to the https://dashboard.truvami.com page where you can set your
 password
 
-![Bild 2](/img/getting-started-imgs/NowYourTrackingJourneyBegins.png)
+![Bild 2](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)
 
 
 ## Troubleshooting

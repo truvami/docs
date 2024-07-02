@@ -14,19 +14,19 @@ Versions: 1.0.0
 Date: 2024-04-15
 ```
 
-
+<!--
 #### 1. Scan device keys
 Retrieve and copy the LoRaWAN® device EUI, LoRaWAN Join EUI and AppKey code attributes from your tracker by scanning the QR code on the bottom of your truvami Tag XL.
 
-<!-- ![Bild 2](/img/getting-started-imgs/tagXL_rueckseite.png) -->
+
 <img src="/img/getting-started-imgs/tagXL_rueckseite.webp" height="500vh"/>
 
 The QR code contains the following information:
 
-<!-- ![Bild 3](/img/getting-started-imgs/gsg_device_qr_code.jpg) -->
-<img src="/img/getting-started-imgs/gsg_device_qr_code.webp" height="150vh"/>
+<img src="/img/getting-started-imgs/gsg_device_qr_code.webp" height="150vh"/> 
+-->
 
-#### 2. Activate your device
+#### 1. Activate your device
 Activation should be done at location of deployment for accurate geolocation measurements:
 1. Pull the battery tab
 2. Tighten the screws using a screwdriver ensuring the housing is watertight

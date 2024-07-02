@@ -49,7 +49,7 @@ sidebar_label: tag S
 
 ## Status[6:2]
 
-Status is only sent after a Config Downlink as an acknowledgement in the next Uplink. 4 bit [6:3] conf_change_id plus 1 bit [2] for success (=0) or failure (=1). conf_change_id counter resets after reaching 15 (1111).
+Status is only sent after a Config Downlink as an acknowledgement in the next Uplink. 4 bit [6:3] conf_change_id plus 1 bit [2] for success (=1) or failure (=0). conf_change_id counter resets after reaching 15 (1111).
 
 ## Current Config/Status Packet (Uplink, Port 4)
 

@@ -74,7 +74,7 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | 0    | 1    | In case of a button-press 0x01 is sent | uint8                    |
 
 
-## Set Config Packet (Uplink, Port 128)
+## Set Config Packet (Downlink, Port 128)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
@@ -90,20 +90,20 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | 21-24 | 4    | Battery “keep-alive” message interval, IB   | uint32, s   |
 
 
-## Buzzer Packet (Uplink, Port 129)
+## Buzzer Packet (Downlink, Port 129)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
 | 0    | 1    | Time to buzz (buzzer off = 0) | uint8, s                    |
 
-## Off Packet (Uplink, Port 130)
+## Off Packet (Downlink, Port 130)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
 | 0    | 1    | Power off = 0 | uint8                    |
 
 
-## GPS Accuracy Booster (Uplink, Port 131)
+## GPS Accuracy Booster (Downlink, Port 131)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
@@ -122,13 +122,13 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 
 Payloads use big endian data encoding.
 
-Min RSSI value is a signed integer and uses two’s complement for encoding.
+`Min RSSI value` is a signed integer and uses two’s complement for encoding.
 
-If Min RSSI value is 0, there is no filtering applied for RSSI.
+If `Min RSSI value` is 0, there is no filtering applied for RSSI.
 
-If Max beacons is 0, there will be no limit of how many beacons will be sent.
+If `Max beacons` is 0, there will be no limit of how many beacons will be sent.
 
-If Scan time is 0, there is no scanning performed on the device.
+If `Scan time` is 0, there is no scanning performed on the device.
 
 ## BLE scan (Uplink, Port 3)
 > *requires firmware version v2.1.1 or higher
@@ -146,9 +146,9 @@ If Scan time is 0, there is no scanning performed on the device.
 
 If there are more than 6 BLE Beacons the messages will be split into multiple uplinks. 
 
-The total messages indicate how many uplinks are expected. 
+The `Total messages` indicate how many uplinks are expected. 
 
-and the #Message indicates the current message out of all the uplinks.
+and the `#Message` indicates the current message out of all the uplinks.
 
-Scan pointer is incremented with every measurement.
+`Scan pointer` is incremented with every measurement.
 

@@ -108,3 +108,47 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
 | 0    | 1    | Accuracy enhancement | uint8, s [0..59]                   |
+
+## BLE config (Downlink, Port 132)
+> *requires firmware version v2.1.1 or higher
+
+| Byte | Size | Description                               | Format                   |
+|------|------|-------------------------------------------|--------------------------|
+| 0    | 2    | Scan interval                             | uint16, s                   |
+| 2    | 1    | Scan time                                 | uint8, s   |
+| 3    | 1    | Max beacons                               | uint8                     |
+| 4    | 1    | Min. RSSI value                           | int8               |
+| 5    | 10   | Eddystone Namespace                       | 10x uint8              |
+
+Payloads use big endian data encoding.
+
+Min RSSI value is a signed integer and uses two’s complement for encoding.
+
+If Min RSSI value is 0, there is no filtering applied for RSSI.
+
+If Max beacons is 0, there will be no limit of how many beacons will be sent.
+
+If Scan time is 0, there is no scanning performed on the device.
+
+## BLE scan (Uplink, Port 3)
+> *requires firmware version v2.1.1 or higher
+
+| Byte | Size | Description                               | Format      |
+|------|------|-------------------------------------------|-------------|
+| 0    | 2    | Scan pointer                              | uint16       |
+| 2    | 1    | Total messages                            | uint8       |
+| 3    | 1    | #Message                                  | uint8       |
+| 4-9  | 6    | MAC1                                      | 6 x uint8   |
+| 10   | 1    | RSSI1                                     | int8        |
+| …    |      |                                           |             |
+|      | 6    | MACN                                      | 6 x uint8   |
+|      | 1    | RSSIN                                     | int8        |
+
+If there are more than 6 BLE Beacons the messages will be split into multiple uplinks. 
+
+The total messages indicate how many uplinks are expected. 
+
+and the #Message indicates the current message out of all the uplinks.
+
+Scan pointer is incremented with every measurement.
+

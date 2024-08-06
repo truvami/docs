@@ -5,7 +5,8 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "truvami docs",
   tagline: "docs for truvami",
-  favicon: "https://truvami.com/wp-content/uploads/2023/08/T_Farbig-150x150.png",
+  favicon:
+    "https://truvami.com/wp-content/uploads/2023/08/T_Farbig-150x150.png",
 
   // Set the production url of your site here
   url: "https://docs.truvami.com",
@@ -27,6 +28,10 @@ const config: Config = {
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
+  },
+
+  markdown: {
+    mermaid: true,
   },
 
   presets: [
@@ -84,7 +89,7 @@ const config: Config = {
       },
     ],
   ],
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: ["docusaurus-theme-openapi-docs", "@docusaurus/theme-mermaid"],
 
   themeConfig: {
     // Replace with your project's social card
@@ -140,7 +145,7 @@ const config: Config = {
     },
     prism: {
       theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      darkTheme: prismThemes.github,
     },
   } satisfies Preset.ThemeConfig,
 };

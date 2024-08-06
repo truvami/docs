@@ -1,5 +1,6 @@
 ---
 sidebar_label: Welcome
+sidebar_position: 1
 ---
 
 <!-- ![Header](/img/getting-started-imgs/tag_s_front.png) -->

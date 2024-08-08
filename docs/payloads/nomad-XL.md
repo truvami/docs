@@ -23,7 +23,8 @@ sidebar_label: nomad XL
 
 Signed integers use two’s complement for encoding.
 
-!!! important
+[comment]: <> (!!! important)
+<b>important</b>
 
     Unless otherwise noted, payloads will use [big endian](https://en.wikipedia.org/wiki/Endianness) data encoding.
 
@@ -141,7 +142,8 @@ event will trigger GNSS fix acquisition immediately. Further accelerometer event
 time interval. However, a flag will be set in this case, so that the next GNSS fix acquisition will immediately start 
 right after the hold time interval.
 
-!!! example 
+[comment]: <> (!!! example)
+<b>example</b>
 
     Setting the moving interval to 5 minutes (300 seconds)
 
@@ -155,7 +157,8 @@ Sets the regular GNSS fix cycle time, also known as a steady interval. The GNSS 
 triggered by the timer. The GNSS cycle time is the time between two consecutive GNSS fix acquisitions. The GNSS cycle time 
 is running independently of accelerometer events.
 
-!!! example 
+[comment]: <> (!!! example)
+<b>example</b>
 
     Setting the steady interval to 1 hour (3600 seconds)
 
@@ -168,7 +171,8 @@ is running independently of accelerometer events.
 Set the regular status interval. Status messages are enabled by default, all sensors are read out when the regular 
 status interval expires. 
 
-!!! example 
+[comment]: <> (!!! example)
+<b>example</b>
 
     Setting the status interval to 12 hours (43200 seconds)
 
@@ -193,7 +197,8 @@ The payload of an AT command downlink corresponds to an ASCII encoded AT command
 means that `00` needs to be added at the very end of the hexadecimal representation of the AT command. The last line 
 of the following examples corresponds to the payload of the respective downlink.
 
-!!! example 
+[comment]: <> (!!! example)
+<b>example</b>
 
     Changing the moving interval to 3 minutes (180 seconds) send the following command
 
@@ -203,7 +208,8 @@ of the following examples corresponds to the payload of the respective downlink.
     | Hex                        | 41542B475053484F4C443D313830303030   |
     | Hex with zero termination: | 41542B475053484F4C443D31383030303000 |
 
-!!! example
+[comment]: <> (!!! example)
+<b>example</b>
     
     Resetting the device:
 
@@ -213,7 +219,8 @@ of the following examples corresponds to the payload of the respective downlink.
     | Hex                        | 41545A   |
     | Hex with zero termination: | 41545A00 |
 
-!!! important
+[comment]: <> (!!! important)
+<b>important</b>
 
     After changing a configuration parameter via downlink, the nomad XL needs to be reset such that the configuration 
     is loaded. This is done by sending the downlink command `ATZ` on port 220.

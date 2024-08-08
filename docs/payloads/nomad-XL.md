@@ -220,7 +220,7 @@ of the following examples corresponds to the payload of the respective downlink.
 
 For every downlink packet, an uplink packet is scheduled containing the corresponding AT response code (usually `AT_OK` 
 or `41545F4F4B` in hexadecimal representation). If both the configuration change and the reset are queued simultaneously 
-on the LoRaWAN^®^ network server, the configuration is applied the fastest way possible. The reason for this being that
+on the LoRaWAN® network server, the configuration is applied the fastest way possible. The reason for this being that
 the configuration change triggers an uplink message (usually `AT_OK`) which opens another downlink slot for the reset
 command to be received immediately.
 

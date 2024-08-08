@@ -166,8 +166,7 @@ is running independently of accelerometer events.
 ### AT+STACYC
 
 Set the regular status interval. Status messages are enabled by default, all sensors are read out when the regular 
-status interval expires. Please refer to the [payload documentation](payload.md) for more information about the 
-generated status message. To save battery life, keep it at a large value.
+status interval expires. 
 
 !!! example 
 

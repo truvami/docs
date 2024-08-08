@@ -4,7 +4,9 @@ sidebar_label: nomad XL
 
 # Payload Format of nomad XL
 
-## Overview
+<br></br>
+## Uplinks
+<br></br>
 
 ### Payload Types
 
@@ -25,7 +27,7 @@ Signed integers use two’s complement for encoding.
 
     Unless otherwise noted, payloads will use [big endian](https://en.wikipedia.org/wiki/Endianness) data encoding.
 
-## Payload Description
+### <b>Payload Description</b>
 
 ### Welcome Message
 
@@ -88,6 +90,12 @@ Contains the Git revision of the firmware build. The Git message is sent only on
 | Byte | Size | Description  | Format     |
 |------|------|--------------|------------|
 | 0-19 | 20   | Git Revision | binary/hex |
+
+<br></br>
+
+## Downlinks
+<br></br>
+
 
 ### Configuration commands and responses
 

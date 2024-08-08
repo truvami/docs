@@ -5,8 +5,11 @@ sidebar_label: nomad XS
 # Payload Format of nomad XS
 Payloads are using big endian data encoding; Signed integers use two’s complement for encoding.
 
+<br></br>
+## Uplinks
+<br></br>
 
-## Location + Sensor (Uplink, Port 1)
+### Location + Sensor (Uplink, Port 1)
 
 | Byte  | Size | Description                               | Format                 |
 |-------|------|-------------------------------------------|------------------------|
@@ -36,7 +39,7 @@ Payloads are using big endian data encoding; Signed integers use two’s complem
 
 *Optional sensors
 
-## Battery Pack (Uplink, Port 15)
+### Battery Pack (Uplink, Port 15)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
@@ -44,14 +47,14 @@ Payloads are using big endian data encoding; Signed integers use two’s complem
 | 1-2     | 2    | Battery voltage            | uint16, mV       |
 
 
-## Status[6:2]
+### Status[6:2]
 
 Status is only sent after a Config Downlink as an acknowledgement in the next Uplink.
 4 bit [6:3] conf_change_id plus 1 bit [2] for success (=1) or failure (=0).
 conf_change_id counter resets after reaching 15 (1111).
 
 
-## Current Cofig/Status Packet (Uplink, Port 4)
+### Current Cofig/Status Packet (Uplink, Port 4)
 
 | Byte  | Size | Description                               | Format           |
 |-------|------|-------------------------------------------|------------------|
@@ -69,7 +72,11 @@ conf_change_id counter resets after reaching 15 (1111).
 | 32-33 | 2    | Light lower threshold                     | uint16, Lux           |
 | 34-35 | 2    | Light upper threshold                     | uint16, Lux           |
 
-## Set Cofig Packet (Downlink, Port 128)
+<br></br>
+## Downlinks
+<br></br>
+
+### Set Cofig Packet (Downlink, Port 128)
 
 | Byte  | Size | Description                               | Format           |
 |-------|------|-------------------------------------------|------------------|
@@ -85,13 +92,13 @@ conf_change_id counter resets after reaching 15 (1111).
 | 27-28 | 2    | Light lower threshold                     | uint16, Lux      |
 | 29-30 | 2    | Light upper threshold                     | uint16, Lux      |
 
-## Flash Erase (Downlink, Port 129)
+### Flash Erase (Downlink, Port 129)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
 | 0     | 1    | Flash erase = 1               | uint8       |
 
-## Off Packet (Downlink, Port 130)
+### Off Packet (Downlink, Port 130)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|

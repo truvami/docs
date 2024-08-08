@@ -74,7 +74,7 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | 0    | 1    | In case of a button-press 0x01 is sent | uint8                    |
 
 
-## Set Config Packet (Uplink, Port 128)
+## Set Config Packet (Downlink, Port 128)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
@@ -90,20 +90,20 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | 21-24 | 4    | Battery “keep-alive” message interval, IB   | uint32, s   |
 
 
-## Buzzer Packet (Uplink, Port 129)
+## Buzzer Packet (Downlink, Port 129)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
 | 0    | 1    | Time to buzz (buzzer off = 0) | uint8, s                    |
 
-## Off Packet (Uplink, Port 130)
+## Off Packet (Downlink, Port 130)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
 | 0    | 1    | Power off = 0 | uint8                    |
 
 
-## GPS Accuracy Booster (Uplink, Port 131)
+## GPS Accuracy Booster (Downlink, Port 131)
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|

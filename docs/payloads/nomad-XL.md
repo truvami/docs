@@ -96,6 +96,10 @@ Contains the Git revision of the firmware build. The Git message is sent only on
 ## Downlinks
 <br></br>
 
+nomad XL is configured with LoRaWAN® downlinks which are transmitted to port 220. The payload of a configuration 
+downlink corresponds to a so-called AT command. After one or more configuration downlinks are received, a reset 
+command needs to be transmitted to the nomad XL such that the configuration is stored in non-volatile memory 
+and a reset is triggered. After this reset, the nomad XL uses the new configuration.
 
 ### Configuration commands and responses
 
@@ -110,6 +114,117 @@ Configuration downlink commands and responses are sent as plain text. Note that 
 |---------|------|------------------------------|--------|
 | 0-(n-1) | n    | Reply to previous AT command | ASCII  |
 | n       | 1    | zero-termination (0x00)      | char   |
+
+### <b>Downlink commands</b>
+
+### Overview
+
+The following configuration downlands are available:
+
+| Command             | Description                             | Default value              | Min value              | Max value                       | Unit |
+|---------------------|-----------------------------------------|----------------------------|------------------------|---------------------------------|------|
+| ATZ                 | Reset the MCU                           | -                          | -                      | -                               | -    |
+| AT+GPSHOLD=<value/> | Moving interval <br/> (GNSS hold time)   | 120'000 <br/> (2 min)      | 60'000 <br/> (1 min)   | 4'294'967'295 <br/> (49.7 days) | ms   |
+| AT+GPSCYC=<value/>  | Steady interval <br/> (GNSS cycle time ) | 21'600'000 <br/> (6 hours) | 60'000 <br/> (1 min)   | 4'294'967'295 <br/> (49.7 days) | ms   |
+| AT+STACYC=<value/>  | Status message interval                 | 21'600'000 <br/> (6 hours) | 600'000 <br/> (10 min) | 4'294'967'295 <br/> (49.7 days) | ms   |
+
+### ATZ
+
+Resets the MCU. If the configuration has been changed, the new configuration is stored in non-volatile memory and
+applied after the reset.
+
+### AT+GPSHOLD
+
+Sets the GNSS hold time, also known as a moving interval. The GNSS hold time inhibits further GNSS fix acquisition for a 
+certain time period. This setting is used when GNSS fixes are triggered by the accelerometer. A first accelerometer 
+event will trigger GNSS fix acquisition immediately. Further accelerometer events will be ignored until after the hold 
+time interval. However, a flag will be set in this case, so that the next GNSS fix acquisition will immediately start 
+right after the hold time interval.
+
+!!! example 
+
+    Setting the moving interval to 5 minutes (300 seconds)
+
+    ```
+    AT+GPSHOLD=300000
+    ```
+
+### AT+GPSCYC
+
+Sets the regular GNSS fix cycle time, also known as a steady interval. The GNSS cycle time is used when GNSS fixes are 
+triggered by the timer. The GNSS cycle time is the time between two consecutive GNSS fix acquisitions. The GNSS cycle time 
+is running independently of accelerometer events.
+
+!!! example 
+
+    Setting the steady interval to 1 hour (3600 seconds)
+
+    ```
+    AT+GPSCYC=3600000
+    ```
+
+### AT+STACYC
+
+Set the regular status interval. Status messages are enabled by default, all sensors are read out when the regular 
+status interval expires. Please refer to the [payload documentation](payload.md) for more information about the 
+generated status message. To save battery life, keep it at a large value.
+
+!!! example 
+
+    Setting the status interval to 12 hours (43200 seconds)
+
+    ```
+    AT+GPSCYC=3600000
+    ```
+
+## Downlink responses
+
+For every downlink packet, an uplink packet is scheduled containing the corresponding AT response code. The following 
+response codes are available:
+
+| Response code  | Hexadecimal                  | Description                            |
+|----------------|------------------------------|----------------------------------------|
+| AT_OK          | 41545F4F4B                   | Command executed successfully          |
+| AT_PARAM_ERROR | 41545F504152414D5F4552524F52 | Command was outside of the valid range |
+| AT_ERROR       | 41545F4552524F52             | Command execution failed               |
+
+## Downlink command format
+
+The payload of an AT command downlink corresponds to an ASCII encoded AT command with zero-termination. Zero-termination 
+means that `00` needs to be added at the very end of the hexadecimal representation of the AT command. The last line 
+of the following examples corresponds to the payload of the respective downlink.
+
+!!! example 
+
+    Changing the moving interval to 3 minutes (180 seconds) send the following command
+
+    | Representation             | Data                                 |
+    |----------------------------|--------------------------------------|
+    | ASCII string               | AT+GPSHOLD=180000                    |
+    | Hex                        | 41542B475053484F4C443D313830303030   |
+    | Hex with zero termination: | 41542B475053484F4C443D31383030303000 |
+
+!!! example
+    
+    Resetting the device:
+
+    | Representation             | Data     |
+    |----------------------------|----------|
+    | ASCII string               | ATZ      |
+    | Hex                        | 41545A   |
+    | Hex with zero termination: | 41545A00 |
+
+!!! important
+
+    After changing a configuration parameter via downlink, the nomad XL needs to be reset such that the configuration 
+    is loaded. This is done by sending the downlink command `ATZ` on port 220.
+
+For every downlink packet, an uplink packet is scheduled containing the corresponding AT response code (usually `AT_OK` 
+or `41545F4F4B` in hexadecimal representation). If both the configuration change and the reset are queued simultaneously 
+on the LoRaWAN^®^ network server, the configuration is applied the fastest way possible. The reason for this being that
+the configuration change triggers an uplink message (usually `AT_OK`) which opens another downlink slot for the reset
+command to be received immediately.
+
 
 ## JavaScript Decoder
 

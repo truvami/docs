@@ -22,7 +22,7 @@ fixes are triggered at a regular interval (usually multiple hours). On the other
 acceleration events trigger GNSS fixes at a different rate (usually multiple minutes). The steady and moving interval 
 times are both configurable. To configure the moving interval, the `AT+GPSHOLD` command is used and to configure the 
 steady interval `AT+GPSCYC` is used. For more information about these commands, please refer to the 
-[settings](docs/payloads/nomad-XL.md#downlink-commands) documentation page.
+[Payload documentation](docs/payloads/nomad-XL.md#downlink-commands) page.
 
 The steady interval is used whenever the nomad XL is not moving to save battery. As soon as an accelerometer event is 
  triggered, a GNSS fix acquisition is started immediately. Further accelerometer events will be ignored until the moving 

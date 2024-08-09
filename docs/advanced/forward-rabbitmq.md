@@ -1,6 +1,8 @@
-# forward - Rabbit MQ
+# Rabbit MQ Forwarding - truvami Gateway Service: Deep Dive 
 
-The gateway service allows you to configure its services to forward incoming messages to a designated output. Currently, only Rabbit MQ is supported for tag XL devices. There are three different types of payloads that can be forwarded:
+The truvami Gateway Service parses incoming messages from tag XL devices and subsequently forward them to designated outputs. As of now, Rabbit MQ is the singular supported destination for this service.
+
+The service communicates via three distinct types of payloads, referred to as Position Uplink, Status Uplink, and Configuration Uplink, each carrying specific data to the device operation.
 
 ```mermaid
 sequenceDiagram
@@ -11,39 +13,39 @@ sequenceDiagram
     Consumer->>+RabbitMQ: AMQPS
 ```
 
-1. **Position Uplink**: Contains information related to device position.
-2. **Status Uplink**: Specifically for a special rotation use case.
-3. **Config Uplink**: Contains configuration information. (e.g battery level, etc.)
+## Detailed Payload Information
 
-## Forwarding Configuration
+1. **Position Uplink**: This payload includes geographic location data for the tag XL device, essential for tracking and auditing physical whereabouts of the equipment.
 
-To enable message forwarding for your tag XL devices, you will need to configure the Rabbit MQ output. The forwarded messages will be segregated into multiple queues based on the payload types.
+2. **Status Uplink**: A payload type catering specifically to rotational use-cases, the status uplink carries crucial device status information.
 
-### Position Uplink
+3. **Configuration Uplink**: An essential package of critical configuration parameters, which include details on, but not limited to, the remaining battery life. 
 
-Position Uplink messages will be forwarded to the following queues:
+## Setting up Message Forwarding
 
-- **position-queue**: Queue for storing position uplink messages.
+Rabbit MQ message forwarding for your tag XL devices necessitates you to configure the Rabbit MQ output in detail. The truvami Gateway Service is engineered to sort incoming messages into distinct queues based on the type of the payload. 
 
-Please make sure to set up your Rabbit MQ configuration accordingly to receive and process the forwarded Position Uplink payloads.
+For each of the three payloads - Position, Status and Configuration - the service establishes a distinct queue to store and handle the related message data. Please ensure your Rabbit MQ is set-up to align with this specialized flow of data. 
 
-### Status Uplink
+### Position Uplink Message Forwarding
 
-Status Uplink messages will be forwarded to the following queues:
+Position Uplink messages are redirected to a specially configured 'position-queue'. Rabbit MQ should be setup to keep an eye out for messages coming down this line and process them accordingly. 
 
-- **status-queue**: Queue for storing status uplink messages.
+### Status Uplink Message Forwarding 
 
-Please make sure to set up your Rabbit MQ configuration accordingly to receive and process the forwarded Status Uplink payloads.
+In an identical manner, Status Uplink messages find their way into a 'status-queue'.
 
-### Battery Uplink
+Your Rabbit MQ should be set to identify and process Status Uplink messages coming down based on values that have been set.
 
-Battery Uplink messages will be forwarded to the following queues:
+### Configuration Uplink Message Forwarding
 
-- **battery-queue**: Queue for storing battery uplink messages.
+Lastly, Configuration Uplink messages are channeled into a 'config-queue'. These messages carry important configuration updates emanating from your tag XL devices, including battery status and active configuration parameters. Not every message will contain all configuration parameters, so it is important to ensure that your Rabbit MQ is set to handle these messages with care.
 
-Please make sure to set up your Rabbit MQ configuration accordingly to receive and process the forwarded Battery Uplink payloads.
+## Payload Specifics
 
-### Position Uplink Payload
+#### Position Uplink Payload:
+
+This packet of data carries the most up-to-date geographical location details related to your tag XL device, encapsulating essentials such as longitude, latitude, altitude (if available), source, accuracy of the position, and number of position fixes included in the uplink.
 
 | Field         | Type     | Description                                      |
 | ------------- | -------- | ------------------------------------------------ |
@@ -56,6 +58,8 @@ Please make sure to set up your Rabbit MQ configuration accordingly to receive a
 | `source`      | `string` | Source of the position estimation                |
 | `accuracy`    | `number` | Accuracy of the position estimation              |
 | `count`       | `number` | Number of position fixes included in the uplink  |
+
+Below is an illustrative example of what a typical Position Uplink payload might look like:
 
 ```json
 {
@@ -70,9 +74,9 @@ Please make sure to set up your Rabbit MQ configuration accordingly to receive a
 }
 ```
 
-Please make sure to set up your Rabbit MQ configuration accordingly to receive and process the forwarded Position Uplink payloads.
+#### Status Uplink Payload:
 
-### Status Uplink Payload
+The Status Uplink payload carries data about the last recorded state of the device, the new state, number of rotations performed (incase of rotational devices), elapsed seconds since the last state change, and the number of status uplink events. Possible states include 'UNDEFINED', 'POURING' and 'MIXING'.
 
 | Field                 | Type     | Description                                            |
 | --------------------- | -------- | ------------------------------------------------------ |
@@ -84,6 +88,8 @@ Please make sure to set up your Rabbit MQ configuration accordingly to receive a
 | `number_of_rotations` | `number` | Number of rotations performed (for rotation use case)  |
 | `elapsed_seconds`     | `number` | Elapsed seconds since the last state change            |
 | `count`               | `number` | Number of status uplink events included in the payload |
+
+Below is a snapshot of what a typical Status Uplink payload might constitute:
 
 ```json
 {
@@ -98,17 +104,19 @@ Please make sure to set up your Rabbit MQ configuration accordingly to receive a
 }
 ```
 
-Please adjust your Rabbit MQ configuration settings to handle the forwarded Status Uplink payloads accordingly.
+#### Config Uplink Payload:
 
-### Battery Uplink Payload
+Configuration Uplink serves as a conduit carrying important system parameters. It contains data about the device's battery voltage and total count of status uplink events.
 
 | Field         | Type     | Description                                            |
 | ------------- | -------- | ------------------------------------------------------ |
 | `dev_eui`     | `string` | Device EUI identifier                                  |
 | `timestamp`   | `string` | Timestamp of the status uplink event                   |
 | `captured_at` | `string` | Timestamp of when the message was captured             |
-| `voltage`     | `number` | Battery voltage in volts                               |
+| `voltage`     | `number` | Battery voltage in volts (can be null)                 |
 | `count`       | `number` | Number of status uplink events included in the payload |
+
+Here's a glimpse into a standard Configuration Uplink payload:
 
 ```json
 {
@@ -119,5 +127,3 @@ Please adjust your Rabbit MQ configuration settings to handle the forwarded Stat
     "count": 1
 }
 ```
-
-Please adjust your Rabbit MQ configuration settings to handle the forwarded Battery Uplink payloads accordingly.

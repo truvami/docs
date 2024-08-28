@@ -77,6 +77,7 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 ## Set Config Packet (Downlink, Port 128)
 
 *Bytes only available with firmware version 3.x.x or higher.
+Default values for Batch size is 10, for the buffer size it is 8128 (maximum amount of data that can be buffered).
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|

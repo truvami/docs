@@ -76,6 +76,8 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 
 ## Set Config Packet (Downlink, Port 128)
 
+*Bytes only available with firmware version 3.x.x or higher.
+
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
 | 0     | 1    | BLE (disable = 0, enable = 1)               | uint8       |
@@ -88,6 +90,8 @@ Status is only sent after a Config Downlink as an acknowledgement in the next Up
 | 17-18 | 2    | Accelerometer wakeup threshold              | uint16, mg  |
 | 19-20 | 2    | Accelerometer delay                         | uint16, ms  |
 | 21-24 | 4    | Battery “keep-alive” message interval, IB   | uint32, s   |
+| 25-26* | 2   | Batch size                                  | uint16      |
+| 27-28* | 2   | Buffer size                                 | uint16      |
 
 
 ## Buzzer Packet (Downlink, Port 129)

@@ -141,7 +141,7 @@ and the `#Message` indicates the current message out of all the uplinks.
 | 0    | 1    | Accuracy enhancement | uint8, s [0..59]                   |
 
 ### BLE config (Downlink, Port 132)
-> *requires firmware version v2.1.1 or higher
+> *requires firmware version v2.1.2 or higher
 
 | Byte | Size | Description                               | Format                   |
 |------|------|-------------------------------------------|--------------------------|
@@ -149,7 +149,16 @@ and the `#Message` indicates the current message out of all the uplinks.
 | 2    | 1    | Scan time                                 | uint8, s   |
 | 3    | 1    | Max beacons                               | uint8                     |
 | 4    | 1    | Min. RSSI value                           | int8               |
-| 5    | 10   | Eddystone Namespace                       | 10x uint8              |
+| 5-14    | 10   | Eddystone Namespace                       | 10x uint8              |
+| 15-16 | 2   | Accelerometer trigger hold timer                  | uint16, s              |
+| 17-18 | 2   | Accelerometer threshold                  | uint16, mg          |
+
+### BLE on demand (Downlink, Port 133)
+> *requires firmware version v2.1.2 or higher
+
+| Byte | Size | Description                               | Format                   |
+|------|------|-------------------------------------------|--------------------------|
+| 0    | 1    | BLE scan on demand = 1 | uint8                    |
 
 Payloads use big endian data encoding.
 

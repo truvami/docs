@@ -20,30 +20,34 @@ This user manual provides instructions for upgrading the device's application us
 
 1. Open the Si Connect app on your smartphone.
 2. Select the "Scan" option from the app's main menu.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+
 3. Locate your target device. It is advertised as `tag_S_XXXX`.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_target_device.webp" alt="Locate your target device" width="200"/></td></tr></tbody></table>
 
     :::note
     Make sure your smartphone is in close proximity to the target device to avoid confusion with other devices advertising the same name. 4. Tap on the "Connect" button to establish a connection with the target device.
     :::
 
-5. Open the context menu by tapping "OTA Firmware" in the upper right corner of the app.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+4. Open the context menu by tapping "OTA Firmware" in the upper right corner of the app.
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_tag_s_detail.webp" alt="Context Menu" width="200" /></td><td><img src="/img/fw-upgrade/and_tag_s_detail.webp" alt="Context Menu" width="200" /></td></tr></tbody></table>
 
-6. Select "Partial" Update Type and "Reliability" Mode from the menu.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+5. Select "Partial" Update Type and "Reliability" Mode from the menu.
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_device_firmware_update.webp" alt="OTA Device Firmware Update" width="200" /></td><td><img src="/img/fw-upgrade/and_device_firmware_update.webp" alt="OTA Device Firmware Update" width="200" /></td></tr></tbody></table>
 
-7. Select " sl_tracker_ota_vx.x.x.gbl" as the application image for the upgrade.
-8. Tap on the "Upload" button to initiate the upgrade process.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+6. Select " sl_tracker_ota_vx.x.x.gbl" as the application image for the upgrade.
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_firmware_application_selected.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+
+
+7. Tap on the "Upload" button to initiate the upgrade process.
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_update_process.webp" alt="Uploading New Firmware" width="200" /></td><td><img src="/img/fw-upgrade/and_upload_process.webp" alt="Uploading New Firmware" width="200" /></td></tr></tbody></table>
 
    :::note
    Make sure that your smartphone stays on during the upgrading process.
    :::
 
-9. After completion press the "Done" (on iOS) / "End" (on Android) button to finish the installation and disconnect from the device.
-    <table><tbody><tr><td><img src="/img/fw-upgrade/ios-update-complete.webp" alt="Search for Device" width="200" /></td><td><img src="/img/fw-upgrade/search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
+8. After completion press the "Done" (on iOS) / "End" (on Android) button to finish the installation and disconnect from the device.
+    <table><tbody><tr><td><img src="/img/fw-upgrade/ios_update_complete.webp" alt="Done" width="200"/></td></tr></tbody></table>
 
 ## Verify Upgrade Success
 

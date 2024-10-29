@@ -7,7 +7,7 @@ sidebar_label: nomad XS
 ### This document details the step-by-step instructions about how to set up the truvami nomad XS.
 
 <!-- ![Bild 1](/img/getting-started-imgs/nomad_XS_front.webp) -->
-<img src="/img/getting-started-imgs/nomad_XS_front.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/nomad_XS_front.webp" width="100%" height="auto"/>
 
 ```
 Versions: 1.0.0
@@ -19,7 +19,7 @@ Date: 2024-06-20
 Once the LED blinks red, the tracker has been successfully activated
 
 <!-- ![Bild 2](/img/getting-started-imgs/nomad_XS_magnet.webp) -->
-<img src="/img/getting-started-imgs/nomad_XS_magnet.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/nomad_XS_magnet.webp" width="100%" height="auto"/>
 
 
 #### 3. Click on the activation link that you have received by email
@@ -28,7 +28,8 @@ it will take you to the https://dashboard.truvami.com page where you can set you
 password
 
 
-![Bild 3](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)
+<!-- ![Bild 3](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp) -->
+<img src="/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp" width="100%" height="auto"/>
 
 
 

@@ -7,7 +7,7 @@ sidebar_label: tag XL
 ### This document details the step-by-step instructions about how to set up the truvami tag XL.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_XL_side.png) -->
-<img src="/img/getting-started-imgs/tag_XL_side.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/tag_XL_side.webp" width="100%" height="auto"/>
 
 ```
 Versions: 1.0.0
@@ -41,7 +41,7 @@ Activation should be done at location of deployment for accurate geolocation mea
 In case join attempt was unsuccessful, reset the device using a magnet and hold it for 8 seconds.
 
 <!-- ![Bild 4](/img/getting-started-imgs/tag_XL_magnet_placement.png) -->
-<img src="/img/getting-started-imgs/tag_XL_magnet_placement.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/tag_XL_magnet_placement.webp" width="100%" height="auto"/>
 
 
 ## Troubleshooting

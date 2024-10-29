@@ -80,7 +80,7 @@ reset. Once the reset was triggered, the nomad XL will beep 3 times. The LED ins
 keys. If it joins successfully, it makes one long beep and the LED is white for 1 second. This only works if the nomad XL is registered on a LoRaWAN® network server and if a LoRaWAN® gateway is in range.
 
 [comment]: <> (![nomad XL Magnet Reset])
-<img src="/img/functional-descriptions-imgs/nomad_XL_magnet_placement.webp" height="500vh"/>
+<img src="/img/functional-descriptions-imgs/nomad_XL_magnet_placement.webp" width="100%" height="auto"/>
 
 ## Batteries
 
@@ -94,7 +94,7 @@ the housing of the nomad XL by removing the 4 screws on top (yellow boxes in the
 Phillips screwdriver.
 
 [comment]: <> (![nomad XL Screws])
-<img src="/img/functional-descriptions-imgs/nomadXL_Screws.webp" height="500vh"/>
+<img src="/img/functional-descriptions-imgs/nomadXL_Screws.webp" width="100%" height="auto"/>
 
 Please replace the batteries with 2 new AA alkaline batteries. Once the new batteries were inserted, the nomad XL boots
 which is indicated by 3 short beeps and the LED being green for 10 seconds.

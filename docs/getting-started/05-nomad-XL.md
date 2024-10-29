@@ -7,7 +7,7 @@ sidebar_label: nomad XL
 ### This document details the step-by-step instructions about how to set up the truvami nomad XL.
 
 <!-- ![Bild 1](/img/getting-started-imgs/nomad_XL_side.png) -->
-<img src="/img/getting-started-imgs/nomad_XL_side.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/nomad_XL_side.webp" width="100%" height="auto"/>
 ```
 Versions: 1.0.0
 Date: 2024-06-20
@@ -19,14 +19,14 @@ Carefully pull on the battery tab until it is removed completely from the tracke
 #### 2. Tighten the screws firmly
 
 <!-- ![Bild 2](/img/getting-started-imgs/nomadXL_Screws.webp) -->
-<img src="/img/getting-started-imgs/nomadXL_Screws.webp" height="500vh"/>
+<img src="/img/getting-started-imgs/nomadXL_Screws.webp" width="100%" height="auto"/>
 
 #### 3. Click on the activation link that you have received by email
 it will take you to the https://dashboard.truvami.com page where you can set your
 password
 
-![Bild 3](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)
-
+<!-- ![Bild 3](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp) -->
+<img src="/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp" width="100%" height="auto"/>
 
 
 ## Troubleshooting

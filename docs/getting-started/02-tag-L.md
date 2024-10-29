@@ -8,7 +8,7 @@ sidebar_label: tag L
 
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_L_side.png) -->
-<img src="/img/getting-started-imgs/tag_L_side.webp" height="350vh"/>
+<img src="/img/getting-started-imgs/tag_L_side.webp" width="100%" height="auto"/>
 
 ```
 Versions: 1.0.0
@@ -25,7 +25,8 @@ The tag L can be charged with a standard USB-C cable.
 it will take you to the https://dashboard.truvami.com page where you can set your
 password
 
-![Bild 2](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)
+<!-- ![Bild 2](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)-->
+<img src="/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp" width="100%" height="auto"/>
 
 
 ## Troubleshooting

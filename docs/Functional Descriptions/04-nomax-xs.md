@@ -23,7 +23,7 @@ If a join trial fails, the device will retry the join in a predefined interval. 
 Our tracker operates in two intervals: a **steady** interval and a **moving** interval. During the steady interval, it periodically tracks the asset's location when it is not in motion. When motion is detected, it switches to the moving interval for more frequent location updates. When there is no motion, it reverts to the steady interval. In between intervals, the device enters sleep mode to conserve power. This approach ensures timely updates, power efficiency, and long battery life.
 
 <br></br>
-<img src="/img/functional-descriptions-imgs/flow_chart_nomad_location_acquisition_new.webp" height="500vh"/>
+<img src="/img/functional-descriptions-imgs/flow_chart_nomad_location_acquisition_new.webp" width="100%" height="auto"/>
 
 <br></br>
 _nomad XS location acquisition_
@@ -42,7 +42,7 @@ backend sever.
 
 _nomad XS moving/steady intervals_
 <br></br>
-<img src="/img/functional-descriptions-imgs/moving_steady_intervals_new.webp" height="350vh"/>
+<img src="/img/functional-descriptions-imgs/moving_steady_intervals_new.webp" width="100%" height="auto"/>
 
 <br></br>
 _Example: Is, Im intervals with Accelerometer trigger_

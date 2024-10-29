@@ -13,7 +13,7 @@ and barometer can be added. The IP67-rated housing with different mounting optio
 in harsh industrial environments. The device firmware allows for configuration to a specific use case to optimize 
 performance and battery lifetime.
 
-If you just received your first nomad XL device, please visit our [Getting Started Guide](docs/getting-started/nomad-XL.md) to get started.
+If you just received your first nomad XL device, please visit our [Getting Started Guide](docs/getting-started/05-nomad-XL.md) to get started.
 
 ## GNSS fixes
 
@@ -22,7 +22,7 @@ fixes are triggered at a regular interval (usually multiple hours). On the other
 acceleration events trigger GNSS fixes at a different rate (usually multiple minutes). The steady and moving interval 
 times are both configurable. To configure the moving interval, the `AT+GPSHOLD` command is used and to configure the 
 steady interval `AT+GPSCYC` is used. For more information about these commands, please refer to the 
-[Payload documentation](docs/payloads/nomad-XL.md#downlink-commands) page.
+[Payload documentation](docs/payloads/05-nomad-XL.md#downlink-commands) page.
 
 The steady interval is used whenever the nomad XL is not moving to save battery. As soon as an accelerometer event is 
  triggered, a GNSS fix acquisition is started immediately. Further accelerometer events will be ignored until the moving 
@@ -30,7 +30,7 @@ interval time elapses. However, a flag will be set in this case, such that the n
 immediately after moving interval time elapses.
 
 If a GNSS fix is acquired, a location message will be transmitted to the LoRaWAN® network server. The payload format of 
-the location message is described [here](docs/payloads/nomad-XL.md#location-message). If the payload of the location message is zero,
+the location message is described [here](docs/payloads/05-nomad-XL.md#location-message). If the payload of the location message is zero,
 no GNSS fix could be acquired. This happens mostly because the nomad XL has no clear view of the sky, for example, 
 if it is inside a building. The GNSS reception of the nomad XL is best if it is placed outdoors and the label is 
 facing the sky as in the picture below.
@@ -42,7 +42,7 @@ facing the sky as in the picture below.
 On a regular interval, the auxiliary sensors (accelerometer, battery voltage, temperature, humidity, pressure if 
 available) are readout to generate a status message. This payload will also include the current system time, the current
 unixtime and some information about the last fix. Please refer to the 
-[status message payload documentation](docs/payloads/nomad-XL.md#status-message) for more information. The status message interval 
+[status message payload documentation](docs/payloads/05-nomad-XL.md#status-message) for more information. The status message interval 
 time is set with the `AT+STACYC` command. Usually, a status message is sent only a few times per day.
 
 ## Device configuration
@@ -53,7 +53,7 @@ A nomad XL is configurable via LoRaWAN® down-links. The available commands are:
 * `AT+GPSCYC` - steady interval time
 * `AT+STACYC` - status message interval time
 
-For more information about these commands and the configured default values, read our [configuration](docs/payloads/nomad-XL.md#downlink-commands) page.
+For more information about these commands and the configured default values, read our [configuration](docs/payloads/05-nomad-XL.md#downlink-commands) page.
 
 ## Data buffer
 

@@ -230,3 +230,161 @@ or `41545F4F4B` in hexadecimal representation). If both the configuration change
 on the LoRaWAN® network server, the configuration is applied the fastest way possible. The reason for this being that
 the configuration change triggers an uplink message (usually `AT_OK`) which opens another downlink slot for the reset
 command to be received immediately.
+
+
+## JavaScript Decoder
+
+For an easy start using nomad XL on TTN or TTI you can make use of the following JavaScript decoder template.
+
+``` js
+function decodeUplink(input) {
+
+  var bytes = input.bytes;
+  var port = input.fPort;
+  var decoded = {};
+  var warnings = [];
+  var errors = [];
+
+  if (port === 100) {
+    // WELCOME MESSAGE
+    // Returns device type and firmware version
+
+    switch (bytes[1]) {
+      case 1:
+          decoded.deviceType = 'nomad XS';
+          break;
+      case 3:
+          decoded.deviceType = 'nomad XL';
+          break;
+      default:
+          decoded.deviceType = 'unknown';
+          break;
+    }
+
+    decoded.firmware = 'v' + bytes[2].toString() + '.' + bytes[3].toString() + '.' + (bytes[4] * 256 + bytes[5]).toString();
+  }
+
+  if (port === 212) {
+    // GIT REVISION
+    // Returns base64-encoded HEX string of firmware GIT revision
+
+    decoded.git_revision = toHexString(bytes);
+  }
+
+  if (port === 220) {
+    // AT COMMAND RESPONSE
+    // Returns base64-encoded ASCII string of AT command response
+
+    decoded.at_reply = bin2String(bytes);
+}
+
+  if (port === 101) {
+    // STATUS MESSAGE
+    // Returns status information
+    // Note: Not all fields are taken into account here
+
+    var system_time_ms = (bytes[0] << 56 | bytes[1] << 48 | bytes[2] << 40 | bytes[3] << 32 | bytes[4] << 24 | bytes[5] << 16 | bytes[6] << 8 | bytes[7]) >>> 0;
+    var temperature = (bytes[24] << 8 | bytes[25]) >>> 0;
+    var pressure = (bytes[26] << 8 | bytes[27]) >>> 0;
+    var x = (bytes[28] << 8 | bytes[29]) >>> 0;
+    var y = (bytes[30] << 8 | bytes[31]) >>> 0;
+    var z = (bytes[32] << 8 | bytes[33]) >>> 0;
+    var battery_mv = (bytes[34] << 8 | bytes[35]) >>> 0;
+
+    var dat = (bytes[8] << 24 | bytes[9] << 16 | bytes[10] << 8 | bytes[11]) >>> 0;
+    var tim = (bytes[12] << 24 | bytes[13] << 16 | bytes[14] << 8 | bytes[15]) >>> 0;
+
+    // Conversion to signed integer (2's complement)
+    if (temperature > 0x7FFF) {
+      temperature = -(0xFFFF - temperature + 1);
+    }
+    if (x > 0x7FFF) {
+      x = -(0xFFFF - x + 1);
+    }
+    if (y > 0x7FFF) {
+      y = -(0xFFFF - y + 1);
+    }
+    if (z > 0x7FFF) {
+      z = -(0xFFFF - z + 1);
+    }
+
+    decoded.battery_lorawan = bytes[36];
+    decoded.gps_ttf_s = bytes[37];
+    decoded.gps_signal = bytes[42];
+
+    decoded.battery_v = battery_mv / 1000.0;
+    decoded.system_time_s = system_time_ms / 1000.0;
+    decoded.temperature_deg = temperature / 10.0;
+    decoded.pressure_hpa = pressure / 1.0;
+    decoded.orientation_x_g = x / 1000.0;
+    decoded.orientation_y_g = y / 1000.0;
+    decoded.orientation_z_g = z / 1000.0;
+
+    decoded.date_yymmdd = dat;
+    decoded.time_hhmmss = tim;
+  }
+
+  if (port === 103) {
+    // LOCATION MESSAGE
+    // Returns date and time as DDMMYY and HHMMSS
+    // Returns latitude, longitude and altitude as float
+
+    var dat = (bytes[0] << 24 | bytes[1] << 16 | bytes[2] << 8 | bytes[3]) >>> 0;
+    var tim = (bytes[4] << 24 | bytes[5] << 16 | bytes[6] << 8 | bytes[7]) >>> 0;
+    var lat = (bytes[8] << 24 | bytes[9] << 16 | bytes[10] << 8 | bytes[11]) >>> 0;
+    var lon = (bytes[12] << 24 | bytes[13] << 16 | bytes[14] << 8 | bytes[15]) >>> 0;
+    var alt = (bytes[16] << 24 | bytes[17] << 16 | bytes[18] << 8 | bytes[19]) >>> 0;
+
+    // Conversion to signed integer (2's complement)
+    if (lat > 0x7FFFFFFF) {
+      lat = -(0xFFFFFFFF - lat + 1);
+    }
+    if (lon > 0x7FFFFFFF) {
+      lon = -(0xFFFFFFFF - lon + 1);
+    }
+    if (alt > 0x7FFFFFFF) {
+      alt = -(0xFFFFFFFF - alt + 1);
+    }
+
+    if ((lat != 0) && (lon != 0)) {
+      decoded.gps_dat = dat;
+      decoded.gps_tim = tim;
+      decoded.gps_lat = (lat / 100000.0);
+      decoded.gps_lon = (lon / 100000.0);
+      decoded.gps_alt = (alt / 100.0);
+      decoded.unixtime_ms = getTimestamp(dat, tim);
+    } else {
+      warnings.push('No GPS fix, empty location message, ');
+    }
+  }
+
+  function toHexString(byteArray) {
+    return Array.from(byteArray, function(byte) {
+      return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+    }).join('')
+  }
+
+  function bin2String(array) {
+    return String.fromCharCode.apply(String, array);
+  }
+
+  function getTimestamp(ddmmyy, hhmmss) {
+    day = parseInt(ddmmyy / 10000, 10);
+    month = parseInt(ddmmyy / 100 - day * 100, 10);
+    year = parseInt(ddmmyy - month * 100 - day * 10000 + 2000, 10);
+    hour = parseInt(hhmmss / 10000, 10);
+    minute = parseInt(hhmmss / 100 - hour * 100, 10);
+    second = parseInt(hhmmss - minute * 100 - hour * 10000, 10);
+
+    var date = new Date(year, month - 1, day, hour, minute, second);
+    return date.valueOf();
+  }
+
+  return {
+    data: decoded,
+    warnings: warnings,
+    errors: errors
+  };
+}
+```
+

@@ -103,7 +103,7 @@ Steady Interval (s)*
 1800
 ```
 
-<img src="/img/downlink-configuration-settings/Settings_2.webp" width="75%" height="auto"/>
+<img src="/img/downlink-configuration-settings/moving_steady_intervals_new.webp" width="75%" height="auto"/>
 
 
 ## Config. Hearbeat (s)*

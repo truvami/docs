@@ -7,7 +7,7 @@ sidebar_label: tag S
 ### This document details the step-by-step instructions about how to set up the truvami tag S.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_s_side.png) -->
-<img src="/img/getting-started-imgs/tag_s_side.webp" width="100%" height="auto"/>
+<img src="/img/getting-started-imgs/tag_s_side.webp" width="75%" height="auto"/>
 ```
 Versions: 1.0.1
 Date: 2024-09-22
@@ -20,15 +20,14 @@ The tag S can be charged with a standard USB-C cable.
 Hold it for 10 seconds. Once the amber-colored LED blinks, the tracker has been successfully activated. 
 
 <!-- ![Bild 2](/img/getting-started-imgs/tag_s_front.png) -->
-<img src="/img/getting-started-imgs/tag_s_front.webp" width="100%" height="auto"/>
+<img src="/img/getting-started-imgs/tag_s_front.webp" width="50%" height="auto"/>
 
 #### 3. Click on the activation link that you have received by email
 
 It will take you to the https://dashboard.truvami.com page where you can set your
 password.
 
-![Bild 3](/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp)
-<img src="/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp" width="100%" height="auto"/>
+<img src="/img/getting-started-imgs/NowYourTrackingJourneyBegins.webp" width="75%" height="auto"/>
 
 
 

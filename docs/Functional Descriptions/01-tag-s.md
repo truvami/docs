@@ -43,7 +43,7 @@ backend sever. The location acquisition can entail GNSS fixes and Wi-Fi scans de
 
 _tag S moving/steady intervals_
 <br></br>
-<img src="/img/functional-descriptions-imgs/moving_steady_intervals_new.webp" width="50%" height="auto"/>
+<img src="/img/functional-descriptions-imgs/moving_steady_intervals_new.webp" width="75%" height="auto"/>
 
 <br></br>
 _Example: LS, LM intervals with Accelerometer trigger_

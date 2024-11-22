@@ -8,7 +8,7 @@ sidebar_label: tag L
 
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_L_side.png) -->
-<img src="/img/getting-started-imgs/tag_L_side.webp" width="60%" height="auto"/>
+<img src="/img/getting-started-imgs/tag_L_side.webp" width="50%" height="auto"/>
 
 ```
 Versions: 1.0.0
@@ -20,7 +20,12 @@ Date: 2024-06-20
 #### 1. Charge the truvami® tag L
 The tag L can be charged with a standard USB-C cable. 
 
-#### 2. Click on the activation link that you have received by email
+#### 2. Hold a magnet to the top of the device to activate the tracker
+Hold it for 10 seconds. Upon successful activation, you should hear a melody.
+
+<img src="/img/getting-started-imgs/tag_L_front_magnet.webp" width="50%" height="auto"/>
+
+#### 3. Click on the activation link that you have received by email
 
 it will take you to the https://dashboard.truvami.com page where you can set your
 password

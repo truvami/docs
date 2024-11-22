@@ -1,7 +1,7 @@
 # Firmware Upgrade via OTA
 
 :::warning
-This site is under construction. Some information may be incomplete or missing. 🚧
+This does only apply to the truvami® tag S and truvami® tag L
 :::
 
 This user manual provides instructions for upgrading the device's application using the Simplicity Connect app on a smartphone via OTA (Over-The-Air) method. Ensure that you have another device (smartphone) with Bluetooth capability and the Simplicity Connect app installed.
@@ -13,8 +13,13 @@ This user manual provides instructions for upgrading the device's application us
 
 ## Enable Bluetooth
 
-1. From your smartphone's settings menu, enable Bluetooth.
-2. To activate Bluetooth pairing on the truvami tag S, hold the button for 5 seconds until the LED turns off. Upon successful Bluetooth activation, you should hear a melody.
+#### Step 1: 
+  - From your smartphone's settings menu, enable Bluetooth.
+#### Step 2
+  - tag S: To activate Bluetooth pairing on the truvami tag S, hold the button for 5 seconds until the LED turns off.
+  - tag L: To activate Bluetooth pairing on the truvami tag L, hold a magnet to the top of the device for 5 seconds. 
+Upon successful Bluetooth activation, you should hear a melody.
+
 
 ## Upgrade the Device
 

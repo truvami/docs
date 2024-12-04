@@ -42,10 +42,9 @@ If applicable, plug in your LoRaWAN Gateway. In case you have your own network s
 Try charging it with a standard USB-C cable and try again from step 2.
 
 
-:::warning Support
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
 
-For support, please submit a ticket to the truvami team, and we will provide support as promptly as possible. <br></br>
-
-[Click here to write a tricket](https://truvami.com/service-request/)<br></br>
-
-For questions, please write an email to hey@truvami.com
+[**Click here to write a tricket**](https://truvami.com/service-request/)

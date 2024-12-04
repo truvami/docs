@@ -39,5 +39,9 @@ If applicable, plug in your LoRaWAN Gateway. In case you have your own network s
 #### 2. Reset the device using the magnet: 
 Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to step 2.
 
-#### 3. Submit a ticket to the truvami team, and we will provide support as promptly as possible. 
-In order to do so, write an email to our technical support team: hey@truvami.com
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

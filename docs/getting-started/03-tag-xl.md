@@ -54,5 +54,9 @@ Hold the magnet against the front side of the housing for at least 10 seconds. T
 #### 2. Replace the batteries. 
 The truvami startup melody should commence after a few seconds. If the startup melody does not play, proceed to step number 3.
 
-#### 3. Submit a ticket to the truvami team, and we will provide support as promptly as possible. 
-In order to do so, write an email to our technical support team: hey@truvami.com
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

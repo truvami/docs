@@ -106,3 +106,11 @@ conf_change_id counter resets after reaching 15 (1111).
 
 
 
+<br></br>
+
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

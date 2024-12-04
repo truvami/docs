@@ -15,7 +15,7 @@ sidebar_position: 9
 <br></br>
 For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
 
-[**Click here to write a tricket**](https://truvami.com/service-request/)
+[**Click here to open a new ticket**](https://truvami.com/service-request/)
 :::
 
 # Questions

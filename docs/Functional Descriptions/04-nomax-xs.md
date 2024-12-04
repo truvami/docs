@@ -65,3 +65,13 @@ The device can be charged in two ways:
 1. Direct Sunlight: The device can be charged by exposing it to direct sunlight.
 
 2. Charging Pads: The device can also be charged using charging pads. **Note**: Charging via charging pads requires a sophisticated setup, including compatible charging infrastructure and proper alignment to ensure efficient energy transfer.
+
+
+<br></br>
+
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

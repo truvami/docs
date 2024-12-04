@@ -123,3 +123,13 @@ For the US915 region, it tries to join 18 times before sleeping for 30 minutes. 
 based on the 
 [LoRaWAN® Regional Parameters v1.0.3revA](https://lora-alliance.org/resource_hub/lorawan-regional-parameters-v1-0-3reva/) 
 specification.
+
+
+<br></br>
+
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

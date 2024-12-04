@@ -71,3 +71,13 @@ To reset the device, push the button for 10 seconds.
 ## Buzzer functionality
 
 Buzzer can be activated via a downlink, for more information please refer to the payload documentation
+
+
+<br></br>
+
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

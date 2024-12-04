@@ -106,3 +106,13 @@ All device settings are fully configurable over the [Semtech LoRa Cloud website]
 ### Almanac Update
 
 _still in progress, more information will follow_
+
+
+<br></br>
+
+:::warning Support 
+<br></br>
+For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
+For questions, please write an email to hey@truvami.com <br></br>
+
+[**Click here to write a tricket**](https://truvami.com/service-request/)

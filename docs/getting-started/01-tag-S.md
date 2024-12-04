@@ -41,5 +41,11 @@ If applicable, plug in your LoRaWAN Gateway. In case you have your own network s
 #### 2. Check if battery is fully charged: 
 Try charging it with a standard USB-C cable and try again from step 2.
 
-#### 3. Submit a ticket to the truvami team, and we will provide support as promptly as possible. 
-In order to do so, write an email to our technical support team: hey@truvami.com
+
+:::warning Support
+
+For support, please submit a ticket to the truvami team, and we will provide support as promptly as possible. <br></br>
+
+[Click here to write a tricket](https://truvami.com/service-request/)<br></br>
+
+For questions, please write an email to hey@truvami.com

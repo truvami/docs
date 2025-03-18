@@ -1,8 +1,8 @@
 ---
-sidebar_label: JavaScript Decoder
+sidebar_label: JavaScript
 ---
 
-# truvami JavaScript Decoder
+# JavaScript
 
 There is no fully featured JavaScript decoder available at the moment. However, you can use the truvami/decoder web service to decode truvami payloads using JavaScript. The truvami/decoder web service is a Go-based service that can be run as a Docker container and provides an HTTP API for decoding truvami payloads.
 

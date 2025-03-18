@@ -1,8 +1,8 @@
 ---
-sidebar_label: Payload Decoder Tool
+sidebar_label: CLI / HTTP API
 ---
 
-# truvami Payload Decoder Tool
+# CLI / HTTP API
 
 **truvami Decoder** is a command-line interface (CLI) tool written in Go for decoding truvami payloads. This reference implementation supports various payload types, including Nomad XS and different Tag formats. 🛠️
 

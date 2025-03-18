@@ -1,15 +1,15 @@
-# Rabbit MQ Forwarding - truvami Gateway Service: Deep Dive 
+# Rabbit MQ Forwarding - Truvami Gateway Service: Deep Dive 
 
-The truvami Gateway Service parses incoming messages from tag XL devices and subsequently forward them to designated outputs. As of now, Rabbit MQ is the singular supported destination for this service.
+The Truvami Gateway Service parses incoming messages from tag XL devices and subsequently forward them to designated outputs. As of now, Rabbit MQ is the singular supported destination for this service.
 
 The service communicates via three distinct types of payloads, referred to as Position Uplink, Status Uplink, and Configuration Uplink, each carrying specific data to the device operation.
 
 ```mermaid
 sequenceDiagram
     tag XL->>+LoRaWAN Gateway: LoRaWAN
-    LoRaWAN Gateway->>+@truvami/gateway: HTTPS
-    @truvami/gateway->>+@truvami/gateway: Decode
-    @truvami/gateway->>+RabbitMQ: AMQPS
+    LoRaWAN Gateway->>+@Truvami/gateway: HTTPS
+    @Truvami/gateway->>+@Truvami/gateway: Decode
+    @Truvami/gateway->>+RabbitMQ: AMQPS
     Consumer->>+RabbitMQ: AMQPS
 ```
 
@@ -23,7 +23,7 @@ sequenceDiagram
 
 ## Setting up Message Forwarding
 
-Rabbit MQ message forwarding for your tag XL devices necessitates you to configure the Rabbit MQ output in detail. The truvami Gateway Service is engineered to sort incoming messages into distinct queues based on the type of the payload. 
+Rabbit MQ message forwarding for your tag XL devices necessitates you to configure the Rabbit MQ output in detail. The Truvami Gateway Service is engineered to sort incoming messages into distinct queues based on the type of the payload. 
 
 For each of the three payloads - Position, Status and Configuration - the service establishes a distinct queue to store and handle the related message data. Please ensure your Rabbit MQ is set-up to align with this specialized flow of data. 
 

@@ -4,7 +4,7 @@ sidebar_label: tag S
 
 # Getting Started Guide of tag S
 
-### This document details the step-by-step instructions about how to set up the truvami tag S.
+### This document details the step-by-step instructions about how to set up the Truvami tag S.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_s_side.png) -->
 <img src="/img/getting-started-imgs/tag_s_side.webp" width="75%" height="auto"/>
@@ -13,7 +13,7 @@ Versions: 1.0.1
 Date: 2024-09-22
 ```
 
-#### 1. Charge the truvami® tag S
+#### 1. Charge the Truvami® tag S
 The tag S can be charged with a standard USB-C cable. 
 
 #### 2. Press the press the button in the center to activate the tracker

@@ -7,7 +7,7 @@ sidebar_label: tag L
 
 ## General Overview and Information
 
-The truvami tag L device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
+The Truvami tag L device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
 and passive Wi-Fi MAC address scanner with Bluetooth 5.2 connectivity and sensors such as accelerometer and a hall sensor into one 
 compact device. 
 

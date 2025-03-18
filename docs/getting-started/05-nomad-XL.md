@@ -4,7 +4,7 @@ sidebar_label: nomad XL
 
 # Getting Started Guide of nomad XL
 
-### This document details the step-by-step instructions about how to set up the truvami nomad XL.
+### This document details the step-by-step instructions about how to set up the Truvami nomad XL.
 
 <!-- ![Bild 1](/img/getting-started-imgs/nomad_XL_side.png) -->
 <img src="/img/getting-started-imgs/nomad_XL_side.webp" width="50%" height="auto"/>
@@ -37,7 +37,7 @@ In the event that the device fails to join, consider the following list of worka
 If applicable, plug in your LoRaWAN Gateway. In case you have your own network server, check on there if data is coming through.
 
 #### 2. Reset the device using the magnet: 
-Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to step 2.
+Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the Truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to step 2.
 
 :::warning Support 
 <br></br>

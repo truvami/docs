@@ -6,7 +6,7 @@ sidebar_label: tag S
 
 ## General Overview and Information
 
-The truvami tag S device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
+The Truvami tag S device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
 and passive Wi-Fi MAC address scanner with Bluetooth 5.2 connectivity and sensors such as accelerometer and safety button into one 
 compact device. 
 

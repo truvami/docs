@@ -3,8 +3,8 @@ import type { Config } from "@docusaurus/types";
 import type * as Preset from "@docusaurus/preset-classic";
 
 const config: Config = {
-  title: "truvami docs",
-  tagline: "docs for truvami",
+  title: "Truvami docs",
+  tagline: "docs for Truvami",
   favicon:
     "https://truvami.com/wp-content/uploads/2023/08/T_Farbig-150x150.png",
 
@@ -16,7 +16,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "truvami", // Usually your GitHub org/user name.
+  organizationName: "Truvami", // Usually your GitHub org/user name.
   projectName: "docs", // Usually your repo name.
 
   onBrokenLinks: "throw",
@@ -76,7 +76,7 @@ const config: Config = {
               // groupPathsBy: "tag", // group sidebar items by operation "tag"
             },
           },
-          truvami: {
+          Truvami: {
             // the <id> referenced when running CLI commands
             specPath: "openapi/truvami-api-1.0.0.yaml", // path to OpenAPI spec, URLs supported
             outputDir: "docs/truvami-api", // output directory for generated files
@@ -95,9 +95,9 @@ const config: Config = {
     // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
-      title: "truvami docs",
+      title: "Truvami docs",
       logo: {
-        alt: "docs for truvami",
+        alt: "docs for Truvami",
         src: "img/logo.svg",
       },
       items: [
@@ -141,7 +141,7 @@ const config: Config = {
         //   ],
         // },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} truvami, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Truvami, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

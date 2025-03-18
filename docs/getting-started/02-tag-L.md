@@ -4,7 +4,7 @@ sidebar_label: tag L
 
 # Getting Started Guide of tag L
 
-### This document details the step-by-step instructions about how to set up the truvami tag L.
+### This document details the step-by-step instructions about how to set up the Truvami tag L.
 
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_L_side.png) -->
@@ -17,7 +17,7 @@ Date: 2024-06-20
 
 ## Getting Started
 
-#### 1. Charge the truvami® tag L
+#### 1. Charge the Truvami® tag L
 The tag L can be charged with a standard USB-C cable. 
 
 #### 2. Hold a magnet to the top of the device to activate the tracker

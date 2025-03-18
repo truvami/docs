@@ -7,7 +7,7 @@ sidebar_label: tag XL
 
 ## General Overview and Information*
 
-The truvami Tag XL device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS scanner 
+The Truvami tag XL device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS scanner 
 and passive Wi-Fi MAC address scanner with Bluetooth 5.2 connectivity and sensors such as accelerometer into one 
 compact device. The IP65-rated housing with different mounting options prepares the device for operation in a harsh 
 industrial environment.

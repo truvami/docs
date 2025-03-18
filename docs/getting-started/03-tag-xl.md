@@ -4,7 +4,7 @@ sidebar_label: tag XL
 
 # Getting Started Guide of tag XL
 
-### This document details the step-by-step instructions about how to set up the truvami tag XL.
+### This document details the step-by-step instructions about how to set up the Truvami tag XL.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_XL_side.png) -->
 <img src="/img/getting-started-imgs/tag_XL_side.webp" width="50%" height="auto"/>
@@ -16,7 +16,7 @@ Date: 2024-04-15
 
 <!--
 #### 1. Scan device keys
-Retrieve and copy the LoRaWAN® device EUI, LoRaWAN Join EUI and AppKey code attributes from your tracker by scanning the QR code on the bottom of your truvami Tag XL.
+Retrieve and copy the LoRaWAN® device EUI, LoRaWAN Join EUI and AppKey code attributes from your tracker by scanning the QR code on the bottom of your Truvami tag XL.
 
 
 <img src="/img/getting-started-imgs/tagXL_rueckseite.webp" height="500vh"/>
@@ -37,7 +37,7 @@ Activation should be done at location of deployment for accurate geolocation mea
 
     • second melody: join attempt to network was successful
 
-    • third melody: time synchronization was successful, your tracker now appears in the truvami dashboard
+    • third melody: time synchronization was successful, your tracker now appears in the Truvami dashboard
 
 In case join attempt was unsuccessful, reset the device using a magnet and hold it (to the position of the green point in the picture below) for 10 seconds.
 
@@ -50,10 +50,10 @@ In case join attempt was unsuccessful, reset the device using a magnet and hold 
 In the event that the device fails to join, consider the following list of workarounds:
 
 #### 1. Reset the device using the magnet: 
-Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to 2.
+Hold the magnet against the front side of the housing for at least 10 seconds. The device should restart, accompanied by the Truvami startup melody. If the melody plays but the device remains unjoined, repeat the claim process outlined in the getting started guide. If the startup melody does not play, proceed to 2.
 
 #### 2. Replace the batteries. 
-The truvami startup melody should commence after a few seconds. If the startup melody does not play, proceed to open a support ticket.
+The Truvami startup melody should commence after a few seconds. If the startup melody does not play, proceed to open a support ticket.
 
 :::warning Support 
 <br></br>

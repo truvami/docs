@@ -4,19 +4,19 @@ sidebar_label: CLI / HTTP API
 
 # CLI / HTTP API
 
-**truvami Decoder** is a command-line interface (CLI) tool written in Go for decoding truvami payloads. This reference implementation supports various payload types, including Nomad XS and different Tag formats. 🛠️
+**Truvami Decoder** is a command-line interface (CLI) tool written in Go for decoding Truvami payloads. This reference implementation supports various payload types, including nomad XS and different tag formats. 🛠️
 
 [Github Repository](https://github.com/truvami/decoder)
 
 ## 🎬 Demo
 
-Check out this demo to see truvami Decoder in action! 👇
+Check out this demo to see Truvami Decoder in action! 👇
 
 ![Demo](https://raw.githubusercontent.com/truvami/decoder/main/demo.gif)
 
 ## 🌟 Features
 
-- 🔍 **Payload Decoding**: Decode Nomad XS, Tag S/L, and Tag XL payloads with ease.
+- 🔍 **Payload Decoding**: Decode nomad XS, tag S/L, and tag XL payloads with ease.
 - 📄 **Flexible Output**: Choose between standard console output and JSON format.
 - 🛠️ **Debugging & Verbosity**: Enable debugging and verbose output for detailed insights.
 
@@ -24,7 +24,7 @@ Check out this demo to see truvami Decoder in action! 👇
 
 ### 🔧 Binaries
 
-You can install the truvami Decoder binary easily using the following command:
+You can install the Truvami Decoder binary easily using the following command:
 
 ```zsh
 # This will install the binary at $(go env GOPATH)/bin/decoder
@@ -36,11 +36,11 @@ decoder --help
 
 ### 🖥️ Windows
 
-For Windows users, you can install the truvami Decoder binary using Chocolatey:
+For Windows users, you can install the Truvami Decoder binary using Chocolatey:
 
 ```powershell
 # Install using Chocolatey
-choco install truvami-decoder
+choco install Truvami-decoder
 
 # ✅ Verify the installation by checking the help
 decoder --help
@@ -48,7 +48,7 @@ decoder --help
 
 ## 🛠️ Usage
 
-truvami Decoder provides a variety of commands and options to help you decode payloads efficiently. Below is an overview of the available commands and flags.
+Truvami Decoder provides a variety of commands and options to help you decode payloads efficiently. Below is an overview of the available commands and flags.
 
 ### 🗂️ Basic Command Structure
 
@@ -60,9 +60,9 @@ decoder [command] [flags]
 
 - `completion` - 🖋️ Generate the autocompletion script for the specified shell.
 - `help` - ℹ️ Display help information about any command.
-- `nomadxs` - 🧩 Decode Nomad XS payloads.
-- `tagsl` - 🏷️ Decode Tag S / L payloads.
-- `tagxl` - 🏷️ Decode Tag XL payloads.
+- `nomadxs` - 🧩 Decode nomad XS payloads.
+- `tagsl` - 🏷️ Decode tag S / L payloads.
+- `tagxl` - 🏷️ Decode tag XL payloads.
 
 ### 🚩 Global Flags
 
@@ -74,10 +74,10 @@ decoder [command] [flags]
 ### 💡 Example Usage
 
 ```sh
-# 🔍 Decode a Nomad XS payload with verbose output
+# 🔍 Decode a nomad XS payload with verbose output
 decoder nomadxs -v
 
-# 📝 Decode a Tag S / L payload and output the result in JSON format
+# 📝 Decode a tag S / L payload and output the result in JSON format
 decoder tagsl -j
 
 # 🖋️ Generate autocompletion script for bash

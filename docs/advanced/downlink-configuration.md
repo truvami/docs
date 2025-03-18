@@ -130,7 +130,7 @@ Periodic timer to report battery level.
 Battery keep-alive Interval (s)*
 600
 ```
-## Re-join interval (s)* – only for truvami® nomad XS
+## Re-join interval (s)* – only for Truvami® nomad XS
 
 **Factory setting:** 600 seconds / 5 minutes <br></br>
 **Recommended value:** 600 seconds <br></br>
@@ -198,7 +198,7 @@ GNSS timeout (s)*
 ```
 
 
-## Lower and upper light threshold – only for truvami® nomad XS
+## Lower and upper light threshold – only for Truvami® nomad XS
 
 **Factory setting:** 0 - 0 lux <br></br>
 If we set a threshold the device will go into low-power mode if the light conditions

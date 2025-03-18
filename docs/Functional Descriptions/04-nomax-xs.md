@@ -6,7 +6,7 @@ sidebar_label: nomad XS
 
 ## General Overview and Information
 
-The truvami nomad XS device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
+The Truvami nomad XS device is a powerful and flexible GNSS tracking device that integrates a multi-standard GNSS module 
 and sensors such as accelerometer, pressure sensor, light sensor, magnetometer, gyroscope, temperature sensor and hall sensor into one miniature device. 
 
 ## Device Initialization and Joining

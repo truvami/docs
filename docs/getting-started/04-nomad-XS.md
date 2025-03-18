@@ -4,7 +4,7 @@ sidebar_label: nomad XS
 
 # Getting Started Guide of nomad XS
 
-### This document details the step-by-step instructions about how to set up the truvami nomad XS.
+### This document details the step-by-step instructions about how to set up the Truvami nomad XS.
 
 <!-- ![Bild 1](/img/getting-started-imgs/nomad_XS_front.webp) -->
 <img src="/img/getting-started-imgs/nomad_XS_front.webp" width="25%" height="auto"/>

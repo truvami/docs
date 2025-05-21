@@ -8,7 +8,7 @@ This user manual provides instructions for upgrading the device's application us
 
 ## Prepare for Upgrade
 
-1. Download and install the Si Connect app on your smartphone. <table><thead><tr><th>iOS</th><th>Android</th></tr></thead><tbody><tr><td><img src="/img/fw-upgrade/appstore.png" alt="QR Code" /></td><td><img src="/img/fw-upgrade/playstore.png" alt="QR Code" /></td></tr><tr><td><a href="https://apps.apple.com/us/app/simplicity-connect/id1030932759"target="_blank">Download</a></td><td><a href="https://play.google.com/store/apps/details?id=com.siliconlabs.bledemo&hl=en"target="_blank">Download</a></td></tr></tbody></table>
+1. Download and install the Si Connect app on your smartphone. <table><thead><tr><th>iOS</th><th>Android</th></tr></thead><tbody><tr><td><img src="/img/fw-upgrade/AppStore.png" alt="QR Code" /></td><td><img src="/img/fw-upgrade/PlayStore.png" alt="QR Code" /></td></tr><tr><td><a href="https://apps.apple.com/us/app/simplicity-connect/id1030932759"target="_blank">Download</a></td><td><a href="https://play.google.com/store/apps/details?id=com.siliconlabs.bledemo&hl=en"target="_blank">Download</a></td></tr></tbody></table>
 2. Copy the upgrade files from your computer to your smartphone. For example, copy "sl_tracker_ota_vx.x.x.gbl" to your smartphone.
 
 ## Enable Bluetooth

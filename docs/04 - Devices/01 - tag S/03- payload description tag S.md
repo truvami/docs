@@ -1,5 +1,5 @@
 ---
-sidebar_label: firmware v3.2.0
+sidebar_label: Payload Format 
 ---
 
 # Payload Format of tag S

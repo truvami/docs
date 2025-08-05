@@ -9,7 +9,7 @@ sidebar_position: 1
 <br />
 <br />
 
-# Welcome to Truvami!
+# Welcome to Truvami, Guillaume!
 
 On this page, we provide you with all the information you need to get started with your tracking journey.
 <br />

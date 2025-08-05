@@ -18,12 +18,6 @@ For support, please submit a ticket. We will provide support as promptly as poss
 [**Click here to open a new ticket**](https://truvami.com/service-request/)
 :::
 
-# Questions
-
-:::tip Email 
-<br></br>
-For questions, please write an email to hey@truvami.com <br></br>
-:::
 
 
 

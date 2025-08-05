@@ -1,5 +1,5 @@
 ---
-sidebar_label: nomad XS
+sidebar_label: Functional Description
 ---
 
 # Functional Description for the nomad XS

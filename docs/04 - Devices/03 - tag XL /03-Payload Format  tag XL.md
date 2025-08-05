@@ -1,5 +1,5 @@
 ---
-sidebar_label: firmware v2.1.1
+sidebar_label: Payload Format 
 ---
 
 # Payload Format of tag XL

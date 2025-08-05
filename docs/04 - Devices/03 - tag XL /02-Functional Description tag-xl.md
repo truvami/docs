@@ -1,5 +1,5 @@
 ---
-sidebar_label: tag XL 
+sidebar_label: Functional Description
 ---
 
 # Functional Description for the tag XL

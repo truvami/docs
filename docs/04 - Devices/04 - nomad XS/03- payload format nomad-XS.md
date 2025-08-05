@@ -1,5 +1,5 @@
 ---
-sidebar_label: nomad XS
+sidebar_label: Payload Format
 ---
 
 # Payload Format of nomad XS

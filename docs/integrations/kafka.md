@@ -12,7 +12,6 @@ flowchart TD
     truvamiBridge[truvami/bridge] -->|subscribe| kafkaUplinks
     truvamiBridge -->|gRPC| truvamiAPI[truvami/api]
     truvamiBridge -->|publish| kafkaCustom[Your Kafka]
-````
 
 ## Overview
 

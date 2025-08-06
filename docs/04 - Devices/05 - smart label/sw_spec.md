@@ -78,7 +78,7 @@ After a movement-triggered localization, the interval __moving_interval_s__ is u
 
 ### F-003: Localization type selection
 
-The software decides if to perform a passive GNSS or a WiFi sniffing localization following this logic: first a WiFi scan is performed, if there are less than 3 AP's detected, a passive GNSS localization is attempted. After localization, either a WiFi uplink or a GNSS uplink or no uplink sent.
+The device starts by performing a WiFi sniffing. If the number of sniffed WiFi AP is less than __minAP__, then a pasive GNSS localization is attempted. Otherwise, the device sends the WiFi UL without attempting a GNSS localization. 
 
 ### F-004: Passive GNSS localization
 

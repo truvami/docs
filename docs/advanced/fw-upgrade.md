@@ -1,7 +1,7 @@
 # Firmware Upgrade via OTA
 
 :::warning
-This does only apply to the Truvami® tag S and Truvami® tag L
+This does only apply to the Truvami® tag S, tag L and tag XL (from FW 3.0.0)
 :::
 
 This user manual provides instructions for upgrading the device's application using the Simplicity Connect app on a smartphone via OTA (Over-The-Air) method. Ensure that you have another device (smartphone) with Bluetooth capability and the Simplicity Connect app installed.
@@ -18,6 +18,8 @@ This user manual provides instructions for upgrading the device's application us
 #### Step 2
   - tag S: To activate Bluetooth pairing on the Truvami tag S, hold the button for 5 seconds until the LED turns off.
   - tag L: To activate Bluetooth pairing on the Truvami tag L, hold a magnet to the top of the device for 5 seconds. 
+  - tag XL: To activate Bluetooth pairing on the Truvami tag XL, hold a magnet to the top of the device for 10 seconds. When restarting the tagXL will advertise a BLE beacon for 30 sec (duration configurable by DL).
+
 Upon successful Bluetooth activation, you should hear a melody.
 
 
@@ -27,7 +29,7 @@ Upon successful Bluetooth activation, you should hear a melody.
 2. Select the "Scan" option from the app's main menu.
     <table><tbody><tr><td><img src="/img/fw-upgrade/ios_search-for-device.webp" alt="Search for Device" width="200" /></td></tr></tbody></table>
 
-3. Locate your target device. It is advertised as `tag_S_XXXX`.
+3. Locate your target device. It is advertised as `tag_Y_XXXX`.
     <table><tbody><tr><td><img src="/img/fw-upgrade/and_target_device.webp" alt="Locate your target device" width="200"/></td></tr></tbody></table>
 
     :::note
@@ -60,3 +62,6 @@ Upon successful Bluetooth activation, you should hear a melody.
 2. The tracker will start the network joining process which is indicated by the join melody.
 
 Congratulations! Your device has been successfully upgraded using the OTA method. If you encounter any issues during the upgrade process, please consult the troubleshooting section of the user manual or contact customer support for assistance.
+
+
+:warning: If the OTA is unsuccessful, the device will reboot and remain in BLE advertising mode. In this case, it advertises a generic `OTA` flag. Upgrade can be perform as describes previouly when connecting to the device in this mode.

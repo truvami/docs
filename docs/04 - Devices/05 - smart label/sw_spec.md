@@ -22,13 +22,13 @@ Main functionality:
 
 
 ## State Diagramm
-<img src="/img/smart label/fsm.png" width="100%" height="auto"/>
+<img src="/img/smart label/fsm.svg" width="100%" height="auto"/>
 
 
 
 
 
-###Class Diagram
+## Class Diagram
 <img src="/img/smart label/class.svg" width="60%" height="auto"/>
 
 
@@ -87,6 +87,8 @@ Localization can be performed using passive GNSS. The LoRa Basic Modem geolocati
 - MOBILE mode
 - GPS & BEIDU
 - SEND MODE, i.e. directly send the scan result if valid, __no buffering__.
+
+The default option is "SEND MODE".
 
 The almanac update is done autonmously, using the GNSS almanac demodulation service available with LR11xx radio chip (i.e. without using LoRa Cloud assistance).
 
@@ -173,7 +175,6 @@ __Approximate Energy-Based Voltage Levels (for LICs)__:
 |20%|2.85V|
 |0%|2.5V|
 
-On PCA-84306-2 the maximum level of VCC derived from VCap is limited to 3.67V due to Supply voltage limitations on certain components, limiting the full potential of the LIC to around 80%.
 
 __Power states:__
 * __Below 20%__: Send only 1 __Low Power battery uplink__ per day containing only voltage levels for the VCC and the PV Cell voltage
@@ -198,14 +199,20 @@ __Join back-off strategy__: (Standard LBMv4 strategy)
 
 ## External Interface Requirements
 
-### EI-001: LED
+### EI-001: Button
+
+The smart label has only one button:
+- Press 10 sec to switch off the label
+- Press 0.2 sec to switch on (5 green blinks)
+
+### EI-002: LED
 
 The LED on SmartLabel is used by the software as follows:
 - Power on: 5 consecutive 100ms green blinks
 - Join successful: 3 consecutive 100ms green blinks
 - Join failed: 3 consecutive 100ms red blinks
 
-### EI-002: Radio Specification
+### EI-003: Radio Specification
 
 The device operates on:
  - LoRaWan
@@ -213,7 +220,7 @@ The device operates on:
  - Version 1.0.4
  - Class A
 
-### EI-003: Uplinks
+### EI-004: Uplinks
 
 __Low Power battery uplink__
 
@@ -298,7 +305,7 @@ Uplink/Downlink port: 150
 | __Unit__         |     mV        |     mV       |    mV        |     mV       |     mV       |
 
 
-### EI-004: Downlinks
+### EI-005: Downlinks
 
 
 __Configuration downlink__

@@ -39,6 +39,29 @@ This allows forward compatibility with future schema versions.
 
 Represents an uplink transmission from a device, including raw payload and radio metadata.
 
+| Field           | Type      | Nullable | Description                                              |
+| --------------- | --------- | -------- | -------------------------------------------------------- |
+| uuid            | `string`  | No       | Unique identifier for the uplink                         |
+| devEui          | `string`  | No       | Device EUI (unique identifier)                           |
+| customer        | `string`  | Yes      | Customer ID                                              |
+| payload         | `string`  | No       | Hex-encoded payload data                                 |
+| port            | `number`  | No       | Port number used for the uplink                          |
+| uplinkCounter   | `number`  | No       | Uplink counter for deduplication                         |
+| downlinkCounter | `number`  | Yes      | Downlink counter for deduplication                       |
+| consumedAirtime | `number`  | Yes      | Airtime consumed by the uplink                           |
+| bestSnr         | `number`  | Yes      | Best Signal-to-Noise Ratio                               |
+| worstSnr        | `number`  | Yes      | Worst Signal-to-Noise Ratio                              |
+| averageSnr      | `number`  | Yes      | Average Signal-to-Noise Ratio                            |
+| bestRssi        | `number`  | Yes      | Best Received Signal Strength Indicator                  |
+| worstRssi       | `number`  | Yes      | Worst Received Signal Strength Indicator                 |
+| averageRssi     | `number`  | Yes      | Average Received Signal Strength Indicator               |
+| spreadingFactor | `number`  | No       | Spreading factor used for the uplink (SF7 - SF12)        |
+| confirmed       | `boolean` | No       | Whether the uplink is confirmed                          |
+| receivedAt      | `string`  | No       | Timestamp when the uplink was received (RFC 3339 format) |
+| dutyCycle       | `boolean` | Yes      | Whether duty cycle is applied                            |
+
+**Example:**
+
 ```json
 {
   "data": {
@@ -70,6 +93,18 @@ Represents an uplink transmission from a device, including raw payload and radio
 ### Event
 
 Describes a device-level event such as button press or reset.
+
+| Field      | Type     | Nullable | Description                                             |
+| ---------- | -------- | -------- | ------------------------------------------------------- |
+| uuid       | `string` | No       | Unique identifier for the event                         |
+| devEui     | `string` | No       | Device EUI (unique identifier)                          |
+| type       | `number` | No       | Event type (see `EventType` enum below)                 |
+| customer   | `string` | Yes      | Customer ID                                             |
+| receivedAt | `string` | No       | Timestamp when the event was received (RFC 3339 format) |
+| occurredAt | `string` | No       | Timestamp when the event occurred (RFC 3339 format)     |
+| uplink     | `string` | No       | Uplink ID associated with the event                     |
+
+**Example:**
 
 ```json
 {
@@ -108,6 +143,22 @@ Describes a device-level event such as button press or reset.
 
 Describes a transition between rotation states (e.g., from mixing to pouring).
 
+| Field          | Type     | Nullable | Description                                                       |
+| -------------- | -------- | -------- | ----------------------------------------------------------------- |
+| uuid           | `string` | No       | Unique identifier for the rotation status                         |
+| devEui         | `string` | No       | Device EUI (unique identifier)                                    |
+| customer       | `string` | Yes      | Customer ID                                                       |
+| uplink         | `string` | No       | Uplink ID associated with the rotation status                     |
+| lastState      | `number` | No       | Previous rotation state (see `RotationStatusType` enum below)     |
+| newState       | `number` | No       | New rotation state (see `RotationStatusType` enum below)          |
+| rotations      | `number` | Yes      | Number of rotations completed during the state transition         |
+| elapsedSeconds | `number` | No       | Time elapsed during the state transition in seconds               |
+| receivedAt     | `string` | No       | Timestamp when the rotation status was received (RFC 3339 format) |
+| capturedAt     | `string` | No       | Timestamp when the rotation status was captured (RFC 3339 format) |
+| sequenceNumber | `number` | No       | Sequence number for deduplication                                 |
+
+**Example:**
+
 ```json
 {
   "data": {
@@ -141,6 +192,28 @@ Describes a transition between rotation states (e.g., from mixing to pouring).
 ### Position
 
 Provides location data captured by the device (GNSS, LoRa, Wi-Fi, BLE).
+
+| Field       | Type      | Nullable | Description                                                |
+| ----------- | --------- | -------- | ---------------------------------------------------------- |
+| uuid        | `string`  | No       | Unique identifier for the position                         |
+| devEui      | `string`  | No       | Device EUI (unique identifier)                             |
+| customer    | `string`  | Yes      | Customer ID                                                |
+| uplink      | `string`  | No       | Uplink ID associated with the position                     |
+| latitude    | `number`  | No       | Latitude in decimal degrees                                |
+| longitude   | `number`  | No       | Longitude in decimal degrees                               |
+| altitude    | `number`  | Yes      | Altitude in meters                                         |
+| accuracy    | `number`  | Yes      | Horizontal accuracy in meters                              |
+| source      | `number`  | No       | Source of position data (see `PositionSource` enum below)  |
+| moving      | `boolean` | Yes      | Whether the device is moving                               |
+| buffered    | `boolean` | No       | Whether the position is buffered                           |
+| bufferLevel | `number`  | Yes      | Buffer level indicating how full the buffer is             |
+| receivedAt  | `string`  | No       | Timestamp when the position was received (RFC 3339 format) |
+| capturedAt  | `string`  | No       | Timestamp when the position was captured (RFC 3339 format) |
+| ttf         | `number`  | Yes      | Time to first fix in seconds                               |
+| pdop        | `number`  | Yes      | Position Dilution of Precision (PDOP) value                |
+| satellites  | `number`  | Yes      | Number of satellites used for the position fix             |
+
+**Example:**
 
 ```json
 {
@@ -182,6 +255,17 @@ Provides location data captured by the device (GNSS, LoRa, Wi-Fi, BLE).
 
 Provides battery voltage readings.
 
+| Field      | Type     | Nullable | Description                                                      |
+| ---------- | -------- | -------- | ---------------------------------------------------------------- |
+| uplink     | `string` | No       | Uplink ID associated with the battery status                     |
+| devEui     | `string` | No       | Device EUI (unique identifier)                                   |
+| customer   | `string` | Yes      | Customer ID                                                      |
+| voltage    | `number` | No       | Battery voltage in volts                                         |
+| receivedAt | `string` | No       | Timestamp when the battery status was received (RFC 3339 format) |
+| capturedAt | `string` | No       | Timestamp when the battery status was captured (RFC 3339 format) |
+
+**Example:**
+
 ```json
 {
   "data": {
@@ -200,6 +284,6 @@ Provides battery voltage readings.
 
 ## Additional Notes
 
-* **Timestamps** use [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format and are in UTC.
-* **Enum values** are serialized as integers.
-* All messages are wrapped using the same envelope structure containing a `data` object and a `version` field.
+- **Timestamps** use [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format and are in UTC.
+- **Enum values** are serialized as integers.
+- All messages are wrapped using the same envelope structure containing a `data` object and a `version` field.

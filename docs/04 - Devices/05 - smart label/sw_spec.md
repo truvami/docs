@@ -22,7 +22,7 @@ Main functionality:
 
 
 ## State Diagramm
-<img src="/img/smart label/fsm.svg" width="100%" height="auto"/>
+<img src="/img/smart label/fsm.png" width="100%" height="auto"/>
 
 
 

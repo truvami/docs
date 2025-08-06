@@ -1,10 +1,10 @@
-# Firmware Release Tag S and L
+# tag S and L
 
-| Version | Release Date | Changes |
+| Version | Release Date    | Changes |
 |---------|--------------|---------|
-| V3.3.2 | 2025-07-17 | <ul><li>Disable GPS internal LNA for quicker time to first fix (ttf)</li><li>Improve wake up strategy to avoid LoRWAN transmission when GPS fix is active</li></ul> |
-| V3.3.1 | 2025-06-02 | <ul><li>Extending port 198 reset uplink watchdog reset reason</li></ul> |
-| V3.3.0 | 2025-05-19 | <ul><li>Change port 198 uplink to add assert location in case of a watchdog reset in “[LINE NUMBER in ASCII]:[FILE]:[FUNCTION]” format.</li></ul> |
+| V3.3.2 | 2025-07-17    | <ul><li>Disable GPS internal LNA for quicker time to first fix (ttf)</li><li>Improve wake up strategy to avoid LoRWAN transmission when GPS fix is active</li></ul> |
+| V3.3.1 | 2025-06-02    | <ul><li>Extending port 198 reset uplink watchdog reset reason</li></ul> |
+| V3.3.0 | 2025-05-19    | <ul><li>Change port 198 uplink to add assert location in case of a watchdog reset in “[LINE NUMBER in ASCII]:[FILE]:[FUNCTION]” format.</li></ul> |
 | V3.2.3 | 2025-01-17 | <ul><li>Fix unexpected reset issue due to bloated interrupt routines</li><li>Fix Uart driver issue between MCU and GNSS module when BLE</li><li>scanning is activated</li><li>Fix status byte counter reset value after overflowing (0 à 1)</li><li>Set up config DL boundaries to avoid invalid values for certain</li><li>intervals</li><li>Add backward compatibility for shorter config DL (25 bytes)</li></ul> |
 | V3.2.1 | 2024-11-12 | <ul><li>Fix moving flag in timestamped Wi-Fi messages (port 7)</li></ul> |
 | V3.2.0 | 2024-11-07 | <ul><li>Add BLE scanning feature</li><li>Uplinks to sent BLE scanning related data: Port 3 – Scanned BLE beacons, Port 8 – Current BLE configurations</li><li>Downlinks to set BLE feature: Port 134 – BLE configurations, Port 135 - on demand BLE scan request</li><li>Add TTF, PDOP and number of satellites in GNSS uplink</li><li>Add option to set Batch number to 0, which disables buffering and does not sent any more confirmed uplinks</li></ul> |

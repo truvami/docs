@@ -47,7 +47,7 @@ Try charging it with a standard USB-C cable and try again from step 2.
 :::warning Support 
 <br></br>
 For support, please submit a ticket. We will provide support as promptly as possible. <br></br>
-For questions, please write an email to hey@truvami.com <br></br>
+<br></br>
 
 [**Click here to open a new ticket**](https://truvami.com/service-request/)
 :::

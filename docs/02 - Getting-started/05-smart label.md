@@ -4,10 +4,10 @@ sidebar_label: smart label
 
 # Getting Started Guide of smart label
 
-### This document details the step-by-step instructions about how to set up the Truvami tag S.
+### This document details the step-by-step instructions about how to set up the Truvami smart label.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_s_side.png) -->
-<img src="/img/smart label/SL_LED_OFF.png" width="75%" height="auto"/>
+<img src="/img/smart_label/SL_LED_OFF.png" width="75%" height="auto"/>
 
 
 #### 1. Charge the Truvami® smart label
@@ -20,7 +20,7 @@ The smart label uses the ambiant indoor light as energy source. The optimal expo
 After pressing the power button and releasing it, the LED will blink 5 times in green. After a few seconds, the LED will blink again 3 times in green to indicate a successful join to the network. 
 
 <!-- ![Bild 2](/img/getting-started-imgs/tag_s_front.png) -->
-<img src="/img/smart label/SL_LED_ON.png" width="75%" height="auto"/>
+<img src="/img/smart_label/SL_LED_ON.png" width="75%" height="auto"/>
 
 
 ```

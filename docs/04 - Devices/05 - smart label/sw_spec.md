@@ -22,43 +22,20 @@ Main functionality:
 
 
 ## State Diagramm
-<img src="/img/smart label/fsm.svg" width="100%" height="auto"/>
+<img src="/img/smart_label/fsm.svg" width="100%" height="auto"/>
 
 
 
 
 
 ## Class Diagram
-<img src="/img/smart label/class.svg" width="60%" height="auto"/>
+<img src="/img/smart_label/class.svg" width="60%" height="auto"/>
 
 
 
 # Features Overview
 
-### Functional Requirements
 
-- [x] [F-001: Interval-triggered localization](#f-001-interval-triggered-localization)
-- [x] [F-002: Movement-triggered localization](#f-002-movement-triggered-localization)
-- [x] [F-003: Localization type selection](#f-006-localization-type-selection)
-- [x] [F-004: Passive GNSS localization](#f-003-passive-gnss-localization)
-- [x] [F-005: WiFi sniffing localization](#f-004-wifi-sniffing-localization)
-- [x] [F-006: LoRa TDoA localization](#f-005-lora-tdoa-localization)
-- [x] [F-007: Temperature and battery measuremnt](#f-007-temperature-and-battery-measurement) 
-- [x] [F-008: Sleep](#f-008-sleep)
-- [x] [F-009: Configuration parameters](#f-009-configuration-parameters)
-- [x] [F-010: Power states](#f-010-power-states)
-- [x] [F-011: LoRaWAN Join procedure](#f-011-lorawan-join-procedure)
-
-### External Interface Requirements
-
-- [x] [EI-001: LED](#ei-001-led)
-- [x] [EI-002: Radio Specification](#ei-002-radio-specification)
-- [x] [EI-003: Uplinks](#ei-003-uplinks)
-- [x] [EI-004: Downlinks](#ei-004-downlinks)
-
-### Nonfunctional Requirements
-
-- [x] [NF-001 LoRaWan 1.0.4 Compliant](#nf-001-lorawan-104-compliant)
 
 # Features
 

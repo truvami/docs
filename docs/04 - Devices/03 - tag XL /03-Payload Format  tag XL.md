@@ -165,6 +165,7 @@ These commands are again in TLV format and are either setter, getter or runner c
 | 3 | Set Acceleration Sensor Settings | 0x22 | 0x04 | data 0: ACCELERATION_SENSITIVITY<br/>data 1: ACCELERATION_DELAY                                                          | uint16_t[2] |
 | 4 | Set HEARTBEAT_INTERVAL           | 0x23 | 0x01 | Heartbeat interval in hours                                                                                              | uint8_t     |
 | 5 | Set ADVERTISEMENT_FWU_INTERVAL   | 0x24 | 0x01 | Value in seconds                                                                                                         | uint8_t     |
+| 6 | Set DATE_RATE   | 0x28 | 0x01 | 000: DR5 (EU868 SF7)<br/> 001: DR4 (EU868 SF8)<br/>010: DR3 (EU868 SF9, US915 SF7)<br/>011: DR2 (EU868 SF10, US915 SF8)<br/>100: DR1 (EU868 SF11, US915 SF9)<br/>101: DR0 (EU868 SF12)<br/>110: DR1-3 array (EU868 SF9-11, US915 SF7-9) <br/>111: ADR (SF7-12) for EU868| uint8_t|
 
 |  # | Getter Command                   | tag  | Size | Data | Format |
 |----|----------------------------------|------|------|------|--------|
@@ -178,6 +179,7 @@ These commands are again in TLV format and are either setter, getter or runner c
 |  8 | Get Reset Count                  | 0x49 | 0x00 | -    | -      |
 |  9 | Get Reset Cause                  | 0x4A | 0x00 | -    | -      |
 | 10 | Get Scan Counts                  | 0x4B | 0x00 | -    | -      |
+| 11 | Get ADR Settings                 | 0x4E | 0x00 | -    | -      |
 
 | # | Runner Command                   | tag  | Size | Data / Description                                                                                                      | Format     |
 |---|----------------------------------|------|------|-------------------------------------------------------------------------------------------------------------------------|------------|

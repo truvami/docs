@@ -7,7 +7,7 @@ sidebar_label: Getting Started Guide
 ### This document details the step-by-step instructions about how to set up the Truvami tag S.
 
 <!-- ![Bild 1](/img/getting-started-imgs/tag_s_side.png) -->
-<img src="/img/getting-started-imgs/tag_s_side.webp" width="75%" height="auto"/>
+<img src="/img/smart label/SL_LED_OFF" width="75%" height="auto"/>
 ```
 Versions: 1.0.1
 Date: 2024-09-22

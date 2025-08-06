@@ -200,6 +200,5 @@ Provides battery voltage readings.
 ## Additional Notes
 
 * **Timestamps** use [RFC 3339](https://datatracker.ietf.org/doc/html/rfc3339) format and are in UTC.
-* **Optional fields** may be omitted if not set.
 * **Enum values** are serialized as integers.
 * All messages are wrapped using the same envelope structure containing a `data` object and a `version` field.

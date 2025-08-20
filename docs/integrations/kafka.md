@@ -183,8 +183,8 @@ Describes a transition between rotation states (e.g., from mixing to pouring).
 | Value | Meaning     |
 | ----- | ----------- |
 | 0     | `undefined` |
-| 1     | `mixing`    |
-| 2     | `pouring`   |
+| 1     | `pouring`   |
+| 2     | `mixing`    |
 | 3     | `error`     |
 
 ---

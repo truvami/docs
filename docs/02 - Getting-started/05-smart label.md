@@ -48,6 +48,22 @@ If applicable, plug in your LoRaWAN Gateway. In case you have your own network s
 #### 2. Check if battery is fully charged: 
 Leave the smart label exposed to constant indoor lighting for one day and try again step 2.
 
+#### 3. Reset the Smart Label
+
+To reset your Truvami Smart Label, you will need to switch it off and then switch it on again.
+
+##### Steps
+###### Switch Off
+
+- Press and hold the power button for 10 seconds.
+
+- Release the button – the device will power down.
+
+###### Switch On
+
+- Press the power button briefly (about 0.2 seconds).
+
+- The device will restart and is now reset.
 
 :::warning Support 
 <br></br>

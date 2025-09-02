@@ -37,6 +37,37 @@ Payloads are using big endian data encoding; Signed integers use two’s complem
 | 38-39 | 2    | Magnetometer* Y-axis                      | int16, mgauss          |
 | 40-41 | 2    | Magnetometer* Z-axis                      | int16, mgauss          |
 
+
+```mermaid
+---
+title: "Location + Sensor Packet"
+---
+packet
++8: "Status"
++32: "Latitude"
++32: "Longitude"
++16: "Altitude"
++8: "Year"
++8: "Month"
++8: "Day"
++8: "Hour"
++8: "Minute"
++8: "Second"
++8: "Time to fix"
++16: "Ambient light"
++16: "Accelerometer X-axis"
++16: "Accelerometer Y-axis"
++16: "Accelerometer Z-axis"
++16: "Temperature"
++16: "Pressure"
++16: "Gyroscope* X-axis"
++16: "Gyroscope* Y-axis"
++16: "Gyroscope* Z-axis"
++16: "Magnetometer* X-axis"
++16: "Magnetometer* Y-axis"
++16: "Magnetometer* Z-axis"
+```
+
 *Optional sensors
 
 ### Battery Pack (Uplink, Port 15)
@@ -45,6 +76,15 @@ Payloads are using big endian data encoding; Signed integers use two’s complem
 |-------|------|---------------------------------------------|-------------|
 | 0     | 1    | Status[6:2] + Low battery flag[0] (low = 1)               | uint8       |
 | 1-2     | 2    | Battery voltage            | uint16, mV       |
+
+```mermaid
+---
+title: "Battery Pack"
+---
+packet
++8: "Status"
++16: "Battery voltage"
+```
 
 
 ### Status[6:2]
@@ -72,6 +112,29 @@ conf_change_id counter resets after reaching 15 (1111).
 | 32-33 | 2    | Light lower threshold                     | uint16, Lux           |
 | 34-35 | 2    | Light upper threshold                     | uint16, Lux           |
 
+
+*Optional sensors
+
+```mermaid
+---
+title: "Current Cofig/Status Packet"
+---
+packet
++32: "Localization interval (moving, IM)"
++32: "Localization interval (steady, IS)"
++32: "Config/Status interval (IC)"
++16: "GPS timeout"
++16: "Accelerometer wakeup threshold"
++16: "Accelerometer delay"
++24: "Firmware version"
++16: "Hardware version"
++32: "Battery keep-alive interval (IB)"
++32: "Re-Join interval"
++8: "Accuracy enhancement"
++16: "Light lower threshold"
++16: "Light upper threshold"
+```
+
 <br></br>
 ## Downlinks
 <br></br>
@@ -92,17 +155,52 @@ conf_change_id counter resets after reaching 15 (1111).
 | 27-28 | 2    | Light lower threshold                     | uint16, Lux      |
 | 29-30 | 2    | Light upper threshold                     | uint16, Lux      |
 
+```mermaid
+---
+title: "Set Cofig Packet"
+---
+packet
++32: "Localization interval (moving, IM)"
++32: "Localization interval (steady, IS)"
++32: "Config/Status interval (IC)"
++16: "GPS timeout"
++16: "Accelerometer wakeup threshold"
++16: "Accelerometer delay"
++32: "Battery keep-alive interval (IB)"
++32: "Re-Join interval"
++8: "Accuracy enhancement"
++16: "Light lower threshold"
++16: "Light upper threshold"
+```
+
 ### Flash Erase (Downlink, Port 129)
+
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
 | 0     | 1    | Flash erase = 1               | uint8       |
+
+```mermaid
+---
+title: "Flash Erase Packet"
+---
+packet
++8: "Flash erase (1)"
+```
 
 ### Off Packet (Downlink, Port 130)
 
 | Byte  | Size | Description                                 | Format      |
 |-------|------|---------------------------------------------|-------------|
 | 0     | 1    | Power off = 0                 | uint8       |
+
+```mermaid
+---
+title: "Off Packet"
+---
+packet
++8: "Power off (0)"
+```
 
 
 

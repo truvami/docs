@@ -69,6 +69,7 @@ The following scopes are available:
 | `devices:read`        | Retrieve device information.                      |
 | `devices:write`       | Update device information.                        |
 | `uplinks:read`        | Retrieve uplink information.                      |
+| `positions:read`      | Retrieve position information.                    |
 | `groups:read`         | Retrieve group information.                       |
 | `groups:write`        | Update group information.                         |
 | `gateways:read`       | Retrieve gateway information.                     |
@@ -76,5 +77,3 @@ The following scopes are available:
 | `events:read`         | Retrieve event information.                       |
 | `geofences:read`      | Retrieve geofence information.                    |
 | `geofences:write`     | Create, update, and delete geofences.             |
-| `alerts:read`         | Retrieve alert configuration information.         |
-| `alerts:write`        | Create, update, and delete alert configurations.  |

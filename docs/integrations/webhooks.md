@@ -58,13 +58,13 @@ This is the most common message type, representing an uplink from a device.
 }
 ```
 
-Other message types like `event`, `position`, `batteryStatus`, and `rotationStatus` follow the same structure as the Kafka integration.
+Other message types like uplink, position or battery status follow the same structure as the Kafka integration.
 
 ## Filtering
 
 When you configure a webhook integration in the truvami dashboard, you can apply filters to control which messages are sent to your endpoint.
 
-- **Message Type**: You can select which message types you want to receive (e.g., `uplink`, `position`, `event`).
+- **Message Type**: You can select which message types you want to receive (e.g., `uplink`, `position`, `battery_status`).
 - **Port Filtering**: If you select the `uplink` message type, you can further filter messages by the LoRaWAN port number. This is useful for routing data from different sensors or applications on the same device.
 
 ## Use Case Example: Movement Detection

@@ -43,6 +43,14 @@ It is defined as:
 |------|---------------------------|------------------------------|------------------------|
 | 0x4C | Variable number (uint8_t) | Variable number (uint8_t)    | Commands in TLV format |
 
+```mermaid
+packet
++8: "tag (0x4C)"
++8: "Length (uint8_t)"
++8: "Number of Commands (uint8_t)"
++224: "Data (Commands in TLV format)"
+```
+
 The settings uplink contains one or more settings in its data section.
 These settings are again in TLV format and are either device or runner settings:
 
@@ -154,6 +162,14 @@ It is defined as:
 | tag  | Length                    | Number of Commands           | Data                   |
 |------|---------------------------|------------------------------|------------------------|
 | 0x4C | Variable number (uint8_t) | Variable number (uint8_t)    | Commands in TLV format |
+
+```mermaid
+packet
++8: "tag (0x4C)"
++8: "Length (uint8_t)"
++8: "Number of Commands (uint8_t)"
++224: "Data (Commands in TLV format)"
+```
 
 The settings downlink contains one or more commands in its data section.
 These commands are again in TLV format and are either setter, getter or runner commands:

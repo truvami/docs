@@ -58,7 +58,7 @@ This is the most common message type, representing an uplink from a device.
 }
 ```
 
-Other message types like uplink, position or battery status follow the same structure as the Kafka integration.
+Other message types like positions or battery statuses follow the same structure as the Kafka integration.
 
 ## Filtering
 

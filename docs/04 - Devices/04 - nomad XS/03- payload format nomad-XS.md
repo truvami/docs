@@ -117,7 +117,7 @@ conf_change_id counter resets after reaching 15 (1111).
 
 ```mermaid
 ---
-title: "Current Cofig/Status Packet"
+title: "Current Config/Status Packet"
 ---
 packet
 +32: "Localization interval (moving, IM)"

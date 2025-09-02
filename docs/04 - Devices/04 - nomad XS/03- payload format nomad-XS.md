@@ -157,7 +157,7 @@ packet
 
 ```mermaid
 ---
-title: "Set Cofig Packet"
+title: "Set Config Packet"
 ---
 packet
 +32: "Localization interval (moving, IM)"

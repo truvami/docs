@@ -2,7 +2,7 @@
 sidebar_label: smart label
 ---
 
-# Getting Started Guide of smart label
+# Getting Started Guide for the Smart Label
 
 ### This document details the step-by-step instructions about how to set up the Truvami smart label.
 
@@ -17,7 +17,7 @@ sidebar_label: smart label
 
 
 #### 1. Charge the Truvami® smart label
-The smart label uses the ambiant indoor light as energy source. The optimal exposure is around 1000 lux and a full charge can take up to 2 days. 
+The smart label uses the ambient indoor light as an energy source. The optimal exposure is around 1000 lux and a full charge can take up to 2 days. 
 
 :warning: **Warning:** Exposing the label to direct sunlight of high intensity is not advised as the organic photovoltaic cells of the smart label are not designed for these conditions.
 
@@ -31,7 +31,7 @@ After pressing the power button and releasing it, the LED will blink 5 times in 
 
 ```
 If the tracker cannot join the network, the LED will blink in red. 
-It will try automatically to join to network until being successful. 
+It will try automatically to join the network until being successful. 
 ```
 
 
@@ -52,7 +52,7 @@ In the event that the device fails to join, consider the following list of worka
 If applicable, plug in your LoRaWAN Gateway. In case you have your own network server, check on there if data is coming through.
 
 #### 2. Check if battery is fully charged: 
-Leave the smart label exposed to constant indoor lighting for one day and try again step 2.
+Leave the smart label exposed to constant indoor lighting for one day and try step 2 again.
 
 #### 3. Reset the Smart Label
 

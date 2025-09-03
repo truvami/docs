@@ -6,6 +6,12 @@ sidebar_label: smart label
 
 ### This document details the step-by-step instructions about how to set up the Truvami smart label.
 
+<br></br>
+:bulb: Installation instructions are available in the [Smart Label Onboarding](https://github.com/user-attachments/files/22113240/Template.Smart.Label.Pilot.Onboarding.pdf) document <br></br>
+<br></br>
+
+
+
 <!-- ![Bild 1](/img/getting-started-imgs/tag_s_side.png) -->
 <img src="/img/smart_label/SL_LED_OFF.png" width="75%" height="auto"/>
 

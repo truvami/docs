@@ -10,7 +10,7 @@ sidebar_label: Smart Label
 ## 1. General
 
 ### What is the Truvami Smart Label?
-The Smart Label is a lightweight, solar-powered tracker that helps you locate items using WiFi, GNSS, and LoRaWAN technology.  
+The Smart Label is a lightweight, photovoltaic tracker that helps you locate items using WiFi, GNSS, and LoRaWAN technology.  
 
 ### How does the Smart Label acquire location? 
 -  **WiFi Sniffing:** Uses nearby WiFi networks for efficient localization.  

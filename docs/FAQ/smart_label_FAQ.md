@@ -2,11 +2,12 @@
 sidebar_label: Smart Label
 ---
 
-#  Truvami Smart Label – Customer FAQ
+#  Frequently Asked Questions about the Truvami Smart Label
 
 ---
 
-## General
+
+## 1. General
 
 ### What is the Truvami Smart Label?
 The Smart Label is a lightweight, solar-powered tracker that helps you locate items using WiFi, GNSS, and LoRaWAN technology.  
@@ -18,7 +19,7 @@ The Smart Label is a lightweight, solar-powered tracker that helps you locate it
 
 ---
 
-##  Power & Charging
+##  2. Power & Charging
 
 ### How is the Smart Label powered? 
 It charges using **ambient indoor light** through built-in photovoltaic cells.  
@@ -30,13 +31,13 @@ It charges using **ambient indoor light** through built-in photovoltaic cells.
 ☀ No. Direct, high-intensity sunlight may damage the organic photovoltaic cells.  
 
 ### How does the Smart Label behave with different energy levels?
-- ✅ **>40%:** Normal operations  
-- ⚠️ **20–40%:** Limited operations  
-- 🔴 **<20%:** Low-power operations  
+- above 40% Normal operations  
+- 20–40% Limited operations  
+- below 20% Low-power operations  
 
 ---
 
-## ⚙️ Modes & Configuration
+## 3.  Modes & Configuration
 
 ###  What operation modes are available?
 -  **Balanced Mode:** Updates every 12h (steady) / 1h (moving)  
@@ -48,7 +49,7 @@ It charges using **ambient indoor light** through built-in photovoltaic cells.
 
 ---
 
-## Installation & Handling
+## 4. Installation & Handling
 
 ###  How do I install the Smart Label?  
 1.  Clean the surface (dust, oil, grease) with a suitable cleaner.  
@@ -64,7 +65,7 @@ Yes. 🚫 Avoid bending, sharp impacts, immersion in water, and removing the Vel
 
 ---
 
-##  Activation & Connectivity
+## 5.  Activation & Connectivity
 
 ### How do I activate the device?
 - 🔘 Short press the power button.  
@@ -87,24 +88,24 @@ This can mean two things:
 
 ---
 
-##  Dashboard & Data
+## 6. Dashboard & Data
 
 ### What can I see in the Dashboard?
-- 🗺️ **Overview Page:** Map with all active trackers.  
-- 📋 **Tracker Table:** Last activity & search by ID/name.  
-- 🔎 **Device Details:** Recorded positions, events, and data over selected timeframes.  
+- **Overview Page:** Map with all active trackers.  
+- **Tracker Table:** Last activity & search by ID/name.  
+- **Device Details:** Recorded positions, events, and data over selected timeframes.  
 
 ###  The battery value doesn’t go beyond 60% despite being in optimal charging conditions. Why is that? 
-🔋 The Smart Label’s maximum charge value is **3.6V**. The displayed percentage will be corrected with the **next release of the Truvami dashboard**.  
+The Smart Label’s maximum charge value is **3.6V**. The displayed percentage will be corrected with the **next release of the Truvami dashboard**.  
 
 ---
 
-##  Support & Resources
+## 7. Support & Resources
 
 ###  Where can I find more information? 
-- 📖 [Truvami Documentation](https://docs.truvami.com/docs/welcome)  
-- 📑 [Truvami Factsheet](https://truvami.com/wp-content/uploads/2024/09/truvami-smart-label-factsheet.pdf)  
-- 🚀 [Getting Started Guide](https://docs.truvami.com/docs/Getting-started/smart%20label/)  
+- [Truvami Documentation](https://docs.truvami.com/docs/welcome)  
+- [Truvami Factsheet](https://truvami.com/wp-content/uploads/2024/09/truvami-smart-label-factsheet.pdf)  
+- [Getting Started Guide](https://docs.truvami.com/docs/Getting-started/smart%20label/)  
 
 ### Who do I contact for help? 
 💬 Please open a support ticket at [truvami.com/service-request](https://truvami.com/service-request).  

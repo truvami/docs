@@ -1,3 +1,7 @@
+---
+sidebar_label: Smart Label
+---
+
 #  Truvami Smart Label – Customer FAQ
 
 ---

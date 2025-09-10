@@ -10,7 +10,7 @@ sidebar_label: Smart Label
 ## 1. General
 
 ### What is the Truvami Smart Label?
-The Smart Label is a lightweight, photovoltaic tracker that helps you locate items using WiFi, GNSS, and LoRaWAN technology.  
+The Smart Label is a lightweight, photovoltaic tracker that helps you locate your assets using WiFi, GNSS, and LoRaWAN technology. Battery-free, the Smart Label provides an autonomous, safe, and sustainable alternative to traditional tracking solutions. 
 
 ### How does the Smart Label acquire location? 
 -  **WiFi Sniffing:** Uses nearby WiFi networks for efficient localization.  
@@ -40,9 +40,10 @@ It charges using **ambient indoor light** through built-in photovoltaic cells.
 ## 3.  Modes & Configuration
 
 ###  What operation modes are available?
+-  **High Performance Mode:** Updates every 6h (steady) / 20 min (moving)  
 -  **Balanced Mode:** Updates every 12h (steady) / 1h (moving)  
 -  **Power Saving Mode:** Updates every 24h (steady) / 1h (moving)  
--  **High Performance Mode:** Updates every 6h (steady) / 20 min (moving)  
+
 
 ###  Which mode should I choose?
 💡 Select based on your use case. If the battery drains too quickly, reduce the frequency of updates.  
@@ -58,10 +59,10 @@ It charges using **ambient indoor light** through built-in photovoltaic cells.
 
 ⚠️ **Important:**  
 - Only install at room temperature (~20°C).  
-- Use a spacer when applying to metal surfaces.  
+- Use a spacer(at least 1mm) when applying to metal surfaces.  
 
 ### Are there handling precautions?
-Yes. 🚫 Avoid bending, sharp impacts, immersion in water, and removing the Velcro before installation.  
+Yes. 🚫 Avoid bending, sharp impacts, immersion in water, and removing the Velcro before installation.  Also, no direct, high-intensity sunlight as it may damage the organic photovoltaic cells.  
 
 ---
 
@@ -104,8 +105,8 @@ The Smart Label’s maximum charge value is **3.6V**. The displayed percentage w
 
 ###  Where can I find more information? 
 - [Truvami Documentation](https://docs.truvami.com/docs/welcome)  
-- [Truvami Factsheet](https://truvami.com/wp-content/uploads/2024/09/truvami-smart-label-factsheet.pdf)  
-- [Getting Started Guide](https://docs.truvami.com/docs/Getting-started/smart%20label/)  
+- [Truvami Smart Label Factsheet](https://truvami.com/wp-content/uploads/2024/09/truvami-smart-label-factsheet.pdf)  
+- [Truvami Smart Label Getting Started Guide](https://docs.truvami.com/docs/Getting-started/smart%20label/)  
 
 ### Who do I contact for help? 
 💬 Please open a support ticket at [truvami.com/service-request](https://truvami.com/service-request).  

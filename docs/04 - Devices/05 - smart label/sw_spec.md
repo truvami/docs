@@ -1,5 +1,5 @@
 ---
-sidebar_label: Software description
+sidebar_label: Payload description
 ---
 
 # Software Description

@@ -2,7 +2,7 @@
 sidebar_label: Payload description
 ---
 
-# Software Description
+# Payload Description
 
 ## Overview
 

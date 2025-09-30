@@ -520,7 +520,7 @@ GPS scan will stop when one of the accuracy limit is met for pdop, hdop or vdop.
 |2|1|hdop|unit8, 0.1 granularity, [0..25.5]|Default 5.0|
 |3|1|vdop|unit8, 0.1 granularity, [0..25.5]|Default 5.0|
 
-Default HEX payload is 05323232
+Default HEX payload is `05323232`
 
 
 

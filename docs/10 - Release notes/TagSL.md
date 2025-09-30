@@ -2,7 +2,7 @@
 
 | Version | Release Date    | Changes |
 |---------|--------------|---------|
-| V3.3.3 | 2025-09-17    | <ul><li>Added new port 136 DL for pdop/vdop/hdop support as stopping criterion of the GNSS scan</li><li>WiFi scanning is now polling instead of blocking</li><li> No melody played after a watchdog reset</li></ul> |
+| V3.3.3 | 2025-09-30    | <ul><li>Added new port 136 DL for pdop/vdop/hdop support as stopping criterion of the GNSS scan</li><li>WiFi scanning is now polling instead of blocking</li><li> No melody played after a watchdog reset</li></ul> |
 | V3.3.2 | 2025-07-17    | <ul><li>Disable GPS internal LNA for quicker time to first fix (ttf)</li><li>Improve wake up strategy to avoid LoRWAN transmission when GPS fix is active</li></ul> |
 | V3.3.1 | 2025-06-02    | <ul><li>Extending port 198 reset uplink watchdog reset reason</li></ul> |
 | V3.3.0 | 2025-05-19    | <ul><li>Change port 198 uplink to add assert location in case of a watchdog reset in “[LINE NUMBER in ASCII]:[FILE]:[FUNCTION]” format.</li></ul> |

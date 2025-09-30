@@ -516,7 +516,7 @@ GPS scan will stop when one of the accuracy limit is met for pdop, hdop or vdop.
 | Byte | Size | Description | Format | Default |
 |------|---|------|---|---|
 |0|1|Cool-off timer| unit8, s [0..59]|Default 5 or existing value in NVM if the device is upgraded |
-|1|1|pdop|unit8, 0.1 granularity, [0..25.5]|Default 5.0|
+|1|1|pdop|unit8, 0.1 granularity, [0..25.5]|5.0|
 |2|1|hdop|unit8, 0.1 granularity, [0..25.5]|Default 5.0|
 |3|1|vdop|unit8, 0.1 granularity, [0..25.5]|Default 5.0|
 

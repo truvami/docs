@@ -6,12 +6,18 @@ sidebar_label: Payload Format
 
 ### Message Types
 
-| Port | Name                                                          | Type     | Description                                                                                                           |
-|------|---------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
-| 151  | [Settings Downlink](#setting-downlink)                        | Downlink | Contains a list of setter, getter and/or runner commands.                                                             |
-| 151  | [Settings Uplink](#setting-uplink)                            | Uplink   | Contains a list of device and/or runner settings. Sent in different situations.                                       |
-| 192  | [GNSS-NG Localization Message](#gnss-ng-localization-message) | Uplink   | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.                                    |
-| 197  | [Wi-Fi Localization Message](#wi-fi-localization-message)     | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.                                            |
+| Port | Name                                                                   |   Type   | Description                                                                                                           |
+|------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
+| 151  | [Settings Downlink](#setting-downlink)                                 | Downlink | Contains a list of setter, getter and/or runner commands.                                                             |
+| 151  | [Settings Uplink](#setting-uplink)                                     | Uplink   | Contains a list of device and/or runner settings. Sent in different situations.                                       |
+| 192  | [GNSS-NG Localization Message Steady](#gnss-message-format)   | Uplink   | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan. When device steady messages      |
+| 193  | [GNSS-NG Localization Message Moving](#gnss-message-format)                  | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device moving messages    |
+| 194  | [GNSS-NG Localization Message Steady with Timestamp](#gnss-message-format-with-timestamp)   | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device moving messages and timestamp.       |
+| 195  | [GNSS-NG Localization Message Moving with Timestamp](#gnss-message-format-with-timestamp)   | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. Device moving messages and timestamp |
+| 197  | [Wi-Fi Localization Message Steady](#wi-fi-message-format)                      | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device steady messages.                |
+| 198  | [Wi-Fi Localization Message Moving](#wi-fi-message-format)                     | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device moving messages.                |
+| 200  | [Wi-Fi Localization Message Steady with Timestamp](#wi-fi-message-format-with-timestamp)       | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device steady messages and timestamp.       |
+| 201  | [Wi-Fi Localization Message Moving with Timestamp](#wi-fi-message-format-with-timestamp)       | Uplink   | A single Wi-Fi localization message is sent after a successful Wi-Fi scan. When device moving messages and timestamp.       |
 
 ### Configurable Parameters
 
@@ -96,6 +102,55 @@ of the README of Semtech's geolocation services for more information.
 A detailed description of the LoRa Edge GNSS-NG (NAV-Group) positioning protocol is available
 [here](https://www.loracloud.com/documentation/modem_services?url=mdmsvc.html#modem-service-protocol-payloads).
 
+
+### New payload formats tag XL v3.2.0
+With this firmware update, there has been a differentiation between ports 192, 193, 194, and 195.
+
+|   Port:                      |   192  |   193  |   194  |   195  |
+|------------------------------|--------|--------|--------|--------|
+| Message sent when device is: | Steady | Moving | Steady | Moving |
+| Timestamps:                  |   No   |   No   |   Yes  |   Yes  |
+
+### GNSS message format 
+For port 192: Steady; port 193: Moving
+
+|  Byte Lenght |   1  |  Variable Lenght  |
+|--------------|------|-------------------|
+|  Field:      | GHDR |   U-GNSSLOC-NAV   |
+
+GHDR: (Group Header)
+|  Bits  |  7  |   6-5    |   4-0    |
+|--------|-----|----------|----------|
+| Field: | EOG | RFU=0b00 | GRP_TOKEN|
+
+
+EOG: End of Group Flag. When set to 1, the device indicates that the NAV-messages of the group should be evaluated to a position.
+
+RFU: Reserved for future use. Must be set to 0b00.
+
+GRP_TOKEN: The group token is a 5-bit unsigned integer ranging from 2 to 31 (including). Values 0 and 1 are not allowed. Upon reset, the first value of the group token must be chosen as a random value between 2 and 31 (including) and is incremented by 1 for each new group thereafter. Group token 31 is followed by 2. Subsequent messages with a constant group token value are associated to the same group.
+
+
+### GNSS message format with timestamp
+For port 194: Steady; port 195: Moving
+
+|  Byte Lenght |        4       |   1  |  Variable Lenght  |
+|--------------|----------------|------|-------------------|
+|  Field:      | Unix timestamp | GHDR |   U-GNSSLOC-NAV   |
+
+Unix timestamp (4-byte seconds, big-endian)
+
+GHDR: (Group Header)
+|  Bits  |  7  |   6-5    |   4-0    |
+|--------|-----|----------|----------|
+| Field: | EOG | RFU=0b00 | GRP_TOKEN|
+
+EOG: End of Group Flag. When set to 1, the device indicates that the NAV-messages of the group should be evaluated to a position.
+
+RFU: Reserved for future use. Must be set to 0b00.
+
+GRP_TOKEN: The group token is a 5-bit unsigned integer ranging from 2 to 31 (including). Values 0 and 1 are not allowed. Upon reset, the first value of the group token must be chosen as a random value between 2 and 31 (including) and is incremented by 1 for each new group thereafter. Group token 31 is followed by 2. Subsequent messages with a constant group token value are associated to the same group.
+
 ### Wi-Fi Localization Message
 
 A Wi-Fi localization message is sent on port 197.
@@ -111,6 +166,37 @@ Please refer to the section
 of the README of Semtech's geolocation services for more information.
 A detailed description of the LoRa Edge Wi-Fi positioning protocol is available
 [here](https://www.loracloud.com/documentation/modem_services?url=mdmsvc.html#modem-service-protocol-payloads).
+
+
+### New payload formats tag XL v3.2.0
+With this firmware update, there has been a differentiation between ports 197, 198, 200, and 201.
+
+|   Port:                      |   197  |   198  |   200  |   201  |
+|------------------------------|--------|--------|--------|--------|
+| Message sent when device is: | Steady | Moving | Steady | Moving |
+| Timestamps:                  |   No   |   No   |   Yes  |   Yes  |
+
+
+
+### Wi-Fi message format
+
+In addition, the Wi-Fi Messaging supports legacy for older firmware versions, but for TAG=0x00 (MACs only) remains valid (old format). New Wi-Fi uses TAG=0x01 with RSSI + MAC tuples.
+
+For port 197: Steady; port 198: Moving
+
+|  Byte Lenght |     1    |   1  |  6  |     |   1  |  6  |
+|--------------|----------|------|-----|-----|------|-----|
+|  Field:      |TAG = 0x01| RSSI | MAC | ... | RSSI | MAC |
+
+
+### Wi-Fi message format with timestamp
+For port 200: Steady; port 201: Moving
+|  Byte Lenght |        4       |      1     |   1  |  6  |     |   1  |  6  |
+|--------------|----------------|------------|------|-----|-----|------|-----|
+|  Field:      | Unix timestamp | TAG = 0x01 | RSSI | MAC | ... | RSSI | MAC |
+
+
+Unix timestamp (4-byte seconds, big-endian)
 
 ### Message Usage
 
@@ -203,7 +289,6 @@ These commands are again in TLV format and are either setter, getter or runner c
 | 2 | Reset Device                     | 0x81 | 0x00 | Triggers a system reset on the device                                                                                   | -          |
 | 3 | Run Location Scan                | 0x82 | 0x00 | Triggers a location scan on the device                                                                                  | -          |
 | 4 | Clear Store and Forward Buffer   | 0x83 | 0x00 | Clears the message buffer used by the store and forward service of the LBM stack                                        | -          |
-
 
 
 <br></br>

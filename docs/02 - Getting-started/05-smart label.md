@@ -61,13 +61,13 @@ To reset your Truvami Smart Label, you will need to switch it off and then switc
 ##### Steps
 ###### Switch Off
 
-- Press and hold the power button for 10 seconds.
+- Press and hold the power button firmly for 10 seconds.
 
 - Release the button – the device will power down.
 
 ###### Switch On
 
-- Press the power button briefly (about 0.2 seconds).
+- Press the power button firmly for 1 second..
 
 - The device will restart and is now reset.
 

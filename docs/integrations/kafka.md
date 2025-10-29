@@ -35,7 +35,7 @@ This allows forward compatibility with future schema versions.
 
 ## Message Types
 
-### Uplink
+### Uplink (v2)
 
 Represents an uplink transmission from a device, including raw payload and radio metadata.
 
@@ -84,13 +84,13 @@ Represents an uplink transmission from a device, including raw payload and radio
     "receivedAt": "2025-08-06T12:00:00Z",
     "dutyCycle": false
   },
-  "version": 1
+  "version": 2
 }
 ```
 
 ---
 
-### Event
+### Event (v2)
 
 Describes a device-level event such as button press or reset.
 
@@ -117,29 +117,33 @@ Describes a device-level event such as button press or reset.
     "occurredAt": "2025-07-29T14:19:02Z",
     "uplink": "126cd4ea-4c15-4cd7-b2a0-9860b5088fc2"
   },
-  "version": 1
+  "version": 2
 }
 ```
 
 #### `type` enum values (`EventType`)
 
-| Value | Meaning                  |
-| ----- | ------------------------ |
-| 0     | `Unspecified`            |
-| 1     | `ButtonPress`            |
-| 2     | `ConfigChange`           |
-| 3     | `ManualDeviceReset`      |
-| 4     | `AutomaticDeviceReset`   |
-| 5     | `DutyCycle`              |
-| 6     | `FirmwareChange`         |
-| 7     | `RotationStatePouring`   |
-| 8     | `RotationStateMixing`    |
-| 9     | `RotationStateError`     |
-| 10    | `RotationStateUndefined` |
+| Value | Meaning                    |
+| ----- | -------------------------- |
+| 0     | `UNSPECIFIED`              |
+| 1     | `BUTTON_PRESS`             |
+| 2     | `CONFIG_CHANGE`            |
+| 3     | `MANUAL_DEVICE_RESET`      |
+| 4     | `AUTOMATIC_DEVICE_RESET`   |
+| 5     | `DUTY_CYCLE`               |
+| 6     | `FIRMWARE_CHANGE`          |
+| 7     | `ROTATION_STATE_POURING`   |
+| 8     | `ROTATION_STATE_MIXING`    |
+| 9     | `ROTATION_STATE_ERROR`     |
+| 10    | `ROTATION_STATE_UNDEFINED` |
+| 11    | `GEOFENCE_ENTERED`         |
+| 12    | `GEOFENCE_EXITED`          |
+| 13    | `GEOFENCE_STAYED_IN`       |
+| 14    | `CONFIG_DOWNLINK_REJECTED` |
 
 ---
 
-### RotationStatus
+### RotationStatus (v2)
 
 Describes a transition between rotation states (e.g., from mixing to pouring).
 
@@ -174,22 +178,23 @@ Describes a transition between rotation states (e.g., from mixing to pouring).
     "capturedAt": "2025-08-06T11:59:50Z",
     "sequenceNumber": 42
   },
-  "version": 1
+  "version": 2
 }
 ```
 
 #### `lastState` / `newState` enum values (`RotationStatusType`)
 
-| Value | Meaning     |
-| ----- | ----------- |
-| 0     | `undefined` |
-| 1     | `pouring`   |
-| 2     | `mixing`    |
-| 3     | `error`     |
+| Value | Meaning       |
+| ----- | ------------- |
+| 0     | `UNSPECIFIED` |
+| 1     | `UNDEFINED`   |
+| 2     | `POURING`     |
+| 3     | `MIXING`      |
+| 4     | `ERROR`       |
 
 ---
 
-### Position
+### Position (v2)
 
 Provides location data captured by the device (GNSS, LoRa, Wi-Fi, BLE).
 
@@ -236,33 +241,36 @@ Provides location data captured by the device (GNSS, LoRa, Wi-Fi, BLE).
     "pdop": 1.5,
     "satellites": 6
   },
-  "version": 1
+  "version": 2
 }
 ```
 
 #### `source` enum values (`PositionSource`)
 
-| Value | Meaning |
-| ----- | ------- |
-| 0     | `gnss`  |
-| 1     | `lora`  |
-| 2     | `wifi`  |
-| 3     | `ble`   |
+| Value | Meaning        |
+| ----- | -------------- |
+| 0     | `UNSPECIFIED`  |
+| 1     | `GNSS_ACTIVE`  |
+| 2     | `GNSS_PASSIVE` |
+| 3     | `LORA`         |
+| 4     | `WIFI`         |
+| 5     | `BLE`          |
 
 ---
 
-### BatteryStatus
+### BatteryStatus (v2)
 
 Provides battery voltage readings.
 
-| Field      | Type     | Nullable | Description                                                      |
-| ---------- | -------- | -------- | ---------------------------------------------------------------- |
-| uplink     | `string` | No       | Uplink ID associated with the battery status                     |
-| devEui     | `string` | No       | Device EUI (unique identifier)                                   |
-| customer   | `string` | Yes      | Customer ID                                                      |
-| voltage    | `number` | No       | Battery voltage in volts                                         |
-| receivedAt | `string` | No       | Timestamp when the battery status was received (RFC 3339 format) |
-| capturedAt | `string` | No       | Timestamp when the battery status was captured (RFC 3339 format) |
+| Field      | Type      | Nullable | Description                                                      |
+| ---------- | --------- | -------- | ---------------------------------------------------------------- |
+| uplink     | `string`  | No       | Uplink ID associated with the battery status                     |
+| devEui     | `string`  | No       | Device EUI (unique identifier)                                   |
+| customer   | `string`  | Yes      | Customer ID                                                      |
+| voltage    | `number`  | No       | Battery voltage in volts                                         |
+| receivedAt | `string`  | No       | Timestamp when the battery status was received (RFC 3339 format) |
+| capturedAt | `string`  | No       | Timestamp when the battery status was captured (RFC 3339 format) |
+| isLow      | `boolean` | Yes     | Whether the battery is low                                       |
 
 **Example:**
 
@@ -274,9 +282,10 @@ Provides battery voltage readings.
     "customer": "126cd4ea-4c15-4cd7-b2a0-9860b5088fc2",
     "voltage": 3.65,
     "receivedAt": "2025-08-06T12:00:00Z",
-    "capturedAt": "2025-08-06T11:59:55Z"
+    "capturedAt": "2025-08-06T11:59:55Z",
+    "isLow": false
   },
-  "version": 1
+  "version": 2
 }
 ```
 

@@ -66,3 +66,182 @@ At the bottom, a small details card shows:
 - **Accuracy level** (e.g., Medium / ≤ 50 m)
 
 <br></br>
+
+## Map View
+
+The right side of the upper page displays an interactive map with navigation tools and visual indicators for the selected device’s positions.
+ 
+The map includes:
+ 
+- **Selected position marker**  
+- **Zoom controls**  
+- **Full-screen toggle**  
+- **Sequential navigation controls** (play, next, previous)  
+- **Current position index** (e.g., “Position 4 / 5”)  
+- **Position filtering button** (opens the Position Filtering popup)
+ 
+The map updates automatically when the user navigates through the timeline.
+
+<br/>
+ 
+### Position Filtering Popup
+ 
+Clicking the **filter icon** in the bottom control bar opens the **Position Filtering** popup.  
+This dialog allows users to customize how positions are displayed on the map, helping reduce visual clutter or highlight specific movement patterns.
+ 
+The popup contains two main sections:
+ 
+<br/>
+
+---
+ 
+## 1. Position Filtering
+ 
+### **Group Threshold**
+A distance-based rule that groups nearby positions together.
+ 
+- When enabled, positions within the selected threshold (e.g., 100m–1000m) are merged visually.  
+- This helps simplify dense position histories.
+ 
+**Options:**  
+- `Off` (default) — all positions are shown individually  
+- Slider values up to **1000m**
+ 
+### **Skip Threshold**
+Filters out positions that are too close to the previous one.
+ 
+- Useful for devices that report frequent stationary updates.  
+- Removes redundant fixes under a selected distance.
+ 
+**Options:**  
+- `Off` (default) — no positions are skipped  
+- Slider values up to **1000m**
+ 
+<br/>
+ 
+---
+ 
+## 2. Visual Style
+ 
+### **Start Color / End Color**
+Defines a **gradient** applied to the path from oldest → newest position.
+ 
+- Helps visualize chronology and movement progression.  
+- Users can pick any color via the color selectors.
+ 
+### **Min Opacity / Max Opacity**
+Controls marker and path transparency.
+ 
+- Lower opacity = more subtle visualization  
+- Higher opacity = more emphasis on positions  
+ 
+This is particularly useful for large datasets where overlapping paths occur.
+ 
+<br/>
+ 
+---
+ 
+## How Filtering Affects the Map
+ 
+Changes applied in the popup immediately update the map visualization:
+ 
+- fewer or grouped markers  
+- simplified trajectory lines  
+- chronological gradient coloring  
+- improved clarity in dense urban clusters  
+ 
+Filtering does **not** alter timeline entries or the positions table — it only changes **map visualization**.
+
+# Positions Table
+
+Below the map, the **Positions** section lists all location fixes recorded during the selected time interval.
+
+Columns include:
+
+- **Timestamp** – when the fix was generated  
+- **Received At** – when the fix was received by the backend  
+- **Delay** – time delta between generation and receipt  
+- **Latitude / Longitude**  
+- **Altitude**  
+- **Moving** – movement state (moving / steady)  
+- **Source** – WiFi, GNSS, LoRa, etc.  
+- **Accuracy**  
+- **Buffered** – whether the fix was buffered  
+- **Buffer level** – remaining buffer capacity  
+
+The table supports pagination and exporting through the **Export** button.
+
+<br></br>
+
+# Events Section
+
+The **Events** panel shows recent events associated with this device (filtered by the selected date range).
+
+Each event shows:
+
+- **Event type** (e.g., Duty Cycle)  
+- **Timestamp**  
+- **Description**  
+
+Scrolling is available when many events are present.
+
+<br></br>
+
+# Current Configuration
+
+This section displays the active configuration parameters for the device.
+
+Typical configuration items include:
+
+- **Mode** (Custom / Default / Profile-based)  
+- **Moving interval**  
+- **Steady interval**  
+- **Battery keep-alive interval**  
+- **GPS timeout**  
+- **Motion delay**  
+- **Motion threshold**  
+- **Batch size**  
+- **Buffer size**
+
+A link allows opening the configuration editor (if available to the user).
+
+<br></br>
+
+# Linked Alert Configurations
+
+This section lists alert rules associated with this device.
+
+If no alerts are configured, the text **“No linked alerts found.”** is shown.
+
+<br></br>
+
+# Battery Section
+
+A battery graph visualizes:
+
+- **Voltage over time**  
+- **Estimated battery percentage**  
+
+The graph spans the selected date range and helps diagnose battery health trends.
+
+<br></br>
+
+# Uplinks Section
+
+The final section lists all uplinks sent by the device during the selected interval.
+
+Columns include:
+
+- **Timestamp**  
+- **Port**  
+- **Payload**  
+- **Best RSSI / SNR**  
+- **Uplink counter**  
+- **Spreading factor**  
+- **Confirmed / Not confirmed**
+
+Clicking an uplink opens the full uplink detail page.
+
+Pagination is available for navigating through long lists.
+
+<br></br>

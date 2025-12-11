@@ -10,6 +10,8 @@ It displays detailed information for each tracker and offers tools for searching
 exporting, and customizing the displayed columns. This page is the main entry point for managing  
 and inspecting device-level data.
 
+<img src="/img/dashboard/dashboard-trackers.webp" width="100%" height="auto"/>
+
 <br></br>
 
 ## Trackers Table Overview
@@ -54,37 +56,6 @@ Clicking the filter icon opens a dropdown containing:
 - checkboxes for selecting one or multiple groups  
 
 Only trackers that belong to the selected groups will be displayed.
-
-<br></br>
-
-## Importing Trackers
-
-Clicking the **Import** button opens a modal that allows batch creation of new trackers.
-
-### Import Options
-
-Users can import trackers in two ways:
-
-1. **Upload a CSV/TSV/XLS/XLSX file**  
-2. **Paste CSV rows directly** into the provided text area
-
-The CSV format may include fields such as: dev_eui, app_eui, app_key.
-
-
-If both a file and pasted content are provided, the uploaded file takes priority.
-
-### Additional Settings
-
-The import dialog also allows selecting:
-
-- **Customer** (optional)  
-- **Device type** (required), e.g.:  
-  - Tag S  
-  - Tag L  
-  - Tag XL  
-  - Nomad XS  
-  - Nomad XL  
-  - Smartlabel
 
 <br></br>
 

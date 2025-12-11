@@ -10,6 +10,8 @@ It is designed to give users an immediate understanding of where their devices a
 how many are active, and what their most recent status is.  
 The map serves as the primary visualization tool for daily monitoring.
 
+<img src="/img/dashboard/truvami-dashboard.webp" width="100%" height="auto"/>
+
 ## Map Interface
 
 The central element of the Home Page is the interactive map, which displays devices as markers based on their last reported location.

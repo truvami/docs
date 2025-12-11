@@ -9,6 +9,8 @@ The **Device Details** page provides a complete overview of a specific tracker, 
 location history, uplinks, configuration, battery information, and linked alert rules.  
 This view is opened by clicking a device entry in the **Trackers** list.
 
+<img src="/img/dashboard/dashboard-device-details.webp" width="100%" height="auto"/>
+
 <br></br>
 
 ## Header Section
@@ -62,7 +64,7 @@ At the bottom, a small details card shows:
 - **Coordinates**  
 - **Address resolution status**  
 - **Fix source** (Altitude, WiFi, GNSS, Stationary)  
-- **TraceId**  
+- **Uplink**  
 - **Accuracy level** (e.g., Medium / ≤ 50 m)
 
 <br></br>
@@ -88,6 +90,9 @@ The map updates automatically when the user navigates through the timeline.
  
 Clicking the **filter icon** in the bottom control bar opens the **Position Filtering** popup.  
 This dialog allows users to customize how positions are displayed on the map, helping reduce visual clutter or highlight specific movement patterns.
+
+<img src="/img/dashboard/device-details-map.webp" width="100%" height="auto"/>
+
  
 The popup contains two main sections:
  
@@ -229,6 +234,9 @@ The graph spans the selected date range and helps diagnose battery health trends
 # Uplinks Section
 
 The final section lists all uplinks sent by the device during the selected interval.
+
+<img src="/img/dashboard/dashboard-device-uplinks.webp" width="100%" height="auto"/>
+
 
 Columns include:
 

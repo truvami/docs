@@ -59,6 +59,36 @@ Only trackers that belong to the selected groups will be displayed.
 
 <br></br>
 
+## Importing Trackers
+
+Clicking the **Import** button opens a modal that allows batch creation of new trackers.
+
+### Import Options
+
+Users can import trackers in two ways:
+
+1. **Upload a CSV/TSV/XLS/XLSX file**  
+2. **Paste CSV rows directly** into the provided text area
+
+The CSV format may include fields such as: dev_eui, app_eui, app_key.
+
+
+If both a file and pasted content are provided, the uploaded file takes priority.
+
+### Additional Settings
+
+The import dialog also allows selecting:
+
+- **Device type** (required), e.g.:  
+  - Tag S  
+  - Tag L  
+  - Tag XL  
+  - Nomad XS  
+  - Nomad XL  
+  - Smartlabel
+
+<br></br>
+
 ## Column Visibility Options
 
 The column visibility menu allows users to customize which fields are shown in the table.

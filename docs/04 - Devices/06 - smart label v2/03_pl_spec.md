@@ -1,132 +1,67 @@
 ---
-sidebar_label: Payload Format
+sidebar_label v2: Payload Format 
 ---
 
-# Payload Format of SmartLabel
+# Payload Format of Smart Label v2
 
-## Uplinks
+### Uplinks
 
-### Low Power battery uplink
-
-__Uplink port: 1__
-
-Sent only once a day in case the energy level is below 20%
-
-|                  |  Bytes[0:1]|  Bytes[2:3]|
-|------------------|------------|------------|
-| __Value__        |  Battery   |Cell voltage|
-| __Size [Bytes]__ |  2         |  2         |
-| __Type__         |  UINT16    |  UINT16    |
-| __Unit__         |  mV        |   mV       |
-
-### Temperature uplink
-
-__Uplink port: 2__
-
-Temperature measurement uplink if the temperature is outside of thresholds
-
-|                  | Bytes[0:1]  | Byte 2     |
-|------------------|-------------|------------|
-| __Value__        | Temperature | RH         |
-| __Size [Bytes]__ | 2           | 1          |
-| __Type__         | UINT16      | UINT8      |
-| __Unit__         | 0.01 C      |  0.5 %     |
+| Port | Name                                                                   |   Type   | Description                                                                                                           |
+|------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
+| 150  | [Settings](#setting-uplink)                                            | Uplink | Contains a list of TLV values, like heartbeat or other current settings.                       |
+| 180  | [GNSS-NG Localization Message Steady](#gnss-message-format)            | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
+| 190  | [Wi-Fi Localization Message](#wi-fi-message-format)                    | Uplink | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.     |
+| 200  | [BLE Localization Message](#ble-message-format)                        | Uplink | A single BLE localization message is sent after a successful Wi-Fi scan.     |
 
 
-### Heartbeat uplink
-
-__Uplink port: 11__
-
-|                  |  Bytes[0:1]|  Bytes[2:3]| Bytes[4:5]  | Byte 6     |
-|------------------|------------|------------|-------------|------------|
-| __Value__        |  Battery   |Cell voltage| Temperature | RH         |
-| __Size [Bytes]__ |  2         |  2         | 2           | 1          |
-| __Type__         |  UINT16    |  UINT16    | UINT16      | UINT8      |
-| __Unit__         |  mV        |   mV       | 0.01 C      |  0.5 %     |
+### Downlinks
+| Port | Name                                                                   |   Type   | Description                                                                                                           |
+|------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
+| 150  | [Settings](#setting-downlink)                                          | Downlink | Contains a list of setter, getter and/or runner commands, in TLV format.                                              |
+| 155  | [Getter](#getter-downlink)                                             | Downlink | Contains a list of TLV IDs. The device will then send the data associated with speicified TLV IDs. |
+| 160  | [Action](#action-downlink)                                             | Downlink | Contains a list of TLVs with actions, like device reset and others. |
 
 
-### GNSS scan uplink
+### TLV list of IDs
 
-__Uplink port: 192__
-
-|                  | Byte 0 | Bytes[1:N] |
-|------------------|--------|------------|
-| __Value__        | Last of scan group and group token | NAV message |
-| __Size [Bytes]__ | 1      | max 49 |
-| __Type__         | UINT8  | UINT8  |
-
-### WiFi scan uplink
-
-__Uplink port: 197__
-
-|                  | Byte 0   | Byte 1   | Bytes[2:7] | Byte 8   | Bytes[9:14] | ... |          |         |
-|------------------|----------|----------|------------|----------|-------------|-----|----------|---------|
-| __Value__        | 0x01 | AP1 RSSI | AP1 MAC    | AP2 RSSI | AP2 MAC     |     | APN RSSI | APN MAC |
-| __Size [Bytes]__ | 1        | 1        | 6          | 1        | 6           |     | 1        | 6       |
-| __Type__         | UINT8    | UINT8    | UINT8      | UINT8    | UINT8       |     | UINT8    | UINT8   |
-
-### Configuration uplink
-
-__Uplink port: 4__
-
-|                  | Byte 0 | Bytes[1:2]      | Bytes[3:4]      | Byte 5             |  Bytes[6:7]        | Bytes[8:9]    | Bytes[10:11] | Bytes[12:13] | Byte 14 | Byte 15 | Byte 16 | Byte 17 | Byte 18 | Byte 19 |
-|------------------|--------|--------|--------|-----------------|-----------------|--------------------|--------------------|----------------|-------------|-------------|-------------|-------------|-------------|-------------|
-| __Value__        | flags  |steady_interval_s|moving_interval_s|heartbeat_interval_h|acc_threshold_mg|acc_delay_ms |temperature_polling_interval_s|temperature_uplink_hold_interval_s|temperature_upper_threshold|temperature_lower_threshold|min_AP|Version_Major*|Version_Minor*|Version_Patch*|
-| __Size [Bytes]__ | 1      | 2               | 2               | 1                  | 2                  | 2              | 2           | 2           | 1           | 1           | 1           |1           |1           |1           |
-| __Type__         | UINT8  | UINT16          | UINT16          | UINT8              | UINT16              | UINT16         | UINT16      | UINT16      | INT8      |INT8      |UINT8       | UINT8       | UINT8       | UINT8       | 
-
-*Firmware version is only available in the first uplink after reset.
-
-### LIC Voltage levels uplink/downlink
-
-__Uplink/Downlink port: 150__
-
-|                  |  Bytes[0:1]   |  Bytes[2:3]  |  Bytes[4:5]  |  Bytes[6:7]  |  Bytes[8:9]  |
-|------------------|---------------|--------------|--------------|--------------|--------------|
-| __Value__        |lic_100_percent|lic_80_percent|lic_60_percent|lic_40_percent|lic_20_percent|
-| __Size [Bytes]__ |  2            |  2           |  2           |  2           |  2           |
-| __Type__         |     UINT16    |    UINT16    |    UINT16    |    UINT16    |    UINT16    |
-| __Unit__         |     mV        |     mV       |    mV        |     mV       |     mV       |
+|  # | Name                             | Tag  | Size | Format | Default |
+|----|----------------------------------|------|------|------|--------|
+|  1 | Device flags                     | 0x10 |    1 | -    | -      |
+|  2 | Heartbeat interval               | 0x14 |    1 | -    | -      |
+|  3 | Asset tracking Intervals         | 0x18 |    2 | -    | -      |
+|  4 | Acceleration sensitivity         | 0x1C |    2 | -    | -      |
+|  5 | Movement detection plan          | 0x20 |    5 | -    | -      |
+|  6 | Battery                          | 0x28 |    3 | -    | -      |
+|  7 | Reset data                       | 0x30 | 0x00 | -    | -      |
+|  8 | Scan Counts                      | 0x4B | 0x00 | -    | -      |
+|  9 | ADR                              | 0x4E | 0x00 | -    | -      |
+| 10 | Advertisement BLE duration FWU   | 0x24 |    2 | -    | -      |
+| 11 | Heartbeat TLV list               | 0x24 |    2 | -    | -      |
+| 12 | Firmware hash                    | 0x2C | 0x00 | -    | -      |
+| 13 | Localization action              | 0x30 | 0x00 | -    | -      |
+| 14 | Reset device action              | 0x30 | 0x00 | -    | -      |
+| 15 | Clear stored buffer              | 0x30 | 0x00 | -    | -      |
 
 
-## Downlinks
+### Configurable Parameters
+
+The following table lists the default values and limits of the configurable parameters.
+The parameters are modifiable via settings downlinks.
+
+| Configuration Name         | Default Value | Minimum | Maximum     | Unit                       | Description                                                                                                                        |
+|----------------------------|---------------|---------|-------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| MOVING_INTERVAL            | 300           | 120     | 65535       | seconds                    | Localization scan interval if the device is in motion.                                                                             |
+| STEADY_INTERVAL            | 7200          | 120     | 65535       | seconds                    | Localization scan interval if the device is **not** in motion.                                                                     |
+| HEARTBEAT_INTERVAL         | 6             | 1       | 255         | hours                      | Heartbeat message interval.                                                                                                        |
+| BLE_FWU_ENABLED            | 1             | 0       | 1           | -                          | BLE firmware update over the air enabled.                                                                                          |
+| ADVERTISEMENT_FWU_INTERVAL | 30            | 5       | 255         | seconds                    | Time period during which the device opens the BLE advertisement for firmware updates.                                              |
+| GNSS_ENABLE                | 1             | 0       | 1           | -                          | GNSS scans enabled.                                                                                                                |
+| WIFI_ENABLE                | 1             | 0       | 1           | -                          | Wi-Fi scans enabled.                                                                                                               |
+| ACCELERATION_ENABLE        | 1             | 0       | 1           | -                          | If enabled, localization scans are triggered if the device is in motion (based on the acceleration sensor data).                   |
+| ACCELERATION_SENSITIVITY   | 300           | 0       | 16000       | milli-g                    | Acceleration sensor threshold.                                                                                                     |
+| ACCELERATION_DELAY         | 1500          | 1000    | 65535       | milliseconds               | The device must remain in motion for at least the specified time to trigger a localization scan.                                   |
 
 
-### Configuration downlink
-
-
-__Downlink port: 128__
-
-|                  | Byte 0 | Bytes[1:2]      | Bytes[3:4]      | Byte 5             |  Bytes[6:7]        | Bytes[8:9]   | Bytes[10:11]  | Bytes[12:13]        | Bytes 14|Bytes 15|Bytes 16|
-|------------------|--------|-----------------|-----------------|--------------------|--------------------|--------------|---------------|---------------------|---------|--------|--------|
-| __Value__        | flags  |steady_interval_s|moving_interval_s|heartbeat_interval_h|acc_threshold_mg     |acc_delay_ms |temperature_polling_interval_s|temperature_uplink_hold_interval_s|temperature_upper_threshold|temperature_lower_threshold|min_AP|
-| __Size [Bytes]__ | 1      | 2               | 2               | 1                  | 2                  | 2            | 2             |2                    | 1       |1       |1       |
-| __Type__         | UINT8  | UINT16          | UINT16          | UINT8              | UINT16             | UINT16       | UINT16        | UINT16              | INT8    |INT8    | UINT8              | 
-
-
-In case temperature_polling_interval_s, temperature_uplink_hold_interval_s are set to 0, the function is disabled
-
-### Reset downlink
-
-__Downlink port: 129__
-
-|                  | Byte 0 |
-|------------------|--------|
-| __Value__        | 1      |
-| __Size [Bytes]__ | 1      |
-| __Type__         | UINT8  | 
-
-### Turn-off downlink
-
-Command to turn the device off. Activation is only possible with button press afterwards. (Press for 0.2 seconds to enable, press for 10 seconds to disable)
-
-__Downlink port: 130__
-
-|                  | Byte 0 |
-|------------------|--------|
-| __Value__        | 1      |
-| __Size [Bytes]__ | 1      |
-| __Type__         | UINT8  | 
 
 
 

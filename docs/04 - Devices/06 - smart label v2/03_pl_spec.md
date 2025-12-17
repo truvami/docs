@@ -24,23 +24,23 @@ sidebar_label v2: Payload Format
 
 ### TLV list of IDs
 
-|  # | Name                             | Tag  | Size | Format | Default |
-|----|----------------------------------|------|------|------|--------|
-|  1 | Device flags                     | 0x10 |    1 | -    | -      |
-|  2 | Heartbeat interval               | 0x14 |    1 | -    | -      |
-|  3 | Asset tracking Intervals         | 0x18 |    2 | -    | -      |
-|  4 | Acceleration sensitivity         | 0x1C |    2 | -    | -      |
-|  5 | Movement detection plan          | 0x20 |    5 | -    | -      |
-|  6 | Battery                          | 0x28 |    3 | -    | -      |
-|  7 | Reset data                       | 0x30 | 0x00 | -    | -      |
-|  8 | Scan Counts                      | 0x4B | 0x00 | -    | -      |
-|  9 | ADR                              | 0x4E | 0x00 | -    | -      |
-| 10 | Advertisement BLE duration FWU   | 0x24 |    2 | -    | -      |
-| 11 | Heartbeat TLV list               | 0x24 |    2 | -    | -      |
-| 12 | Firmware hash                    | 0x2C | 0x00 | -    | -      |
-| 13 | Localization action              | 0x30 | 0x00 | -    | -      |
-| 14 | Reset device action              | 0x30 | 0x00 | -    | -      |
-| 15 | Clear stored buffer              | 0x30 | 0x00 | -    | -      |
+|  # | Name                             | Tag  | Size | Format | Description | Range | Default |
+|----|----------------------------------|------|------|------- |-------------|-------|---------|
+|  1 | Device flags                     | 0x10 |    1 | uint8_t (bitfield) | bit 0: GNSS_ENABLE<br/>bit 1: WIFI_ENABLE<br/>bit 2: BLE_ENABLE<br/>bit 3: MOVEMENT_ENABLE<br/>bit 4: BLE_FWU_ENABLED<br/>    | 0 - 1 | 1<br/>1<br/>1<br/>1<br/>1 |
+|  2 | Heartbeat interval               | 0x14 |    1 | uint8_t | Hours | 1 - 255 | 24 |
+|  3 | Asset tracking Intervals         | 0x18 |    4 | uint16_t </br> uint16_t</br> | Moving: Minutes</br> Steady: Minutes  | ??</br>?? | 15 </br> 60|
+|  4 | Acceleration sensitivity         | 0x1C |    2 | uint16_t | mG  | 1 - 16000 | 50      |
+|  5 | Movement detection plan          | 0x20 |    5 | uint8_t</br> uint8_t</br> uint8_t</br> uint8_t</br>uint8_t</br>   | slice_time_seconds</br> window_slice_count </br> window_slice_required </br> start_move_win_count </br> stop_move_win_count </br>| ?? | 1</br>5</br>3</br>3</br>4    |
+|  6 | Battery                          | 0x24 |    3 | uint8_t</br> uint16_t | Percentage</br> Voltage | 0-100</br> (hw dependent)    | |
+|  7 | Reset data                       | 0x28 |    3 | uint8_t</br> uint16_t | Reason</br>Count |   |   |
+|  8 | Scan Counts                      | 0x2C |    6 | uint16_t</br> uint16_t</br> uint16_t | GNSS scan count</br>WiFi scan count</br>BLE scan count</br> |     |
+|  9 | ADR                              | 0x30 |    1 | uint8_t | 0: DR5 (EU868 SF7)<br/> 1: DR4 (EU868 SF8)<br/>2: DR3 (EU868 SF9, US915 SF7)<br/>3: DR2 (EU868 SF10, US915 SF8)<br/>4: DR1 (EU868 SF11, US915 SF9)<br/>5: DR0 (EU868 SF12)<br/>6: DR1-3 array (EU868 SF9-11, US915 SF7-9) <br/>7: ADR (SF7-12) for EU868     | 0 - 7 |2 |
+| 10 | Advertisement BLE duration FWU   | 0x34 |    2 | -    | -      |
+| 11 | Heartbeat TLV list               | 0x38 |  1-n | -    | -      |
+| 12 | Firmware hash                    | 0x3C |    ? | -    | -      |
+| 13 | Localization action              | 0x40 |    0 | -    | -      |
+| 14 | Reset device action              | 0x44 |    0 | -    | -      |
+| 15 | Clear stored buffer              | 0x48 |    0 | -    | -      |
 
 
 ### Configurable Parameters

@@ -2,14 +2,14 @@
 sidebar_label v2: Payload Format 
 ---
 
-# Payload Format of Smart Label v2 - [draft]
+# Payload Format of Smart Label v2 - [draft - Anything is subject to change] 
 
 ### Uplinks
 
 | Port | Name                                                                   |   Type   | Description                                                                                                           |
 |------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
 | 150  | [Settings](#setting-uplink)                                            | Uplink | Contains a list of TLV values, like heartbeat or other current settings.                       |
-| 180  | [GNSS-NG Localization Message Steady](#gnss-message-format)            | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
+| 180  | [GNSS-NG Localization Message](#gnss-message-format)                   | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
 | 190  | [Wi-Fi Localization Message](#wi-fi-message-format)                    | Uplink | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.     |
 | 200  | [BLE Localization Message](#ble-message-format)                        | Uplink | A single BLE localization message is sent after a successful Wi-Fi scan.     |
 
@@ -18,8 +18,7 @@ sidebar_label v2: Payload Format
 | Port | Name                                                                   |   Type   | Description                                                                                                           |
 |------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
 | 150  | [Settings](#setting-downlink)                                          | Downlink | Contains a list of setter, getter and/or runner commands, in TLV format.                                              |
-| 155  | [Getter](#getter-downlink)                                             | Downlink | Contains a list of TLV IDs. The device will then send the data associated with speicified TLV IDs. |
-| 160  | [Action](#action-downlink)                                             | Downlink | Contains a list of TLVs with actions, like device reset and others. |
+| 155  | [Getter/Action](#getter-downlink)                                      | Downlink | Contains a list of TLV IDs. The device will then send the data associated with speicified TLV IDs, or execute the Action. |
 
 
 ### TLV list of IDs
@@ -39,29 +38,64 @@ sidebar_label v2: Payload Format
 | 11 | Heartbeat TLV list               | 0x38 |  1-n | uint8_t * n  | TLVs IDs list  | * | 0x24 0x2C |
 | 12 | FW & HW Version                  | 0x3C |    4 | uint32_t | CRC32 of the current FW | |
 | 12 | Firmware CRC32                   | 0x3C |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
-| 13 | Localization action              | 0x40 |    0 | -    | Triggers the localization   | |
-| 14 | Reset device action              | 0x44 |    0 | -    | Resets thed evice      | |
-| 15 | Clear stored buffer              | 0x48 |    0 | -    | Clears the stored buffer  | |
+| 13 | Clear stored buffer              | 0x40 |    0 | -    | Clears the stored buffer  | |
+| 14 | Localization action              | 0x44 |    0 | -    | Triggers the localization   | |
+| 15 | Reset device action              | 0x48 |    0 | -    | Resets thed evice      | |
 
+# Uplinks format
+## Wi-Fi Localization Message - port 190
 
-### Configurable Parameters
+### Wi-Fi format summary by Tag
+|  Tag |  Seq  |  Timestamp  |   (RSSI+MAC)*n  |   Description |
+|------|-------|-------------|-----------------|---------------|
+| 0x10 |       |             |        X        |  (Moving) WiFi   |
+| 0x14 |       |      X      |        X        |  (Moving) ts + WiFi   |
+| 0x18 |       |             |        X        |  (Steady) WiFi      |
+| 0x1C |       |      X      |        X        |  (Steady) ts + Wifi   |
+| 0x80 |   X   |             |        X        |  (Moving) seq + WiFi  |
+| 0x84 |   X   |      X      |        X        |  (Moving) seq + ts + WiFi |
+| 0x88 |   X   |             |        X        |  (Steady) seq + WiFi |
+| 0x8C |   X   |      X      |        X        |  (Steady) seq + ts + WiFi |
 
-The following table lists the default values and limits of the configurable parameters.
-The parameters are modifiable via settings downlinks.
+### Wi-Fi, moving with no timestamp
+|  Size: |  Tag (1)  | 1    | 6  |     | 1    | 6   |
+|--------|-----------|------|----|-----|------|-----|
+| Field: |   0x10    | RSSI | MAC| ... | RSSI | MAC |
 
-| Configuration Name         | Default Value | Minimum | Maximum     | Unit                       | Description                                                                                                                        |
-|----------------------------|---------------|---------|-------------|----------------------------|------------------------------------------------------------------------------------------------------------------------------------|
-| MOVING_INTERVAL            | 300           | 120     | 65535       | seconds                    | Localization scan interval if the device is in motion.                                                                             |
-| STEADY_INTERVAL            | 7200          | 120     | 65535       | seconds                    | Localization scan interval if the device is **not** in motion.                                                                     |
-| HEARTBEAT_INTERVAL         | 6             | 1       | 255         | hours                      | Heartbeat message interval.                                                                                                        |
-| BLE_FWU_ENABLED            | 1             | 0       | 1           | -                          | BLE firmware update over the air enabled.                                                                                          |
-| ADVERTISEMENT_FWU_INTERVAL | 30            | 5       | 255         | seconds                    | Time period during which the device opens the BLE advertisement for firmware updates.                                              |
-| GNSS_ENABLE                | 1             | 0       | 1           | -                          | GNSS scans enabled.                                                                                                                |
-| WIFI_ENABLE                | 1             | 0       | 1           | -                          | Wi-Fi scans enabled.                                                                                                               |
-| ACCELERATION_ENABLE        | 1             | 0       | 1           | -                          | If enabled, localization scans are triggered if the device is in motion (based on the acceleration sensor data).                   |
-| ACCELERATION_SENSITIVITY   | 300           | 0       | 16000       | milli-g                    | Acceleration sensor threshold.                                                                                                     |
-| ACCELERATION_DELAY         | 1500          | 1000    | 65535       | milliseconds               | The device must remain in motion for at least the specified time to trigger a localization scan.                                   |
+### Wi-Fi, moving with timestamp
+|  Size: |  Tag (1)  |      4    | 1    | 6   |     |   1  | 6   |
+|--------|-----------|-----------|------|-----|-----|------| --- |
+| Field: |    0x14   | Timestamp | RSSI | MAC | ... | RSSI | MAC |
 
+### Wi-Fi, steady with no timestamp
+|  Size: |  Tag (1)  | 1    | 6  |     | 1    | 6   |
+|--------|-----------|------|----|-----|------|-----|
+| Field: |   0x18    | RSSI | MAC| ... | RSSI | MAC |
+
+### Wi-Fi, steady with timestamp
+|  Size: |  Tag (1)  |      4    | 1    |  6  |     |   1  |  6  |
+|--------|-----------|-----------|------|-----|-----|------|-----|
+| Field: |    0x1C   | Timestamp | RSSI | MAC | ... | RSSI | MAC |
+
+### Wi-Fi, packet sequence, moving with no timestamp
+|  Size: |  Tag (1)  |  2   |  1   |  6  |     |  1   |  6  |
+|--------|-----------|------|------|-----|-----|------|-----|
+| Field: |   0x80    | Seq  | RSSI | MAC | ... | RSSI | MAC |
+
+### Wi-Fi, packet sequence, moving with timestamp
+|  Size: |  Tag (1)  |  2   |      4    | 1    | 6  |     | 1    | 6   |
+|--------|-----------|------|-----------|----|-----|------|-----|------|
+| Field: |    0x84   | Seq  | Timestamp | RSSI | MAC| ... | RSSI | MAC |
+
+### Wi-Fi, packet sequence, steady with no timestamp
+|  Size: |  Tag (1)  |  2   | 1    |  6  |     |  1  | 6   |
+|--------|-----------|------|------|-----|-----|-----| ---- |
+| Field: |   0x88    | Seq  | RSSI | MAC | ... | RSSI | MAC |
+
+### Wi-Fi, packet sequence, steady with timestamp
+|  Size: |  Tag (1)  |  2  |    4      |   1  |  6  |     |  1   |  6  |
+|--------|-----------|-----|-----------|------|-----|-----|------|-----|
+| Field: |    0x8C   | Seq | Timestamp | RSSI | MAC | ... | RSSI | MAC |
 
 
 

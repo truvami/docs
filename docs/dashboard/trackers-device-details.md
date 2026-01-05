@@ -26,6 +26,8 @@ At the top of the page, key information about the device is displayed:
 
 An edit icon next to the device name allows renaming the device.
 
+<img src="/img/dashboard/dashboard-header-section.jpg" width="100%" height="auto"/>
+
 To the right, additional information is shown:
 
 - **Last known position** (address, timestamp)  
@@ -37,7 +39,10 @@ A **Back to Trackers** button is available for navigation.
 
 ## Date Range Selector
 
-A date/time selector in the top-right corner allows filtering the displayed timeline and positions.  
+A date/time selector in the top-right corner allows filtering the displayed timeline and positions.
+
+<img src="/img/dashboard/dashboard-date-selector.jpg" width="100%" height="auto"/>
+
 Users can select:
 
 - custom start/end date  
@@ -59,6 +64,8 @@ Each entry includes:
 
 Selecting a timeline entry updates the map to focus on that specific location.
 
+<img src="/img/dashboard/dashboard-timeline.jpg" width="100%" height="auto"/>
+
 At the bottom, a small details card shows:
 
 - **Coordinates**  
@@ -72,6 +79,8 @@ At the bottom, a small details card shows:
 ## Map View
 
 The right side of the upper page displays an interactive map with navigation tools and visual indicators for the selected device’s positions.
+
+<img src="/img/dashboard/dashboard-map-animation-gif.gif" width="100%" height="auto"/>
  
 The map includes:
  

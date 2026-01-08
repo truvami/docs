@@ -11,7 +11,8 @@ sidebar_label v2: Payload Format
 | 150  | [Settings](#setting-uplink)                                            | Uplink | Contains a list of TLV values, like heartbeat or other current settings.                       |
 | 180  | [GNSS-NG Localization Message](#gnss-message-format)                   | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
 | 190  | [Wi-Fi Localization Message](#wi-fi-message-format)                    | Uplink | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.     |
-| 200  | [BLE Localization Message](#ble-message-format)                        | Uplink | A single BLE localization message is sent after a successful Wi-Fi scan.     |
+| 200  | [BLE Localization Message](#ble-message-format)                        | Uplink | A single BLE localization message is sent after a successful BLE scan.     |
+| 201  | [BLE Localization Message (compact)](#ble-message-format)              | Uplink | A single compact BLE localization message is sent after a successful BLE scan.     |
 
 
 ### Downlinks
@@ -57,6 +58,55 @@ sidebar_label v2: Payload Format
 | 0x88 |   X   |             |        X        |  (Steady) seq + WiFi |
 | 0x8C |   X   |      X      |        X        |  (Steady) seq + ts + WiFi |
 
+## BLE Localization Message - port 200
+
+### BLE format summary by Tag, full MAC addr
+|  Tag |  Seq  |  Timestamp  |   (RSSI+MAC)*n  |   Description |
+|------|-------|-------------|-----------------|---------------|
+| 0x10 |       |             |        X        |  (Moving) BLE   |
+| 0x14 |       |      X      |        X        |  (Moving) ts + BLE   |
+| 0x18 |       |             |        X        |  (Steady) BLE      |
+| 0x1C |       |      X      |        X        |  (Steady) ts + BLE   |
+| 0x80 |   X   |             |        X        |  (Moving) seq + BLE  |
+| 0x84 |   X   |      X      |        X        |  (Moving) seq + ts + BLE |
+| 0x88 |   X   |             |        X        |  (Steady) seq + BLE |
+| 0x8C |   X   |      X      |        X        |  (Steady) seq + ts + BLE |
+
+## BLE Localization Message (compact) - port 201
+### BLE format summary by Tag, compact MAC addr
+|  Tag |  Seq  |  Timestamp  |   Compact BLE Data  |   Description |
+|------|-------|-------------|-----------------|---------------|
+| 0x10 |       |             |        X        |  (Moving) BLE   |
+| 0x14 |       |      X      |        X        |  (Moving) ts + BLE   |
+| 0x18 |       |             |        X        |  (Steady) BLE      |
+| 0x1C |       |      X      |        X        |  (Steady) ts + BLE   |
+| 0x80 |   X   |             |        X        |  (Moving) seq + BLE  |
+| 0x84 |   X   |      X      |        X        |  (Moving) seq + ts + BLE |
+| 0x88 |   X   |             |        X        |  (Steady) seq + BLE |
+| 0x8C |   X   |      X      |        X        |  (Steady) seq + ts + BLE |
+
+### Compact BLE data format
+|  Size: |  Variable Heat/Tail (1)  | 1    | 6  |   1  |    1-5    |     |   1  |    1-5    |
+|--------|--------------------------|------|----|------|-----------|-----|------|-----------|
+| Field: |   -5 to 5                | RSSI | Full MAC| RSSI | Short MAC | ... | RSSI | Short MAC |
+
+When the Heat/Tail value is negative it tells how many bytes are different from the beggining of the full MAC.</br>
+When it's positive it tells how many bytes are different from the end of the full MAC
+
+Ex: Head/Tail is -2:</br>
+Full MAC: AA BB CC DD EE FF GG</br>
+Short MAC: HH II </br>
+-> Short MAC expands to: HH II CC DD EE FF GG 
+
+
+Ex: Head/Tail is 2:</br>
+Full MAC: AA BB CC DD EE FF GG</br>
+Short MAC: HH II </br>
+-> Short MAC expands to: AA BB CC DD HH II
+
+
+
+# Detailed payload format:
 ### Wi-Fi, moving with no timestamp
 |  Size: |  Tag (1)  | 1    | 6  |     | 1    | 6   |
 |--------|-----------|------|----|-----|------|-----|

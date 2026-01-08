@@ -19,7 +19,7 @@ sidebar_label v2: Payload Format
 | Port | Name                                                                   |   Type   | Description                                                                                                           |
 |------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
 | 150  | [Settings](#setting-downlink)                                          | Downlink | Contains a list of setter, getter and/or runner commands, in TLV format.                                              |
-| 155  | [Getter/Action](#getter-downlink)                                      | Downlink | Contains a list of TLV IDs. The device will then send the data associated with speicified TLV IDs, or execute the Action. |
+| 155  | [Getter/Action](#getter-downlink)                                      | Downlink | Contains a list of TLV IDs. The device will then send the data associated with specified TLV IDs, or execute the Action. |
 
 
 ### TLV list of IDs
@@ -41,7 +41,7 @@ sidebar_label v2: Payload Format
 | 12 | Firmware CRC32                   | 0x3C |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
 | 13 | Clear stored buffer              | 0x40 |    0 | -    | Clears the stored buffer  | |
 | 14 | Localization action              | 0x44 |    0 | -    | Triggers the localization   | |
-| 15 | Reset device action              | 0x48 |    0 | -    | Resets thed evice      | |
+| 15 | Reset device action              | 0x48 |    0 | -    | Resets the device      | |
 
 # Uplinks format
 ## Wi-Fi Localization Message - port 190
@@ -90,7 +90,7 @@ sidebar_label v2: Payload Format
 |--------|--------------------------|------|----|------|-----------|-----|------|-----------|
 | Field: |   -5 to 5                | RSSI | Full MAC| RSSI | Short MAC | ... | RSSI | Short MAC |
 
-When the Heat/Tail value is negative it tells how many bytes are different from the beggining of the full MAC.</br>
+When the Heat/Tail value is negative it tells how many bytes are different from the beginning of the full MAC.</br>
 When it's positive it tells how many bytes are different from the end of the full MAC
 
 Ex: Head/Tail is -2:</br>
@@ -150,8 +150,4 @@ Short MAC: HH II </br>
 
 
 
-## Nonfunctional Requirements
 
-### LoRaWan 1.0.4 Compliant
-
-The software needs to compliant with LoRaWan 1.0.4 Standard and fullfill the certification process

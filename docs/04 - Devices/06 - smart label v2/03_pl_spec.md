@@ -12,7 +12,7 @@ sidebar_label v2: Payload Format
 | 180  | [GNSS-NG Localization Message](#gnss-message-format)                   | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
 | 190  | [Wi-Fi Localization Message](#wi-fi-message-format)                    | Uplink | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.     |
 | 200  | [BLE Localization Message](#ble-message-format)                        | Uplink | A single BLE localization message is sent after a successful BLE scan.     |
-| 201  | [BLE Localization Message (compact)](#ble-message-format)              | Uplink | A single compact BLE localization message is sent after a successful BLE scan.     |
+| 201  | [BLE Localization Message (compact)](#ble-message-format)              | Uplink | A single compact BLE (based on filters) localization message is sent after a successful BLE scan.|
 
 
 ### Downlinks
@@ -44,9 +44,33 @@ sidebar_label v2: Payload Format
 | 15 | Reset device action              | 0x48 |    0 | -    | Resets the device      | |
 
 # Uplinks format
+## GNSS Localization Message - port 180
+### GNSS payload format summary by Tag
+|  Tag |  Seq  |  Timestamp  |   GHDR  |  NAV  | Description |
+|------|-------|-------------|---------|-------|------------------|
+| 0x10 |       |             |     X   |   X   |  (Moving) GNSS   |
+| 0x14 |       |      X      |     X   |   X   |  (Moving) ts + GNSS   |
+| 0x18 |       |             |     X   |   X   |  (Steady) GNSS      |
+| 0x1C |       |      X      |     X   |   X   |  (Steady) ts + GNSS   |
+| 0x80 |   X   |             |     X   |   X   |  (Moving) seq + GNSS  |
+| 0x84 |   X   |      X      |     X   |   X   |  (Moving) seq + ts + GNSS |
+| 0x88 |   X   |             |     X   |   X   |  (Steady) seq + GNSS |
+| 0x8C |   X   |      X      |     X   |   X   |  (Steady) seq + ts + GNSS |
+
+### GNSS localization data encoding
+|  Byte Lenght |   1  |  1-n  |
+|--------------|------|-------------------|
+|  Field:      | GHDR |   U-GNSSLOC-NAV   |
+
+### GHDR: Group Header
+|  Bits  |  7  |   6-5    |   4-0    |
+|--------|-----|----------|----------|
+| Field: | EOG | RFU=0b00 | GRP_TOKEN|
+
+
 ## Wi-Fi Localization Message - port 190
 
-### Wi-Fi format summary by Tag
+### Wi-Fi payload format summary by Tag
 |  Tag |  Seq  |  Timestamp  |   (RSSI+MAC)*n  |   Description |
 |------|-------|-------------|-----------------|---------------|
 | 0x10 |       |             |        X        |  (Moving) WiFi   |

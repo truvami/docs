@@ -157,25 +157,25 @@ Corroded components must not be reused, as this may lead to:
 ### 3.5 Magnet References
 
 #### Original Magnet
-- [Screw-on disc magnet](https://www.supermagnete.ch/eng/screw-on-neodymium-magnets/screw-on-disc-magnet-23mm-height-4mm_CS-S-23-04-N)
+- [Screw-on disc magnet, with countersunk hole](https://www.supermagnete.ch/eng/data_sheet_CS-S-23-04-N.pdf)
 - Ø 23 mm, height 4 mm  
-- Holding force: approx. **6.5 kg**
+- Holding force: approx. **6.5 kg**  
 
 ---
 
 #### Possible Replacement Reference (Rubber-Coated)
-- [Screw-on disc magnet, rubber-coated](https://www.supermagnete.ch/eng/screw-on-neodymium-magnets/screw-on-disc-magnet-rubber-coated-28.5mm-height-6.5mm_CS-S-27-05-R)
+- [Screw-on disc magnet, rubber-coated, with countersunk hole](https://www.supermagnete.ch/eng/data_sheet_CS-S-27-05-R.pdf)
 - Ø 28.5 mm, height 6.5 mm  
-- Holding force: approx. **6 kg**
+- Holding force: approx. **6 kg**  
 
 This option is recommended for environments where surface protection or increased corrosion resistance is required.
 
 ---
 
 #### Alternative Replacement Reference
-- [Neodymium pot magnet with threaded stud](https://www.supermagnete.ch/eng/pot-magnets-with-threaded-stud/pot-magnet-with-threaded-stud-16mm_GTN-16)
+- [Neodymium pot magnet with threaded stud](https://www.supermagnete.ch/eng/data_sheet_GTN-16.pdf)
 - Ø 16 mm  
-- Holding force: approx. **8 kg**
+- Holding force: approx. **8 kg**  
 
 ---
 

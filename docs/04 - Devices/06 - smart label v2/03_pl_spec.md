@@ -37,14 +37,14 @@ sidebar_label v2: Payload Format
 |  9 | ADR                              | 0x30 |    1 | uint8_t | 0: DR5 (EU868 SF7)<br/> 1: DR4 (EU868 SF8)<br/>2: DR3 (EU868 SF9, US915 SF7)<br/>3: DR2 (EU868 SF10, US915 SF8)<br/>4: DR1 (EU868 SF11, US915 SF9)<br/>5: DR0 (EU868 SF12)<br/>6: DR1-3 array (EU868 SF9-11, US915 SF7-9) <br/>7: ADR (SF7-12) for EU868     | 0 - 7 |2 |
 | 10 | Buffer level                     | 0x34 |    2 | uint16_t | Number of stored unconfirmed messages in its internal memory | 0 - 65535 | - |
 | 11 | Buffer TTL                       | 0x38 |    2 | uint16_t | The number of days after a buffered message will be discarded without being re-sent</br> Value of 0 means disabled. | 0 - 65535 | 30 |
-| 12 | Advertisement BLE duration FWU   | 0x38 |    1 | uint8_t | Seconds  | 1 - 255 |   60 |
-| 13 | Heartbeat TLV list               | 0x3C |  1-n | uint8_t * n  | TLVs IDs list for hearbeat  | * | 0x24 0x2C 0x34 |
-| 14 | FW & HW Version                  | 0x40 |    4 | uint32_t | CRC32 of the current FW | |
-| 15 | Firmware CRC32                   | 0x44 |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
-| 16 | TLV ID bundle                    | 0x48 |  1-n | uint8_t * n  | TLV IDs list  | * | - |
-| 17 | Clear stored buffer              | 0x4C |    0 | -    | Clears the stored buffer  | |
-| 18 | Localization action              | 0x50 |    0 | -    | Triggers the localization   | |
-| 19 | Reset device action              | 0x54 |    0 | -    | Resets the device      | |
+| 12 | Advertisement BLE duration FWU   | 0x3C |    1 | uint8_t | Seconds  | 1 - 255 |   60 |
+| 13 | Heartbeat TLV list               | 0x40 |  1-n | uint8_t * n  | TLVs IDs list for hearbeat  | * | 0x24 0x2C 0x34 |
+| 14 | FW & HW Version                  | 0x44 |    4 | uint32_t | CRC32 of the current FW | |
+| 15 | Firmware CRC32                   | 0x48 |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
+| 16 | TLV ID bundle                    | 0x4C |  1-n | uint8_t * n  | TLV IDs list  | * | - |
+| 17 | Clear stored buffer              | 0x50 |    0 | -    | Clears the stored buffer  | |
+| 18 | Localization action              | 0x54 |    0 | -    | Triggers the localization   | |
+| 19 | Reset device action              | 0x58 |    0 | -    | Resets the device      | |
 
 </br>
 

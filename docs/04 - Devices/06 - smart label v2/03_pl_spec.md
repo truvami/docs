@@ -4,11 +4,17 @@ sidebar_label v2: Payload Format
 
 # Payload Format of Smart Label v2 - [draft - Anything is subject to change] 
 
-### Uplinks
-
+## Downlinks
 | Port | Name                                                                   |   Type   | Description                                                                                                           |
 |------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
-| 150  | [Settings](#setting-uplink)                                            | Uplink | Contains a list of TLV values, like heartbeat or other current settings.                       |
+| 151  | [Set](#set-uplink)                                                     | Uplink | Contains a list of TLV values to be written to the device                       |
+| 152  | [Get](#get-uplink)                                                     | Uplink | Contains a list of TLV values to be read from the device                       |
+| 153  | [Action](#action-uplink)                                               | Uplink | Contains a list of TLV values which will trigger an action                     |
+
+## Uplinks
+| Port | Name                                                                   |   Type   | Description                                                                                                           |
+|------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
+| 150  | [Settings](#set-uplink)                                                | Uplink | Contains a list of TLV values containing various configuration data |
 | 180  | [GNSS-NG Localization Message](#gnss-message-format)                   | Uplink | One or two GNSS-NG localization messages are sent after a successful GNSS-NG scan.       |
 | 190  | [Wi-Fi Localization Message](#wi-fi-message-format)                    | Uplink | A single Wi-Fi localization message is sent after a successful Wi-Fi scan.     |
 | 191  | [Wi-Fi Localization Message (compact)](#wi-fi-message-format)          | Uplink | A single compact Wi-Fi (based on filters) localization message is sent after a successful Wi-Fi scan.     |
@@ -16,14 +22,7 @@ sidebar_label v2: Payload Format
 | 201  | [BLE Localization Message (compact)](#ble-message-format)              | Uplink | A single compact BLE (based on filters) localization message is sent after a successful BLE scan.|
 
 
-### Downlinks
-| Port | Name                                                                   |   Type   | Description                                                                                                           |
-|------|------------------------------------------------------------------------|----------|-----------------------------------------------------------------------------------------------------------------------|
-| 150  | [Settings](#setting-downlink)                                          | Downlink | Contains a list of setter, getter and/or runner commands, in TLV format.                                              |
-| 155  | [Getter/Action](#getter-downlink)                                      | Downlink | Contains a list of TLV IDs. The device will then send the data associated with specified TLV IDs, or execute the Action. |
-
-
-### TLV list of IDs
+## TLV list of IDs
 
 |  # | Name                             | Tag  | Size | Format | Description | Range | Default |
 |----|----------------------------------|------|------|------- |-------------|-------|---------|
@@ -34,15 +33,52 @@ sidebar_label v2: Payload Format
 |  5 | Movement detection plan          | 0x20 |    5 | uint8_t</br> uint8_t</br> uint8_t</br> uint8_t</br>uint8_t</br>   | slice_time_seconds</br> window_slice_count </br> window_slice_required </br> start_move_win_count </br> stop_move_win_count </br>| 1 - 255</br> 1 - 255</br> 1 - 255</br> 1 - 255</br> 1 - 255</br> | 1</br>5</br>3</br>3</br>4    |
 |  6 | Battery                          | 0x24 |    3 | uint8_t</br> uint16_t | Percentage</br> Voltage | 0-100</br> (hw dependent)    | |
 |  7 | Reset data                       | 0x28 |    3 | uint8_t</br> uint16_t | Reason</br>Count |   |   |
-|  8 | Scan Counts                      | 0x2C |    6 | uint16_t</br> uint16_t</br> uint16_t | GNSS scan count</br>WiFi scan count</br>BLE scan count</br> |     |
+|  8 | Scan Counts                      | 0x2C |   12 | uint16_t</br> uint16_t</br> uint16_t<br/>uint16_t</br> uint16_t</br> uint16_t | GNSS successful scan count</br>WiFi successful scan count</br>BLE successful scan count</br>GNSS failed scan count</br>WiFi failed scan count</br>BLE failed scan count</br> |     |
 |  9 | ADR                              | 0x30 |    1 | uint8_t | 0: DR5 (EU868 SF7)<br/> 1: DR4 (EU868 SF8)<br/>2: DR3 (EU868 SF9, US915 SF7)<br/>3: DR2 (EU868 SF10, US915 SF8)<br/>4: DR1 (EU868 SF11, US915 SF9)<br/>5: DR0 (EU868 SF12)<br/>6: DR1-3 array (EU868 SF9-11, US915 SF7-9) <br/>7: ADR (SF7-12) for EU868     | 0 - 7 |2 |
-| 10 | Advertisement BLE duration FWU   | 0x34 |    1 | uint8_t | Seconds  | 1 - 255 |   60 |
-| 11 | Heartbeat TLV list               | 0x38 |  1-n | uint8_t * n  | TLVs IDs list  | * | 0x24 0x2C |
-| 12 | FW & HW Version                  | 0x3C |    4 | uint32_t | CRC32 of the current FW | |
-| 12 | Firmware CRC32                   | 0x3C |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
-| 13 | Clear stored buffer              | 0x40 |    0 | -    | Clears the stored buffer  | |
-| 14 | Localization action              | 0x44 |    0 | -    | Triggers the localization   | |
-| 15 | Reset device action              | 0x48 |    0 | -    | Resets the device      | |
+| 10 | Buffer level                     | 0x34 |    2 | uint16_t | Number of stored unconfirmed messages in its internal memory | 0 - 65535 | - |
+| 11 | Buffer TTL                       | 0x38 |    2 | uint16_t | The number of days after a buffered message will be discarded without being re-sent</br> Value of 0 means disabled. | 0 - 65535 | 30 |
+| 12 | Advertisement BLE duration FWU   | 0x38 |    1 | uint8_t | Seconds  | 1 - 255 |   60 |
+| 13 | Heartbeat TLV list               | 0x3C |  1-n | uint8_t * n  | TLVs IDs list for hearbeat  | * | 0x24 0x2C 0x34 |
+| 14 | FW & HW Version                  | 0x40 |    4 | uint32_t | CRC32 of the current FW | |
+| 15 | Firmware CRC32                   | 0x44 |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
+| 16 | TLV ID bundle                    | 0x48 |  1-n | uint8_t * n  | TLV IDs list  | * | - |
+| 17 | Clear stored buffer              | 0x4C |    0 | -    | Clears the stored buffer  | |
+| 18 | Localization action              | 0x50 |    0 | -    | Triggers the localization   | |
+| 19 | Reset device action              | 0x54 |    0 | -    | Resets the device      | |
+
+</br>
+
+# Downlinks
+## Set - port 151
+|  Byte Lenght |   (Tag) 1  |    TLV 1      | TLV x |
+|--------------|------------|---------------|-----|
+|  Field:      |    0x10    |   TLV 1 data  | ... |
+
+
+## Get - port 152
+### Generic - one TLV for each requested ID
+|  Byte Lenght |   (Tag) 1  |  TLVs 1      | ... |
+|--------------|------------|---------------|-----|
+|  Field:      |    0x10    |   TLV 1 data  | ... |
+
+### Bundle - one single TLV containing a list of TLV IDs. The ID for bundle is '0x48'
+|  Byte Lenght |   (Tag) 1  |     TLV ID 0x48     |
+|--------------|------------|-------------|
+|  Field:      |    0x10    |   TLV data (1..n)  |
+
+
+## Action - port 153
+### Generic - one TLV for each requested ID
+|  Byte Lenght |   (Tag) 1  |  TLVs 1      | ... |
+|--------------|------------|---------------|-----|
+|  Field:      |    0x10    |   TLV 1 data  | ... |
+
+### Bundle - one single TLV containing a list of TLV IDs
+|  Byte Lenght |   (Tag) 1  |     TLV ID 0x48     |
+|--------------|------------|---------------------|
+|  Field:      |    0x10    |   TLV data (1..n)   |
+
+
 
 # Uplinks format
 ## GNSS Localization Message - port 180

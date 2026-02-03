@@ -2,6 +2,7 @@
 
 | Version | Release Date    | Changes |
 |---------|--------------|---------|
+| V3.3.4 | 2026-02-03    | <ul><li>Changed batch count to 5</li><li>Changed spreading factor to SF9</li><li>Added BLE MAC filtering</li><li>Added reversed BLE MAC filtering</li></ul> |
 | V3.3.3 | 2025-09-30    | <ul><li>Added new port 136 DL for pdop/vdop/hdop support as stopping criterion of the GNSS scan</li><li>WiFi scanning is now polling instead of blocking</li><li> No melody played after a watchdog reset</li></ul> |
 | V3.3.2 | 2025-07-17    | <ul><li>Disable GPS internal LNA for quicker time to first fix (ttf)</li><li>Improve wake up strategy to avoid LoRWAN transmission when GPS fix is active</li></ul> |
 | V3.3.1 | 2025-06-02    | <ul><li>Extending port 198 reset uplink watchdog reset reason</li></ul> |

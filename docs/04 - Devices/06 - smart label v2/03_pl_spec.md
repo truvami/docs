@@ -29,30 +29,30 @@ sidebar_label v2: Payload Format
 |----|----------------------------------|------|------|------- |-------------|-------|---------|
 |  1 | Device flags                     | 0x10 |    1 | uint8_t (bitfield) | bit 0: GNSS_ENABLE<br/>bit 1: WIFI_ENABLE<br/>bit 2: BLE_ENABLE<br/>bit 3: MOVEMENT_ENABLE<br/>bit 4: BLE_FWU_ENABLED<br/>    | 0 - 1 | 1<br/>1<br/>1<br/>1<br/>1 |
 |  2 | Heartbeat interval               | 0x14 |    1 | uint8_t | Hours | 1 - 255 | 24 |
-|  3 | Asset tracking Intervals         | 0x18 |    4 | uint16_t </br> uint16_t</br> | Moving: Minutes</br> Steady: Minutes  | ??</br>?? | 15 </br> 60|
+|  3 | Asset tracking Intervals         | 0x18 |    4 | uint16_t <br/> uint16_t<br/> | Moving: Minutes<br/> Steady: Minutes  | ??<br/>?? | 15 <br/> 60|
 |  4 | Acceleration sensitivity         | 0x1C |    2 | uint16_t | mG  | 1 - 16000 | 50      |
-|  5 | Movement detection plan          | 0x20 |    5 | uint8_t</br> uint8_t</br> uint8_t</br> uint8_t</br>uint8_t</br>   | slice_time_seconds</br> window_slice_count </br> window_slice_required </br> start_move_win_count </br> stop_move_win_count </br>| 1 - 255</br> 1 - 255</br> 1 - 255</br> 1 - 255</br> 1 - 255</br> | 1</br>5</br>3</br>3</br>4    |
-|  6 | Battery                          | 0x24 |    3 | uint8_t</br> uint16_t | Percentage</br> Voltage | 0-100</br> (hw dependent)    | |
-|  7 | Reset data                       | 0x28 |    3 | uint8_t</br> uint16_t | Reason</br>Count |   |   |
-|  8 | Scan Counts                      | 0x2C |   12 | uint16_t</br> uint16_t</br> uint16_t<br/>uint16_t</br> uint16_t</br> uint16_t | GNSS successful scan count</br>WiFi successful scan count</br>BLE successful scan count</br>GNSS failed scan count</br>WiFi failed scan count</br>BLE failed scan count</br> |     |
+|  5 | Movement detection plan          | 0x20 |    5 | uint8_t<br/> uint8_t<br/> uint8_t<br/> uint8_t<br/>uint8_t<br/>   | slice_time_seconds<br/> window_slice_count <br/> window_slice_required <br/> start_move_win_count <br/> stop_move_win_count <br/>| 1 - 255<br/> 1 - 255<br/> 1 - 255<br/> 1 - 255<br/> 1 - 255<br/> | 1<br/>5<br/>3<br/>3<br/>4    |
+|  6 | Battery                          | 0x24 |    3 | uint8_t<br/> uint16_t | Percentage<br/> Voltage | 0-100<br/> (hw dependent)    | |
+|  7 | Reset data                       | 0x28 |    3 | uint8_t<br/> uint16_t | Reason<br/>Count |   |   |
+|  8 | Scan Counts                      | 0x2C |   12 | uint16_t<br/> uint16_t<br/> uint16_t<br/>uint16_t<br/> uint16_t<br/> uint16_t | GNSS successful scan count<br/>WiFi successful scan count<br/>BLE successful scan count<br/>GNSS failed scan count<br/>WiFi failed scan count<br/>BLE failed scan count<br/> |     |
 |  9 | ADR                              | 0x30 |    1 | uint8_t | 0: DR5 (EU868 SF7)<br/> 1: DR4 (EU868 SF8)<br/>2: DR3 (EU868 SF9, US915 SF7)<br/>3: DR2 (EU868 SF10, US915 SF8)<br/>4: DR1 (EU868 SF11, US915 SF9)<br/>5: DR0 (EU868 SF12)<br/>6: DR1-3 array (EU868 SF9-11, US915 SF7-9) <br/>7: ADR (SF7-12) for EU868     | 0 - 7 |2 |
 | 10 | Buffer level                     | 0x34 |    2 | uint16_t | Number of stored unconfirmed messages in its internal memory | 0 - 65535 | - |
-| 11 | Buffer TTL                       | 0x38 |    2 | uint16_t | The number of days after a buffered message will be discarded without being re-sent</br> Value of 0 means disabled. | 0 - 65535 | 30 |
-| 12 | Buffer Seq Confirmation          | 0x3C | 2-n | uint16_t</br>uint8_t*n| Seq number.<br/> Bitfield where 1 means missing, 0 means received. Each bit represents a Seq number and its value is computed as: provided Seq - bit position. | Seq: 0 - 65535 (w/ overflow) </br>Bitfield: [0-1] |
+| 11 | Buffer TTL                       | 0x38 |    2 | uint16_t | The number of days after a buffered message will be discarded without being re-sent<br/> Value of 0 means disabled. | 0 - 65535 | 30 |
+| 12 | Buffer Seq Confirmation          | 0x3C | 2-n | uint16_t<br/>uint8_t*n| Seq number.<br/> Bitfield where 1 means missing, 0 means received. Each bit represents a Seq number and its value is computed as: provided Seq - bit position. | Seq: 0 - 65535 (w/ overflow) <br/>Bitfield: [0-1] |
 | 13 | Advertisement BLE duration FWU   | 0x40 |    1 | uint8_t | Seconds  | 1 - 255 |   60 |
 | 14 | Heartbeat TLV list               | 0x44 |  1-n | uint8_t*n  | TLVs IDs list for hearbeat  | * | 0x24 0x2C 0x34 |
 | 15 | Firmware CRC32                   | 0x48 |    4 | uint32_t | CRC32 of the current FW | |
-| 16 | FW & HW Version                  | 0x4C |    4 | uint8_t</br>uint8_t</br>uint8_t</br>uint8_t</br> | FW ver major</br>FW ver minor</br>FW ver patch</br>HW version</br> | | |
+| 16 | FW & HW Version                  | 0x4C |    4 | uint8_t<br/>uint8_t<br/>uint8_t<br/>uint8_t<br/> | FW ver major<br/>FW ver minor<br/>FW ver patch<br/>HW version<br/> | | |
 | 17 | TLV ID bundle                    | 0x50 |  1-n | uint8_t*n  | TLV IDs list (used for GET downlink) | * | - |
 | 18 | Clear stored buffer              | 0x54 |    0 | -    | Clears the stored buffer  | |
 | 19 | Localization action              | 0x58 |    0 | -    | Triggers the localization   | |
 | 20 | Reset device action              | 0x5C |    0 | -    | Resets the device      | |
-| 21 | Operation Mode                   | 0x60 |    1 | uint8_t | Operation mode value | 0x10 - Shelf</br> 0x20 - Normal| |
-| 22 | WiFi Filter                      | 0x64 |  3-8 | int8_t </br> int8_t </br>uint8_t*n</br> | Min RSSI</br>Head or Tail</br> MAC addr bytes (1-6) | -128 to 127</br> -1 or 1</br>MAC bytes | |
-| 23 | BLE Filter                       | 0x68 |  3-8 | int8_t </br> int8_t </br>uint8_t*n</br> | Min RSSI</br>Head or Tail</br> MAC addr bytes (1-6) | -128 to 127</br> -1 or 1</br>MAC bytes | |
-| 24 | Battery thresholds               | 0x6C |   2  | uint8_t </br> uint8_t| Low battery percentage </br> Critical battery percentage | 0-100</br>0-100 | 40%</br>20% |
+| 21 | Operation Mode                   | 0x60 |    1 | uint8_t | Operation mode value | 0x10 - Shelf<br/> 0x20 - Normal| |
+| 22 | WiFi Filter                      | 0x64 |  3-8 | int8_t <br/> int8_t <br/>uint8_t*n<br/> | Min RSSI<br/>Head or Tail<br/> MAC addr bytes (1-6) | -128 to 127<br/> -1 or 1<br/>MAC bytes | |
+| 23 | BLE Filter                       | 0x68 |  3-8 | int8_t <br/> int8_t <br/>uint8_t*n<br/> | Min RSSI<br/>Head or Tail<br/> MAC addr bytes (1-6) | -128 to 127<br/> -1 or 1<br/>MAC bytes | |
+| 24 | Battery thresholds               | 0x6C |   2  | uint8_t <br/> uint8_t| Low battery percentage <br/> Critical battery percentage | 0-100<br/>0-100 | 40%<br/>20% |
 
-</br>
+<br/>
 
 # Downlinks
 ## Set - port 151
@@ -172,18 +172,18 @@ sidebar_label v2: Payload Format
 |--------|--------------------------|------|----|------|-----------|-----|------|-----------|
 | Field: |   -5 to 5                | RSSI | Full MAC| RSSI | Short MAC | ... | RSSI | Short MAC |
 
-When the Heat/Tail value is negative it tells how many bytes are different from the beginning of the full MAC.</br>
+When the Heat/Tail value is negative it tells how many bytes are different from the beginning of the full MAC.<br/>
 When it's positive it tells how many bytes are different from the end of the full MAC
 
-Ex: Head/Tail is -2:</br>
-Full MAC: `AA BB CC DD EE FF GG`</br>
-Short MAC: `HH II` </br>
+Ex: Head/Tail is -2:<br/>
+Full MAC: `AA BB CC DD EE FF GG`<br/>
+Short MAC: `HH II` <br/>
 -> Short MAC expands to: `HH II CC DD EE FF GG`
 
 
-Ex: Head/Tail is 2:</br>
-Full MAC: `AA BB CC DD EE FF GG`</br>
-Short MAC: `HH II` </br>
+Ex: Head/Tail is 2:<br/>
+Full MAC: `AA BB CC DD EE FF GG`<br/>
+Short MAC: `HH II` <br/>
 -> Short MAC expands to: `AA BB CC DD HH II`
 
 
